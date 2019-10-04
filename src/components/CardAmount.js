@@ -80,6 +80,12 @@ const ButtonMax = styled.button`
   margin: 0 3% 0 1%;
   font-weight: 300;
   border-radius: 2px;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+
+  :hover {
+    background-color: #505050;
+  }
 
   :focus {
     outline: none;
