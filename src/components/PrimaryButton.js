@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 
-const ButtonMain = styled.a`
+const ButtonMain = styled.button`
   width: 80%;
   padding: 4% 10%;
   background-color: #f8e71c;
@@ -21,7 +22,15 @@ const ButtonMain = styled.a`
 `;
 
 const PrimaryButton = props => {
-  return <ButtonMain>INVEST</ButtonMain>;
+  return <ButtonMain onClick={props.onPress}>INVEST</ButtonMain>;
+};
+
+PrimaryButton.propTypes = {
+  onPress: PropTypes.func
+};
+
+PrimaryButton.defaultProps = {
+  onPress: () => alert('Clicked')
 };
 
 export default PrimaryButton;
