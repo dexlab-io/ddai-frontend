@@ -10,6 +10,17 @@ const Web3Button = styled.button`
   padding: 15px;
   border: solid 1px #000;
   border-radius: 5px;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+
+  :hover {
+    background-color: #000;
+    color: #fff;
+  }
+
+  :focus {
+    outline: none;
+  }
 
   @media (max-width: 800px) {
     display: flex;
@@ -19,19 +30,18 @@ const Web3Button = styled.button`
   }
 `;
 
-const ConnectedAddress = styled.span`
+const ConnectedMetamask = styled.span`
   display: flex;
   align-items: center;
   font-weight: 700;
-  margin-right: 10px;
 `;
 
 const ConnectW3Button = props => {
   return (
     <Web3Button>
-      <ConnectedAddress onClick={props.onPress}>
+      <ConnectedMetamask onClick={props.onPress}>
         Conect Metamask
-      </ConnectedAddress>
+      </ConnectedMetamask>
     </Web3Button>
   );
 };

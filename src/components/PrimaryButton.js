@@ -13,9 +13,12 @@ const ButtonMain = styled.button`
   border-radius: 5px;
   margin: 2% 0;
   border: none;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
 
   :hover {
-    opacity: 0.8;
+    background-color: #000;
+    color: #f8e71c;
   }
 
   :focus {
