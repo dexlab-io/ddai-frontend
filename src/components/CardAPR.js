@@ -33,9 +33,13 @@ const CardAPR = props => {
   return (
     <RowContainer>
       <Left>APR</Left>
-      <Right>{Rates.currentRate}</Right>
+      <Right>{props.currentRate}%</Right>
     </RowContainer>
   );
 };
+
+CardAPR.defaultProps = {
+  currentRate: 0
+}
 
 export default CardAPR;

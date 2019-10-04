@@ -36,7 +36,7 @@ class HeaderContainer extends Component {
 
       this.setState({
           walletAddress: Wallet.getAddress(),
-          web3available: true
+          web3available: Wallet.getAddress() ? true : false
       })
   }
 
