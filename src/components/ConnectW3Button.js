@@ -3,15 +3,14 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Web3Button = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 15px;
+  width: 100%;
+  display: inline-block;
+  padding: 4% 10%;
+  border-radius: 4px;
   border: solid 1px #000;
-  border-radius: 5px;
   transition-property: background-color, color;
   transition-duration: 0.3s;
+  text-align: center;
 
   :hover {
     background-color: #000;
@@ -24,9 +23,8 @@ const Web3Button = styled.button`
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: space-around;
-    width: 90%;
-    margin: 2% 5%;
+    text-align: center;
+    margin: 2% 0;
   }
 `;
 
@@ -34,6 +32,7 @@ const ConnectedMetamask = styled.span`
   display: flex;
   align-items: center;
   font-weight: 700;
+  width: 100%;
 `;
 
 const ConnectW3Button = props => {
