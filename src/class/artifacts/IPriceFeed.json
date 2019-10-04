@@ -1,0 +1,61 @@
+{
+	"schemaVersion": "2.0.0",
+	"contractName": "IPriceFeed",
+	"compilerOutput": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "read",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"evm": {
+			"bytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
+			}
+		}
+	},
+	"sources": {
+		"interfaces/IPriceFeed.sol": {
+			"id": 23
+		}
+	},
+	"sourceCodes": {
+		"interfaces/IPriceFeed.sol": "pragma solidity >=0.4.21 <0.6.0;\npragma experimental ABIEncoderV2;\n\ninterface IPriceFeed {\n    function read() external view returns(bytes32);\n}"
+	},
+	"sourceTreeHashHex": "0x86f31bb6817c3bccec7f7d08d7884bd807ed7b4888bec5599698db91b3329747",
+	"compiler": {
+		"name": "solc",
+		"version": "soljson-v0.5.11+commit.c082d0b4.js",
+		"settings": {
+			"optimizer": {
+				"enabled": false
+			},
+			"outputSelection": {
+				"*": {
+					"*": [
+						"abi",
+						"evm.bytecode.object"
+					]
+				}
+			},
+			"remappings": [
+				"openzeppelin-solidity=/Users/mickdegraaf/DDAI/node_modules/openzeppelin-solidity"
+			]
+		}
+	},
+	"networks": {}
+}

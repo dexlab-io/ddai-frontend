@@ -1,0 +1,82 @@
+{
+	"schemaVersion": "2.0.0",
+	"contractName": "ISynthetix",
+	"compilerOutput": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "_sourceCurrencyKey",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_sourceAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes4",
+						"name": "_destinationCurrencyKey",
+						"type": "bytes4"
+					},
+					{
+						"internalType": "address",
+						"name": "_destinationAddress",
+						"type": "address"
+					}
+				],
+				"name": "exchange",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"evm": {
+			"bytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
+			}
+		}
+	},
+	"sources": {
+		"interfaces/ISynthetix.sol": {
+			"id": 5
+		}
+	},
+	"sourceCodes": {
+		"interfaces/ISynthetix.sol": "pragma solidity >=0.4.21 <0.6.0;\n\ncontract ISynthetix {\n    function exchange(\n        bytes4 _sourceCurrencyKey,\n        uint256 _sourceAmount,\n        bytes4 _destinationCurrencyKey,\n        address _destinationAddress\n    ) external returns (bool);\n}"
+	},
+	"sourceTreeHashHex": "0x515c6bccbd3b7f08b98d50771520b1ddbff5af72a4d4d3c0eece2cce56e32292",
+	"compiler": {
+		"name": "solc",
+		"version": "soljson-v0.5.12+commit.7709ece9.js",
+		"settings": {
+			"optimizer": {
+				"enabled": false
+			},
+			"outputSelection": {
+				"*": {
+					"*": [
+						"abi",
+						"evm.bytecode.object"
+					]
+				}
+			},
+			"remappings": [
+				"openzeppelin-solidity=/Users/mickdegraaf/DDAI/node_modules/openzeppelin-solidity"
+			]
+		}
+	},
+	"networks": {}
+}

@@ -1,0 +1,82 @@
+{
+	"schemaVersion": "2.0.0",
+	"contractName": "IPToken",
+	"compilerOutput": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_depositTokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_depositAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_maxPriceAllowed",
+						"type": "uint256"
+					}
+				],
+				"name": "mintWithToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"evm": {
+			"bytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
+			}
+		}
+	},
+	"sources": {
+		"interfaces/IPToken.sol": {
+			"id": 22
+		}
+	},
+	"sourceCodes": {
+		"interfaces/IPToken.sol": "pragma solidity >=0.4.21 <0.6.0;\n\ninterface IPToken {\n\n    function mintWithToken(\n        address _receiver,\n        address _depositTokenAddress,\n        uint256 _depositAmount,\n        uint256 _maxPriceAllowed\n    )\n    external\n    returns (uint256);\n\n}"
+	},
+	"sourceTreeHashHex": "0xef1f44b78636632d377c9000862e131b1c53d84a00820a0b12bb698022aa4c14",
+	"compiler": {
+		"name": "solc",
+		"version": "soljson-v0.5.11+commit.c082d0b4.js",
+		"settings": {
+			"optimizer": {
+				"enabled": false
+			},
+			"outputSelection": {
+				"*": {
+					"*": [
+						"abi",
+						"evm.bytecode.object"
+					]
+				}
+			},
+			"remappings": [
+				"openzeppelin-solidity=/Users/mickdegraaf/DDAI/node_modules/openzeppelin-solidity"
+			]
+		}
+	},
+	"networks": {}
+}

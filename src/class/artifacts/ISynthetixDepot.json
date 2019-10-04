@@ -1,0 +1,61 @@
+{
+	"schemaVersion": "2.0.0",
+	"contractName": "ISynthetixDepot",
+	"compilerOutput": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "exchangeEtherForSynths",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"evm": {
+			"bytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
+			}
+		}
+	},
+	"sources": {
+		"interfaces/ISynthetixDepot.sol": {
+			"id": 6
+		}
+	},
+	"sourceCodes": {
+		"interfaces/ISynthetixDepot.sol": "pragma solidity >=0.4.21 <0.6.0;\n\ninterface ISynthetixDepot {\n    function exchangeEtherForSynths() external payable returns (uint256); // Returns the number of Synths (sUSD) received\n}"
+	},
+	"sourceTreeHashHex": "0xc108f55baf23db54adc5fe246ae7dbd7aa0362781c86c5a37a25a72ff3c7b610",
+	"compiler": {
+		"name": "solc",
+		"version": "soljson-v0.5.12+commit.7709ece9.js",
+		"settings": {
+			"optimizer": {
+				"enabled": false
+			},
+			"outputSelection": {
+				"*": {
+					"*": [
+						"abi",
+						"evm.bytecode.object"
+					]
+				}
+			},
+			"remappings": [
+				"openzeppelin-solidity=/Users/mickdegraaf/DDAI/node_modules/openzeppelin-solidity"
+			]
+		}
+	},
+	"networks": {}
+}

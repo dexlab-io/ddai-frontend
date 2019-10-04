@@ -1,0 +1,61 @@
+{
+	"schemaVersion": "2.0.0",
+	"contractName": "IMakerFeed",
+	"compilerOutput": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "read",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"evm": {
+			"bytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
+			}
+		}
+	},
+	"sources": {
+		"interfaces/IMakerFeed.sol": {
+			"id": 21
+		}
+	},
+	"sourceCodes": {
+		"interfaces/IMakerFeed.sol": "pragma solidity >=0.4.21 <0.6.0;\npragma experimental ABIEncoderV2;\n\ninterface IMakerFeed {\n    function read() external view returns(bytes32);\n}"
+	},
+	"sourceTreeHashHex": "0x132393d7eddacc035ec0b10bd29d8051060a79d8bffbde0bd192349e68c31af3",
+	"compiler": {
+		"name": "solc",
+		"version": "soljson-v0.5.11+commit.c082d0b4.js",
+		"settings": {
+			"optimizer": {
+				"enabled": false
+			},
+			"outputSelection": {
+				"*": {
+					"*": [
+						"abi",
+						"evm.bytecode.object"
+					]
+				}
+			},
+			"remappings": [
+				"openzeppelin-solidity=/Users/mickdegraaf/DDAI/node_modules/openzeppelin-solidity"
+			]
+		}
+	},
+	"networks": {}
+}

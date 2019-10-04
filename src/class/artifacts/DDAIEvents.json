@@ -1,0 +1,43 @@
+{
+	"schemaVersion": "2.0.0",
+	"contractName": "DDAIEvents",
+	"compilerOutput": {
+		"abi": [],
+		"evm": {
+			"bytecode": {
+				"linkReferences": {},
+				"object": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820d08dfa3e2ed4df42baa0a3416ef729625e28e4ef46b118d75ac19fe92ab81bde64736f6c634300050b0032",
+				"opcodes": "PUSH1 0x80 PUSH1 0x40 MSTORE CALLVALUE DUP1 ISZERO PUSH1 0xF JUMPI PUSH1 0x0 DUP1 REVERT JUMPDEST POP PUSH1 0x3E DUP1 PUSH1 0x1D PUSH1 0x0 CODECOPY PUSH1 0x0 RETURN INVALID PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH6 0x627A7A723158 KECCAK256 0xd0 DUP14 STATICCALL RETURNDATACOPY 0x2e 0xd4 0xdf TIMESTAMP 0xba LOG0 LOG3 COINBASE PUSH15 0xF729625E28E4EF46B118D75AC19FE9 0x2a 0xb8 SHL 0xde PUSH5 0x736F6C6343 STOP SDIV SIGNEXTEND STOP ORIGIN ",
+				"sourceMap": "34:28:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:28:0;;;;;;;"
+			}
+		}
+	},
+	"sources": {
+		"DDAI/DDAIEvents.sol": {
+			"id": 0
+		}
+	},
+	"sourceCodes": {
+		"DDAI/DDAIEvents.sol": "pragma solidity >=0.4.21 <0.6.0;\n\ncontract DDAIEvents {\n    \n}"
+	},
+	"sourceTreeHashHex": "0xa563113c8ecf3f21035e999d99fd50a3bd6da7683ac5d058747e231043d7a90a",
+	"compiler": {
+		"name": "solc",
+		"version": "soljson-v0.5.11+commit.c082d0b4.js",
+		"settings": {
+			"optimizer": {
+				"enabled": false
+			},
+			"outputSelection": {
+				"*": {
+					"*": [
+						"abi",
+						"evm.bytecode.object"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"networks": {}
+}
