@@ -1,9 +1,9 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import PropTypes from 'prop-types';
 
 const ButtonMain = styled.button`
-  width: 80%;
+  width: 100%;
   padding: 4% 10%;
   background-color: #f8e71c;
   color: #000;
@@ -12,12 +12,21 @@ const ButtonMain = styled.button`
   font-weight: 700;
   border-radius: 5px;
   margin: 2% 0;
+  border: none;
+
+  :hover {
+    opacity: 0.8;
+  }
+
+  :focus {
+    outline: none;
+  }
 
   @media (max-width: 800px) {
     display: flex;
     justify-content: space-between;
-    width: 90%;
-    margin: 2% 5%;
+    width: 100%;
+    margin: 2% 0;
   }
 `;
 
@@ -30,7 +39,7 @@ PrimaryButton.propTypes = {
 };
 
 PrimaryButton.defaultProps = {
-  onPress: () => alert('Clicked')
+  onPress: () => alert("Clicked")
 };
 
 export default PrimaryButton;
