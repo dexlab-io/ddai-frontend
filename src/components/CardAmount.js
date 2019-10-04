@@ -72,15 +72,18 @@ const Input = styled.input`
 const ButtonMax = styled.button`
   display: flex;
   height: 30px;
-  background: #4a4a4a;
+  background: #000;
   color: white;
   font-size: var(--text-small);
-  text-align: center;
-  width: 17%;
-  padding: 2% 3% 2% 4%;
+  width: 20%;
+  padding: 2% 5%;
   margin: 0 3% 0 1%;
   font-weight: 300;
   border-radius: 2px;
+
+  :focus {
+    outline: none;
+  }
 `;
 
 const CardAmount = props => {
