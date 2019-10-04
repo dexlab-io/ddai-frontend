@@ -37,10 +37,14 @@ const ConnectedMainnet = styled.span`
 const Web3Button = props => {
   return (
     <Web3ButtonConnected>
-      <ConnectedAddress>0x84775645638f6...746Y</ConnectedAddress>
+      <ConnectedAddress>{props.address}</ConnectedAddress>
       <ConnectedMainnet>❇️ Mainnet</ConnectedMainnet>
     </Web3ButtonConnected>
   );
+};
+
+Web3Button.propTypes = {
+  address: ''
 };
 
 export default Web3Button;

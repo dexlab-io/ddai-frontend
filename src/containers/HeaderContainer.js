@@ -41,13 +41,14 @@ class HeaderContainer extends Component {
   }
 
   render() {
+    const { walletAddress } = this.state;
     return (
       <Container>
         <Logo />
         <TotBalance />
 
         <IF what={Wallet.getAddress()}>
-          <Web3Button />
+          <Web3Button address={walletAddress} />
         </IF>
         
         <IF what={!Wallet.getAddress()}>
