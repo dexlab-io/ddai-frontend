@@ -37,9 +37,9 @@ const ConnectedMetamask = styled.span`
 
 const ConnectW3Button = props => {
   return (
-    <Web3Button>
-      <ConnectedMetamask onClick={props.onPress}>
-        Conect Metamask
+    <Web3Button onClick={props.onPress}>
+      <ConnectedMetamask >
+          Connect Metamask
       </ConnectedMetamask>
     </Web3Button>
   );

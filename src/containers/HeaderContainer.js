@@ -31,6 +31,7 @@ class HeaderContainer extends Component {
   }
 
   async init() {
+      console.log('adf')
       await Wallet.setWeb3();
 
       this.setState({
@@ -51,7 +52,7 @@ class HeaderContainer extends Component {
         </IF>
         
         <IF what={!Wallet.getAddress()}>
-          <ConnectW3Button onClick={ () => this.init()} label="Connect metamask" />
+          <ConnectW3Button onPress={ () => this.init()} label="Connect metamask" />
         </IF>
         
       </Container>
