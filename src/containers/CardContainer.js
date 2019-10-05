@@ -5,6 +5,7 @@ import CardInvestmentToken from "../components/CardInvestmentToken";
 import CardAPR from "../components/CardAPR";
 import CardOneButton from "../components/CardOneButton";
 import CardSelectRecipe from "../components/CardSelectRecipe";
+import { IF } from "../components";
 import Wallet from '../Wallet';
 
 
@@ -40,14 +41,14 @@ class CardContainer extends Component {
     dDaiBalance: 0,
     APR: 0,
     amount: 0,
+    balanceDAI: 0,
     needAllowance: false
   }
 
   componentDidMount() {
-    Wallet.Rx
-      .subscribe((action, data)  => {
-        this.refresh();
-      })
+    Wallet.Rx.subscribe((action, data)  => {
+      this.refresh();
+    });
   }
 
   async onChangeAmount(e) {
@@ -70,30 +71,53 @@ class CardContainer extends Component {
       if(!Wallet.ddai) return;
 
       const data = await Wallet.ddai.getState();
-      
+      console.log(data)
 
       this.setState({
-          dDaiBalance: data.Balance
+          dDaiBalance: data.Balance,
+          balanceDAI: data.BalanceDAI
       })
   }
 
   async validate() {
+    if(!Wallet.ddai) return;
     console.log('do things...');
     const supplyTx = await Wallet.ddai.mint(this.state.amount);
     this.refresh();
   }
 
-  render() {
-    const { dDaiBalance, needAllowance } = this.state;
-    const btnLabel = needAllowance ? 'ALLOW & INVEST' : 'INVEST';
+  async withdraw() {
+    if(!Wallet.ddai) return;
+    console.log('do things...');
+    const supplyTx = await Wallet.ddai.redeem(this.state.amount);
+    this.refresh();
+  }
 
+  async claim() {
+    if(!Wallet.ddai) return;
+    const supplyTx = await Wallet.ddai.claimInterest();
+    this.refresh();
+  }
+
+  render() {
+    const { dDaiBalance, amount, needAllowance, balanceDAI } = this.state;
+    const btnLabel = needAllowance ? 'ALLOW & INVEST' : 'INVEST';
     return (
       <Container>
-        <CardAmount onChange={ (e) => this.onChangeAmount(e)} />
+        <CardAmount maxValue={balanceDAI} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={dDaiBalance} />
         <CardAPR />
         <CardSelectRecipe />
         <CardOneButton onPress={ () => this.validate()} label={btnLabel} />
+
+        <IF what={dDaiBalance > 0}>
+          <CardOneButton onPress={ () => this.withdraw()} label={'Withdraw'} />
+        </IF>
+
+        <IF what={dDaiBalance > 0}>
+          <CardOneButton onPress={ () => this.claim()} label={'Claim Interest'} />
+        </IF>
+        
       </Container>
     );
   }

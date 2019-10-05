@@ -98,8 +98,8 @@ const CardAmount = props => {
       <Left>Amount</Left>
       <Right>
         <Form>
-          <Input type="number" onChange={props.onChange} placeholder="i.e 234,98.00 DAI"></Input>
-          <ButtonMax>MAX</ButtonMax>
+          <Input type="number" value={props.amount} onChange={props.onChange} placeholder="i.e 234,98.00 DAI"></Input>
+          <ButtonMax onClick={(e) => { props.onChange({ target: {value: props.maxValue}}); e.preventDefault() }} >MAX</ButtonMax>
         </Form>
       </Right>
     </RowContainer>
@@ -107,7 +107,9 @@ const CardAmount = props => {
 };
 
 CardAmount.defaultProps = {
-  onChange: () => {}
+  onChange: () => {},
+  maxValue: 0,
+  amount: 0
 }
 
 export default CardAmount;

@@ -52,24 +52,12 @@ class DDAI extends BasePlugin {
             await this.giveAllowance();
         }
         const srcAmount = new BigNumber(amount.toString()).toString();
-
         const tx = await this.instance.methods.mint(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()});
-        console.log('tx', tx);
         return tx;
     }
 
     async redeem(amount) {
-        const srcAmount = this.W.web3.utils.toWei(amount.toString());
-
-        const supplyTxData = await this.instance.methods.redeem(this.W.getAddress(), srcAmount).encodeABI();
-        const supplyTxGas = await this.instance.methods.redeem(this.W.getAddress(), srcAmount).estimateGas();
-
-        console.table({
-            txGas: supplyTxGas,
-            amount: amount,
-            data: supplyTxData
-        })
-
+        const srcAmount = new BigNumber(amount.toString()).toString();
         const tx = await this.instance.methods.redeem(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()});
         console.log('tx', tx);
         return tx;
@@ -89,6 +77,11 @@ class DDAI extends BasePlugin {
 
     async claimInterest() {
         const tx = await this.instance.methods.claimInterest(this.W.getAddress()).send({from: this.W.getAddress()});
+        return tx;
+    }
+
+    async getBalanceUnderlying() {
+        const tx = await this.mockdai.methods.balanceOf(this.W.getAddress()).call();
         return tx;
     }
 
@@ -124,13 +117,17 @@ class DDAI extends BasePlugin {
         const OutStandingInterest = await this.getOutStandingInterest();
         const TotalBalance = await this.getTotalBalance();
         const Balance = await this.getBalance();
+        const Earned = TotalBalance - Balance;
+        const BalanceDAI = await this.getBalanceUnderlying() / 1e18;
 
         return {
             Recipes,
             Stack,
             OutStandingInterest,
             TotalBalance,
-            Balance
+            Balance,
+            Earned,
+            BalanceDAI
         }
     }
 
