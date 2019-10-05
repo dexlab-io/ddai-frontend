@@ -7,8 +7,7 @@ import CardOneButton from "../components/CardOneButton";
 import CardSelectRecipe from "../components/CardSelectRecipe";
 import { IF } from "../components";
 import Wallet from '../Wallet';
-
-
+import U from '../class/utils';
 
 const Container = styled.div`
   width: 36%;
@@ -74,7 +73,7 @@ class CardContainer extends Component {
       console.log(data)
 
       this.setState({
-          dDaiBalance: data.Balance,
+          dDaiBalance: U.formatFiat(data.Balance),
           balanceDAI: data.BalanceDAI
       })
   }

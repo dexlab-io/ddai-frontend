@@ -43,14 +43,14 @@ const TotBalance = props => {
   return (
     <TotBalanceContainer>
       <TotBalanceTitle>Tot Balance </TotBalanceTitle>
-      <TotBalanceAmount>{props.TotBalanceAmount}</TotBalanceAmount>
+      <TotBalanceAmount>{props.amount}</TotBalanceAmount>
       <OneDayChange>{props.OneDayChange}</OneDayChange>
     </TotBalanceContainer>
   );
 };
 
 TotBalance.defaultProps = {
-  TotBalanceAmount: "no wallet connected",
+  amount: "no wallet connected",
   OneDayChange: ""
 }
 

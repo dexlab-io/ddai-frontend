@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { TotBalance, Web3Button, Logo, IF } from "../components/";
 import ConnectW3Button from "../components/ConnectW3Button"
-
+import U from '../class/utils';
 import Wallet from '../Wallet';
 
 
@@ -27,7 +27,8 @@ const Container = styled.div`
 class HeaderContainer extends Component {
   state = {
     walletAddress: null,
-    web3available: false
+    web3available: false,
+    amount: false
   }
 
   async init() {
@@ -36,19 +37,22 @@ class HeaderContainer extends Component {
       
       const connected = Wallet.getAddress() ? true : false;
       Wallet.Rx.notify('Connected', connected)
+
+      const data = await Wallet.ddai.getState();
       
       this.setState({
           walletAddress: Wallet.getAddress(),
-          web3available: connected
+          web3available: connected,
+          totalAmount: U.formatFiat(data.Balance),
       })
   }
 
   render() {
-    const { walletAddress } = this.state;
+    const { walletAddress, totalAmount, web3available } = this.state;
     return (
       <Container>
         <Logo />
-        <TotBalance />
+        <TotBalance amount={web3available ? '$'+totalAmount: 'no wallet connected'}/>
 
         <IF what={Wallet.getAddress()}>
           <Web3Button address={walletAddress} />
