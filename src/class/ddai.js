@@ -23,7 +23,7 @@ class DDAI extends BasePlugin {
         this.instance = new this.W.web3.eth.Contract(DDAIArtifact.compilerOutput.abi, this.contractAddress);
         this.mockdai = new this.W.web3.eth.Contract(MockDai.compilerOutput.abi, mockDaiAddress);
         
-        console.clear();
+        //console.clear();
     }
 
     async gimeMeDAI(amount) {
@@ -55,6 +55,7 @@ class DDAI extends BasePlugin {
 
         const tx = await this.instance.methods.mint(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()});
         console.log('tx', tx);
+        return tx;
     }
 
     async redeem(amount) {

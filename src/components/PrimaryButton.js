@@ -34,15 +34,17 @@ const ButtonMain = styled.button`
 `;
 
 const PrimaryButton = props => {
-  return <ButtonMain onClick={props.onPress}>INVEST</ButtonMain>;
+  return <ButtonMain onClick={props.onPress}>{props.label}</ButtonMain>;
 };
 
 PrimaryButton.propTypes = {
-  onPress: PropTypes.func
+  onPress: PropTypes.func,
+  label: PropTypes.string
 };
 
 PrimaryButton.defaultProps = {
-  onPress: () => alert("Clicked")
+  onPress: () => alert("Clicked"),
+  label: 'INVEST'
 };
 
 export default PrimaryButton;

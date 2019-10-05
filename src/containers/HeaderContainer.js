@@ -33,10 +33,13 @@ class HeaderContainer extends Component {
   async init() {
       console.log('adf')
       await Wallet.setWeb3();
-
+      
+      const connected = Wallet.getAddress() ? true : false;
+      Wallet.Rx.notify('Connected', connected)
+      
       this.setState({
           walletAddress: Wallet.getAddress(),
-          web3available: Wallet.getAddress() ? true : false
+          web3available: connected
       })
   }
 

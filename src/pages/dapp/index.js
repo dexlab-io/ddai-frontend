@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { PageHeading, CardContainer } from "../../components";
+import { PageHeading } from "../../components";
+import CardContainer from "../../containers/CardContainer";
 
 class Dapp extends Component {
 

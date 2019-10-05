@@ -13,17 +13,20 @@ const RowContainer = styled.span`
 const CardOneButton = props => {
   return (
     <RowContainer>
-      <PrimaryButton onPress={props.onPress}></PrimaryButton>
+      <PrimaryButton label={props.label} onPress={props.onPress}></PrimaryButton>
     </RowContainer>
   );
 };
 
 CardOneButton.propTypes = {
-  onPress: PropTypes.func
+  onPress: PropTypes.func,
+  label: PropTypes.string
 };
 
 CardOneButton.defaultProps = {
-  onPress: () => alert('Clicked')
+  onPress: () => alert('Clicked'),
+  label: 'INVEST',
+  isDisabled: false,
 };
 
 export default CardOneButton;
