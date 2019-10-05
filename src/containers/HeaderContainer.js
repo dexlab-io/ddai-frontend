@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { TotBalance, Web3Button, Logo, IF } from "../components/";
-import { Button } from 'react-rainbow-components';
+import ConnectW3Button from "../components/ConnectW3Button"
 
 import Wallet from '../Wallet';
 
 
 const Container = styled.div`
-  width: 100%;
   padding: 2% 10%;
   display: flex;
   flex-direction: row;
@@ -36,7 +35,7 @@ class HeaderContainer extends Component {
 
       this.setState({
           walletAddress: Wallet.getAddress(),
-          web3available: true
+          web3available: Wallet.getAddress() ? true : false
       })
   }
 
@@ -52,7 +51,7 @@ class HeaderContainer extends Component {
         </IF>
         
         <IF what={!Wallet.getAddress()}>
-          <Button onClick={ () => this.init()} label="Connect metamask" />
+          <ConnectW3Button onClick={ () => this.init()} label="Connect metamask" />
         </IF>
         
       </Container>

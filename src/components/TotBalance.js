@@ -43,10 +43,15 @@ const TotBalance = props => {
   return (
     <TotBalanceContainer>
       <TotBalanceTitle>Tot Balance </TotBalanceTitle>
-      <TotBalanceAmount>$19,120,300.32</TotBalanceAmount>
-      <OneDayChange>+$1.48 24h</OneDayChange>
+      <TotBalanceAmount>{props.TotBalanceAmount}</TotBalanceAmount>
+      <OneDayChange>{props.OneDayChange}</OneDayChange>
     </TotBalanceContainer>
   );
 };
+
+TotBalance.defaultProps = {
+  TotBalanceAmount: "no wallet connected",
+  OneDayChange: ""
+}
 
 export default TotBalance;

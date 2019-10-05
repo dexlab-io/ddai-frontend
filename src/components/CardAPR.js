@@ -25,13 +25,21 @@ const Right = styled.span`
   color: #3bc5a6;
 `;
 
+const Rates = {
+  currentRate: "15.2%"
+};
+
 const CardAPR = props => {
   return (
     <RowContainer>
       <Left>APR</Left>
-      <Right>15.4 %</Right>
+      <Right>{props.currentRate}%</Right>
     </RowContainer>
   );
 };
+
+CardAPR.defaultProps = {
+  currentRate: 0
+}
 
 export default CardAPR;

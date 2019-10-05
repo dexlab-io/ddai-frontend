@@ -27,9 +27,13 @@ const CardInvestmentToken = props => {
   return (
     <RowContainer>
       <Left>Investment Token</Left>
-      <Right>124,543.44 dDAI</Right>
+      <Right>{props.investmentTokenAmount} dDAI</Right>
     </RowContainer>
   );
 };
+
+CardInvestmentToken.defaultProps = {
+  investmentTokenAmount: 0
+}
 
 export default CardInvestmentToken;

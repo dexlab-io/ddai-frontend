@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
 import PrimaryButton from "./PrimaryButton";
 
 const RowContainer = styled.span`
@@ -12,9 +13,17 @@ const RowContainer = styled.span`
 const CardOneButton = props => {
   return (
     <RowContainer>
-      <PrimaryButton></PrimaryButton>
+      <PrimaryButton onPress={props.onPress}></PrimaryButton>
     </RowContainer>
   );
+};
+
+CardOneButton.propTypes = {
+  onPress: PropTypes.func
+};
+
+CardOneButton.defaultProps = {
+  onPress: () => alert('Clicked')
 };
 
 export default CardOneButton;
