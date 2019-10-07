@@ -4,8 +4,9 @@ import Rx from './class/Rx';
 
 const wallet = new EthereumHDWallet();
 
-wallet.addPlugin('ddai', DDAI);
 wallet.Rx = new Rx(wallet);
+wallet.addPlugin('ddai', DDAI);
+
 window.Wallet = wallet;
 
 

@@ -3,23 +3,23 @@ import BigNumber from 'bignumber.js';
 import DDAIArtifact from './artifacts/DDAI.json';
 import MockDai from './artifacts/MockDai.json';
 
-// Deployed MockDai at: 0xa2f0e8d71259dc32e7ce60e1ac0cbd89acae2e44
-// Deployed MockIToken at: 0xc857921fb65039dfc9a311f95a2dd6b8e6144cee
-// Deployed MockKyberNetwork at: 0xbd4581e6129b7a9558feba0fdec5c5784a9f5c1f
-// Deployed DDAI at: 0xa05858f539652d6386250394eb6e3b08d7b4e1fd
-// Deployed MockRecipe: 0x4d4d76abc71342a237fa0ec7749bf94859d2dba4
-// Deployed BuyEthRecipe: 0x9000087e8617a35c0d9f18dd24b593caaf4661a9
-// Deployed buyPTokenRecipe: 0x1a03c9137a31fdf4c4fad3119599d85cbbd1a8c1
+// Deployed MockDai at: 0x78135f507244d5c77b278b7ac6770d0532647f06
+// Deployed MockIToken at: 0x0549a7f278975b24952a632c06c3ef504d689a1e
+// Deployed MockKyberNetwork at: 0xd2e4025c3896b88e7ee59129b56fd15c3cbb54e1
+// Deployed DDAI at: 0x05c5819ea65b821b4cf43f79dd4bcd03eac47289
+// Deployed MockRecipe: 0xe0d42056769245dff152066bd8317516a983fad1
+// Deployed BuyTokenRecipe: 0x11f96c99a5173ad21ea53d9005bf4cc336a69eee
+// Deployed buyPTokenRecipe: 0xa4928a8b2f8dc5ee2a52dda0ae942e506dfdd240
 
 export const UNLIMITED_ALLOWANCE_IN_BASE_UNITS = new BigNumber(2).pow(256).minus(1);
-const mockDaiAddress = '0xa2f0e8d71259dc32e7ce60e1ac0cbd89acae2e44';
-const BuyEthRecipe = '0x9000087e8617a35c0d9f18dd24b593caaf4661a9';
+const mockDaiAddress = '0x78135f507244d5c77b278b7ac6770d0532647f06';
+const BuyEthRecipe = '0x11f96c99a5173ad21ea53d9005bf4cc336a69eee';
 
 class DDAI extends BasePlugin {
     constructor(walletInstance) {
         super(walletInstance);
 
-        this.contractAddress = '0xa05858f539652d6386250394eb6e3b08d7b4e1fd';
+        this.contractAddress = '0x05c5819ea65b821b4cf43f79dd4bcd03eac47289';
         this.instance = new this.W.web3.eth.Contract(DDAIArtifact.compilerOutput.abi, this.contractAddress);
         this.mockdai = new this.W.web3.eth.Contract(MockDai.compilerOutput.abi, mockDaiAddress);
         
