@@ -1,8 +1,16 @@
-import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
+import PropTypes from 'prop-types';
+import PrimaryButton from "./PrimaryButton";
 
-const ButtonMain = styled.button`
+const RowContainer = styled.span`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+`;
+
+const Link = styled.span`
   width: 100%;
   padding: 4% 10%;
   background-color: #f8e71c;
@@ -11,10 +19,14 @@ const ButtonMain = styled.button`
   font-size: var(--font-main-button);
   font-weight: 700;
   border-radius: 5px;
-  margin: 0% 0;
+  margin: 2% 0;
   border: none;
   transition-property: background-color, color;
   transition-duration: 0.3s;
+
+  :label {
+    color: #000;
+  }
 
   :hover {
     background-color: #000;
@@ -33,18 +45,24 @@ const ButtonMain = styled.button`
   }
 `;
 
-const PrimaryButton = props => {
-  return <ButtonMain onClick={props.onPress}>{props.label}</ButtonMain>;
+
+const LinkButton = props => {
+  return (
+    <RowContainer>
+      <Link label={props.label} onPress={props.onPress}></Link>
+    </RowContainer>
+  );
 };
 
-PrimaryButton.propTypes = {
+LinkButton.propTypes = {
   onPress: PropTypes.func,
   label: PropTypes.string
 };
 
-PrimaryButton.defaultProps = {
-  onPress: () => alert("Clicked"),
-  label: 'INVEST'
+LinkButton.defaultProps = {
+  onPress: () => alert('Clicked'),
+  label: 'INVEST',
+  isDisabled: false,
 };
 
-export default PrimaryButton;
+export default LinkButton;

@@ -52,6 +52,7 @@ const Input = styled.input`
   background-color: #f2f2f2;
   padding: 20px 15px 25px;
   border: none;
+  font-size: var(--text-prettysmall);
 
   ::placeholder,
   ::-webkit-input-placeholder {
@@ -76,7 +77,7 @@ const ButtonMax = styled.button`
   color: white;
   font-size: var(--text-small);
   width: 20%;
-  padding: 2% 5%;
+  padding: 2% 3% 2% 6%;
   margin: 0 3% 0 1%;
   font-weight: 300;
   border-radius: 2px;
@@ -98,8 +99,20 @@ const CardAmount = props => {
       <Left>Amount</Left>
       <Right>
         <Form>
-          <Input type="number" value={props.amount} onChange={props.onChange} placeholder="i.e 234,98.00 DAI"></Input>
-          <ButtonMax onClick={(e) => { props.onChange({ target: {value: props.maxValue}}); e.preventDefault() }} >MAX</ButtonMax>
+          <Input
+            type="number"
+            value={props.amount}
+            onChange={props.onChange}
+            placeholder="i.e 234,98.00 DAI"
+          ></Input>
+          <ButtonMax
+            onClick={e => {
+              props.onChange({ target: { value: props.maxValue } });
+              e.preventDefault();
+            }}
+          >
+            MAX
+          </ButtonMax>
         </Form>
       </Right>
     </RowContainer>
@@ -110,6 +123,6 @@ CardAmount.defaultProps = {
   onChange: () => {},
   maxValue: 0,
   amount: 0
-}
+};
 
 export default CardAmount;
