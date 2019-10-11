@@ -21,29 +21,17 @@ export const from1e18 = (amount, decimals = 18) => new BigNumber(amount.toString
 
 export const UNLIMITED_ALLOWANCE_IN_BASE_UNITS = new BigNumber(2).pow(256).minus(1);
 const mockDaiAddress = '0xC4375B7De8af5a38a93548eb8453a498222C4fF2';
-
 const BuyTokenRecipe = getRecipeByname('BuyTokenRecipe')
 
 
 /**
-Using DAI deployed at: 0xC4375B7De8af5a38a93548eb8453a498222C4fF2
-Deployed MockRep at: 0xa0b8269abe6ab119f8456b2703ffcd14cd51111b
-Using Fulcrum IDAI deployed at: 0xA1e58F3B1927743393b25f261471E1f2D3D9f0F6
-Deployed mockCDai at: 0xe212622a92ed6af5b00b73d4ab6083297287890f
-Deployed mockCEth at: 0xbcdb82128b2cd917d6cbe7f431e1902027dfe90a
-Deployed mockCrep at: 0x2ff5e059297c3d28f12030e1c19d9d67fcebf1f9
-Using Kyber network deployed at: 0x692f391bCc85cefCe8C237C01e1f636BbD70EA4D
-Deployed DDAI at: 0x834561946af99add27be66ac7e855945dbb2d99c
-Deployed CompoundRepayRecipe at: 0xc5ccacf9fd3bf5007bfd9b10e1b739b852b00101
-Deployed MockRecipe: 0x26facbff9b4d9dcf9f28bb622390e05a0e81bf0c
-Deployed BuyTokenRecipe: 0xa8848f4569371ddcdcd1e2c4729d4387561e7d61
-Deployed buyPTokenRecipe: 0xb90d6ff9d855c9c3a0bb84d04f7bc3d46768a109
+
  */
 class DDAI extends BasePlugin {
     constructor(walletInstance) {
         super(walletInstance);
 
-        this.contractAddress = '0x834561946af99add27be66ac7e855945dbb2d99c';
+        this.contractAddress = '0x0eb38ef441a6e64c2569a96bd83b6fb082db0663';
         this.instance = new this.W.web3.eth.Contract(DDAIArtifact.compilerOutput.abi, this.contractAddress);
         this.mockdai = new this.W.web3.eth.Contract(MockDai.compilerOutput.abi, mockDaiAddress);
     }
