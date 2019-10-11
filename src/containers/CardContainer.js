@@ -75,14 +75,16 @@ class CardContainer extends Component {
       this.setState({
           dDaiBalanceLabel: U.formatFiat(data.Balance),
           dDaiBalance: data.Balance,
-          balanceDAI: data.BalanceDAI
+          balanceDAI: data.BalanceDAI,
+          APR: data.Apr
       })
   }
 
   async validate() {
     if(!Wallet.ddai) return;
     console.log('do things...');
-    const supplyTx = await Wallet.ddai.mint(this.state.amount);
+    //const supplyTx = await Wallet.ddai.mint(this.state.amount);
+    const supplyTx = await Wallet.ddai.mintAndSetRecipes(this.state.amount);
     this.refresh();
   }
 
@@ -105,14 +107,6 @@ class CardContainer extends Component {
     this.refresh();
   }
 
-  async gimeMeDai() {
-    if(!Wallet.ddai) return;
-    // alert(U.formatFiat('100000')+'DAI on the way!');
-    const supplyTx = await Wallet.ddai.gimeMeDAI(100000);
-    
-    this.refresh();
-  }
-
   render() {
     const { dDaiBalance, amount, needAllowance, balanceDAI, dDaiBalanceLabel } = this.state;
     const btnLabel = needAllowance ? 'ALLOW & INVEST' : 'INVEST';
@@ -120,10 +114,9 @@ class CardContainer extends Component {
       <Container>
         <CardAmount maxValue={balanceDAI} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={dDaiBalanceLabel} />
-        <CardAPR />
+        
+        <CardAPR currentRate={this.state.APR.toFixed(2)}/>
         <CardSelectRecipe />
-
-        <CardOneButton onPress={ () => this.gimeMeDai()} label={'Gimme '+U.formatFiat('100000')+' DAI'} />
 
         <CardOneButton onPress={ () => this.validate()} label={btnLabel} />
 

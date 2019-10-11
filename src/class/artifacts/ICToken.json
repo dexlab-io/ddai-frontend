@@ -72,12 +72,18 @@
 				"object": "0x",
 				"opcodes": "",
 				"sourceMap": ""
+			},
+			"deployedBytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
 			}
 		}
 	},
 	"sources": {
 		"interfaces/ICToken.sol": {
-			"id": 18
+			"id": 19
 		}
 	},
 	"sourceCodes": {
@@ -86,7 +92,7 @@
 	"sourceTreeHashHex": "0xaa32812d70b041da2cf26454799b249587f3854666fc5c80abd54953369c203a",
 	"compiler": {
 		"name": "solc",
-		"version": "soljson-v0.5.11+commit.c082d0b4.js",
+		"version": "soljson-v0.5.12+commit.7709ece9.js",
 		"settings": {
 			"optimizer": {
 				"enabled": false
@@ -95,7 +101,10 @@
 				"*": {
 					"*": [
 						"abi",
-						"evm.bytecode.object"
+						"evm.bytecode.object",
+						"evm.bytecode.sourceMap",
+						"evm.deployedBytecode.object",
+						"evm.deployedBytecode.sourceMap"
 					]
 				}
 			},

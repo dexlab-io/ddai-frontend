@@ -25,12 +25,18 @@
 				"object": "0x",
 				"opcodes": "",
 				"sourceMap": ""
+			},
+			"deployedBytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
 			}
 		}
 	},
 	"sources": {
 		"interfaces/ISynthetixDepot.sol": {
-			"id": 6
+			"id": 26
 		}
 	},
 	"sourceCodes": {
@@ -48,7 +54,10 @@
 				"*": {
 					"*": [
 						"abi",
-						"evm.bytecode.object"
+						"evm.bytecode.object",
+						"evm.bytecode.sourceMap",
+						"evm.deployedBytecode.object",
+						"evm.deployedBytecode.sourceMap"
 					]
 				}
 			},

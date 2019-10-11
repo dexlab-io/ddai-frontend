@@ -3,23 +3,29 @@ import BigNumber from 'bignumber.js';
 import DDAIArtifact from './artifacts/DDAI.json';
 import MockDai from './artifacts/MockDai.json';
 
-// Deployed MockDai at: 0xa2f0e8d71259dc32e7ce60e1ac0cbd89acae2e44
-// Deployed MockIToken at: 0xc857921fb65039dfc9a311f95a2dd6b8e6144cee
-// Deployed MockKyberNetwork at: 0xbd4581e6129b7a9558feba0fdec5c5784a9f5c1f
-// Deployed DDAI at: 0xa05858f539652d6386250394eb6e3b08d7b4e1fd
-// Deployed MockRecipe: 0x4d4d76abc71342a237fa0ec7749bf94859d2dba4
-// Deployed BuyEthRecipe: 0x9000087e8617a35c0d9f18dd24b593caaf4661a9
-// Deployed buyPTokenRecipe: 0x1a03c9137a31fdf4c4fad3119599d85cbbd1a8c1
+// Using DAI deployed at: 0xC4375B7De8af5a38a93548eb8453a498222C4fF2
+// Using IDAI deployed at: 0xA1e58F3B1927743393b25f261471E1f2D3D9f0F6
+// Using Kyber network deployed at: 0x118A7b23B7a2e6A57963d017A7E76A4E2636F075
+// Deployed DDAI at: 0x2d1cb51c51c68f392e5dc3bfedbff70ee8525381
+// Deployed MockRecipe: 0xe9fa587b90e0ee5080eb533ef858c1797e87d25e
+// Deployed BuyTokenRecipe: 0xffe99a9a259a2af1c2d9e9902e8d322e6ca38fb1
+// Deployed buyPTokenRecipe: 0x8dea7ab2236f9cb907f44e34dcbeedba1078d0e4
+
+export const to1e18 = (amount, decimals = 18) => new BigNumber(amount.toString())
+  .multipliedBy(new BigNumber(10).pow(new BigNumber(decimals))).toString();
+
+export const from1e18 = (amount, decimals = 18) => new BigNumber(amount.toString())
+    .dividedBy(new BigNumber(10).pow(new BigNumber(decimals))).toString();
 
 export const UNLIMITED_ALLOWANCE_IN_BASE_UNITS = new BigNumber(2).pow(256).minus(1);
-const mockDaiAddress = '0xa2f0e8d71259dc32e7ce60e1ac0cbd89acae2e44';
-const BuyEthRecipe = '0x9000087e8617a35c0d9f18dd24b593caaf4661a9';
+const mockDaiAddress = '0xC4375B7De8af5a38a93548eb8453a498222C4fF2';
+const BuyEthRecipe = '0xffe99a9a259a2af1c2d9e9902e8d322e6ca38fb1';
 
 class DDAI extends BasePlugin {
     constructor(walletInstance) {
         super(walletInstance);
 
-        this.contractAddress = '0xa05858f539652d6386250394eb6e3b08d7b4e1fd';
+        this.contractAddress = '0x2d1cb51c51c68f392e5dc3bfedbff70ee8525381';
         this.instance = new this.W.web3.eth.Contract(DDAIArtifact.compilerOutput.abi, this.contractAddress);
         this.mockdai = new this.W.web3.eth.Contract(MockDai.compilerOutput.abi, mockDaiAddress);
         
@@ -51,13 +57,13 @@ class DDAI extends BasePlugin {
         if( await this.needAllowance(amount) ) {
             await this.giveAllowance();
         }
-        const srcAmount = new BigNumber(amount.toString()).toString();
+        const srcAmount = to1e18(amount);
         const tx = await this.instance.methods.mint(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()});
         return tx;
     }
 
     async redeem(amount) {
-        const srcAmount = new BigNumber(amount.toString()).toString();
+        const srcAmount = to1e18(amount);
         const tx = await this.instance.methods.redeem(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()});
         console.log('tx', tx);
         return tx;
@@ -66,11 +72,24 @@ class DDAI extends BasePlugin {
     async addRecipe() {
         const data = this.W.web3.eth.abi.encodeParameters( 
             ['address','address'], 
-            ['0x9000087e8617a35c0d9f18dd24b593caaf4661a9', this.W.getAddress()]
+            [BuyEthRecipe, this.W.getAddress()]
         );
 
         const ratio = new BigNumber('100').toString();
         const tx = await this.instance.methods.addRecipe(BuyEthRecipe, ratio, data).send({from: this.W.getAddress()});
+        console.log('tx', tx);
+        return tx;
+    }
+
+    async mintAndSetRecipes(amount) {
+        const data = this.W.web3.eth.abi.encodeParameters( 
+            ['address','address'], 
+            [BuyEthRecipe, this.W.getAddress()]
+        );
+
+        const ratio = new BigNumber('100').toString();
+        const srcAmount = to1e18(amount);
+        const tx = await this.instance.methods.mintAndSetRecipes(srcAmount, [BuyEthRecipe], [ratio], [data]).send({from: this.W.getAddress()});
         console.log('tx', tx);
         return tx;
     }
@@ -110,15 +129,22 @@ class DDAI extends BasePlugin {
         return tx;
     }
 
+    async getApr() {
+        const tx = await this.instance.methods.supplyInterestRate().call();
+        return tx;
+    }
+
     async getState() {
 
         const Recipes = await this.getRecipes();
         const Stack = await this.getStack();
         const OutStandingInterest = await this.getOutStandingInterest();
-        const TotalBalance = await this.getTotalBalance();
-        const Balance = await this.getBalance();
-        const Earned = TotalBalance - Balance;
+        const TotalBalance = from1e18(await this.getTotalBalance());
+        const Balance = from1e18(await this.getBalance());
+        //const Balance = await this.getBalance());
+        const Earned = parseFloat(TotalBalance) - parseFloat(Balance);
         const BalanceDAI = await this.getBalanceUnderlying() / 1e18;
+        const Apr = await this.getApr() / 1e18;
 
         return {
             Recipes,
@@ -127,7 +153,8 @@ class DDAI extends BasePlugin {
             TotalBalance,
             Balance,
             Earned,
-            BalanceDAI
+            BalanceDAI,
+            Apr
         }
     }
 

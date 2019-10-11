@@ -26,6 +26,32 @@
 			},
 			{
 				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "burnAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "loanAmountPaid",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
 				"inputs": [],
 				"name": "claimLoanToken",
 				"outputs": [
@@ -68,6 +94,21 @@
 			{
 				"constant": true,
 				"inputs": [],
+				"name": "supplyInterestRate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
 				"name": "tokenPrice",
 				"outputs": [
 					{
@@ -79,36 +120,16 @@
 				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "receiver",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "burnAmount",
-						"type": "uint256"
-					}
-				],
-				"name": "burn",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "loanAmountPaid",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"evm": {
 			"bytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
+			},
+			"deployedBytecode": {
 				"linkReferences": {},
 				"object": "0x",
 				"opcodes": "",
@@ -118,16 +139,16 @@
 	},
 	"sources": {
 		"interfaces/IMoneyMarket.sol": {
-			"id": 21
+			"id": 22
 		}
 	},
 	"sourceCodes": {
-		"interfaces/IMoneyMarket.sol": "pragma solidity >=0.4.21 <0.6.0;\n\ninterface IMoneyMarket {\n    function mint(address receiver, uint256 depositAmount) external returns (uint256 mintAmount);\n\n    function burn(\n        address receiver,\n        uint256 burnAmount)\n        external\n        returns (uint256 loanAmountPaid);\n\n    function claimLoanToken()\n        external\n        returns (uint256 claimedAmount);\n\n    // function donateAsset(\n    //     address tokenAddress)\n    //     external\n    //     returns (bool);\n\n    function assetBalanceOf(\n        address _owner)\n        external\n        view\n        returns (uint256);\n\n    function tokenPrice()\n        external\n        view\n        returns (uint256 price);\n}"
+		"interfaces/IMoneyMarket.sol": "pragma solidity >=0.4.21 <0.6.0;\n\ninterface IMoneyMarket {\n    function mint(address receiver, uint256 depositAmount) external returns (uint256 mintAmount);\n\n    function burn(\n        address receiver,\n        uint256 burnAmount)\n        external\n        returns (uint256 loanAmountPaid);\n\n    function claimLoanToken()\n        external\n        returns (uint256 claimedAmount);\n\n    // function donateAsset(\n    //     address tokenAddress)\n    //     external\n    //     returns (bool);\n\n    function assetBalanceOf(\n        address _owner)\n        external\n        view\n        returns (uint256);\n\n    function tokenPrice()\n        external\n        view\n        returns (uint256 price);\n\n    function supplyInterestRate()\n        external\n        view\n        returns (uint256);\n}"
 	},
-	"sourceTreeHashHex": "0xb94e958793daa7f70283cd938cb384816381cfdb639c548d0b4f05c3bf535c64",
+	"sourceTreeHashHex": "0x4a31ae1f5b24e19e84f0a03d707277f4fa2aa74382575dd6c36263516e5a2626",
 	"compiler": {
 		"name": "solc",
-		"version": "soljson-v0.5.11+commit.c082d0b4.js",
+		"version": "soljson-v0.5.12+commit.7709ece9.js",
 		"settings": {
 			"optimizer": {
 				"enabled": false
@@ -136,7 +157,10 @@
 				"*": {
 					"*": [
 						"abi",
-						"evm.bytecode.object"
+						"evm.bytecode.object",
+						"evm.bytecode.sourceMap",
+						"evm.deployedBytecode.object",
+						"evm.deployedBytecode.sourceMap"
 					]
 				}
 			},
