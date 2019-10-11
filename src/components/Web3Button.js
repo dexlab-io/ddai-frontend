@@ -41,22 +41,6 @@ const ConnectedAddress = styled.span`
   }
 `;
 
-// const ConnectedMainnet = styled.span`
-//   display: flex;
-//   align-items: center;
-//   justify-content: left;
-//   font-size: var(--text-small);
-//   font-weight: 500;
-
-//   @media (max-width: 700px) {
-//     display: none;
-//   }
-
-//   @media (max-width: 640px) {
-//     display: block;
-//   }
-// `;
-
 const Web3Button = props => {
   return (
     <Web3ButtonConnected>

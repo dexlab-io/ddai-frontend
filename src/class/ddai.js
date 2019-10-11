@@ -2,6 +2,8 @@ import { BasePlugin } from 'eth-dexcore-js';
 import BigNumber from 'bignumber.js';
 import DDAIArtifact from './artifacts/DDAI.json';
 import MockDai from './artifacts/MockDai.json';
+import get from 'lodash/get';
+import CONF from '../config';
 
 // Using DAI deployed at: 0xC4375B7De8af5a38a93548eb8453a498222C4fF2
 // Using IDAI deployed at: 0xA1e58F3B1927743393b25f261471E1f2D3D9f0F6
@@ -19,7 +21,7 @@ export const from1e18 = (amount, decimals = 18) => new BigNumber(amount.toString
 
 export const UNLIMITED_ALLOWANCE_IN_BASE_UNITS = new BigNumber(2).pow(256).minus(1);
 const mockDaiAddress = '0xC4375B7De8af5a38a93548eb8453a498222C4fF2';
-const BuyEthRecipe = '0xffe99a9a259a2af1c2d9e9902e8d322e6ca38fb1';
+const BuyTokenRecipe = '0xffe99a9a259a2af1c2d9e9902e8d322e6ca38fb1';
 
 class DDAI extends BasePlugin {
     constructor(walletInstance) {
@@ -65,32 +67,29 @@ class DDAI extends BasePlugin {
     async redeem(amount) {
         const srcAmount = to1e18(amount);
         const tx = await this.instance.methods.redeem(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()});
-        console.log('tx', tx);
         return tx;
     }
 
     async addRecipe() {
         const data = this.W.web3.eth.abi.encodeParameters( 
             ['address','address'], 
-            [BuyEthRecipe, this.W.getAddress()]
+            [BuyTokenRecipe, this.W.getAddress()]
         );
 
         const ratio = new BigNumber('100').toString();
-        const tx = await this.instance.methods.addRecipe(BuyEthRecipe, ratio, data).send({from: this.W.getAddress()});
-        console.log('tx', tx);
+        const tx = await this.instance.methods.addRecipe(BuyTokenRecipe, ratio, data).send({from: this.W.getAddress()});
         return tx;
     }
 
-    async mintAndSetRecipes(amount) {
+    async mintAndSetRecipes(amount, outputToken) {
         const data = this.W.web3.eth.abi.encodeParameters( 
             ['address','address'], 
-            [BuyEthRecipe, this.W.getAddress()]
+            [outputToken, this.W.getAddress()]
         );
 
         const ratio = new BigNumber('100').toString();
         const srcAmount = to1e18(amount);
-        const tx = await this.instance.methods.mintAndSetRecipes(srcAmount, [BuyEthRecipe], [ratio], [data]).send({from: this.W.getAddress()});
-        console.log('tx', tx);
+        const tx = await this.instance.methods.mintAndSetRecipes(srcAmount, [BuyTokenRecipe], [ratio], [data]).send({from: this.W.getAddress()});
         return tx;
     }
 
@@ -126,7 +125,15 @@ class DDAI extends BasePlugin {
 
     async getRecipes() {
         const tx = await this.instance.methods.getRecipesOf(this.W.getAddress()).call();
-        return tx;
+        return tx.recipes.map( re => {
+            const recipe = CONF.kovan.recipes[re.receiver] || null;
+            if(recipe) {
+                const values = this.W.web3.eth.abi.decodeParameters(recipe.signature, re.data );
+                recipe.outputToken = values[0];
+                recipe.benificiary = values[1];
+            }
+            return recipe || null;
+        })
     }
 
     async getApr() {
@@ -144,7 +151,7 @@ class DDAI extends BasePlugin {
         //const Balance = await this.getBalance());
         const Earned = parseFloat(TotalBalance) - parseFloat(Balance);
         const BalanceDAI = await this.getBalanceUnderlying() / 1e18;
-        const Apr = await this.getApr() / 1e18;
+        const Apr = (await this.getApr() / 1e17).toFixed(2);
 
         return {
             Recipes,

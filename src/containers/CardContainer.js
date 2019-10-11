@@ -1,5 +1,8 @@
 import React ,{ Component } from "react";
 import styled from "styled-components";
+
+import { compareAddresses } from 'eth-dexcore-js';
+import find from 'lodash/find';
 import CardAmount from "../components/CardAmount";
 import CardInvestmentToken from "../components/CardInvestmentToken";
 import CardAPR from "../components/CardAPR";
@@ -8,6 +11,7 @@ import CardSelectRecipe from "../components/CardSelectRecipe";
 import { IF } from "../components";
 import Wallet from '../Wallet';
 import U from '../class/utils';
+import CONF from '../config';
 
 const Container = styled.div`
   width: 42%;
@@ -33,7 +37,7 @@ const Container = styled.div`
   }
 `;
 
-class CardContainer extends Component {
+class CardReceiveTokenContainer extends Component {
   state = {
     walletAddress: null,
     web3available: false,
@@ -41,13 +45,19 @@ class CardContainer extends Component {
     APR: 0,
     amount: 0,
     balanceDAI: 0,
-    needAllowance: false
+    needAllowance: false,
+    selectedOutputToken: CONF[CONF.selectedNetwork].allowedOutputTokens[0].outputToken,
+    activeRecipes: []
   }
 
   componentDidMount() {
     Wallet.Rx.subscribe((action, data)  => {
       this.refresh();
     });
+
+    setInterval(() => {
+      this.refresh()
+    }, 5000);
   }
 
   async onChangeAmount(e) {
@@ -58,7 +68,6 @@ class CardContainer extends Component {
 
     if(amount !== '' && Wallet.ddai) {
       const needAllowance = await Wallet.ddai.needAllowance(amount);
-      console.log('needAllowance', needAllowance);
       this.setState({
         needAllowance
       });
@@ -70,22 +79,24 @@ class CardContainer extends Component {
       if(!Wallet.ddai) return;
 
       const data = await Wallet.ddai.getState();
-      console.log(data)
 
       this.setState({
           dDaiBalanceLabel: U.formatFiat(data.Balance),
           dDaiBalance: data.Balance,
           balanceDAI: data.BalanceDAI,
-          APR: data.Apr
+          APR: data.Apr,
+          activeRecipes: data.Recipes,
       })
   }
 
   async validate() {
     if(!Wallet.ddai) return;
     console.log('do things...');
-    //const supplyTx = await Wallet.ddai.mint(this.state.amount);
-    const supplyTx = await Wallet.ddai.mintAndSetRecipes(this.state.amount);
-    this.refresh();
+    this.submit();
+  }
+
+  async submit() {
+    const supplyTx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.state.selectedOutputToken);
   }
 
   async withdraw() {
@@ -101,22 +112,33 @@ class CardContainer extends Component {
     this.refresh();
   }
 
-  async claim() {
-    if(!Wallet.ddai) return;
-    const supplyTx = await Wallet.ddai.claimInterest();
-    this.refresh();
+  handleChangeToken(token) {
+    this.setState({selectedOutputToken: token})
+  }
+
+  renderRecipe(r) {
+    const tokenSymbol = find(CONF[CONF.selectedNetwork].allowedOutputTokens, (o) => compareAddresses(o.outputToken, r.outputToken) );
+    return(
+        <div key={r.benificiary+r.outputToken}>One Recipe is active buying {tokenSymbol.label} for {r.benificiary}</div>
+    );
   }
 
   render() {
-    const { dDaiBalance, amount, needAllowance, balanceDAI, dDaiBalanceLabel } = this.state;
+    const { dDaiBalance, activeRecipes, amount, needAllowance, balanceDAI, dDaiBalanceLabel } = this.state;
     const btnLabel = needAllowance ? 'ALLOW & INVEST' : 'INVEST';
     return (
       <Container>
+
+        <IF what={activeRecipes.length > 0}>
+            {activeRecipes.map(this.renderRecipe)}
+        </IF>
+        
         <CardAmount maxValue={balanceDAI} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={dDaiBalanceLabel} />
         
-        <CardAPR currentRate={this.state.APR.toFixed(2)}/>
-        <CardSelectRecipe />
+        <CardAPR currentRate={this.state.APR}/>
+        
+        <CardSelectRecipe onChange={this.handleChangeToken.bind(this)} />
 
         <CardOneButton onPress={ () => this.validate()} label={btnLabel} />
 
@@ -133,4 +155,4 @@ class CardContainer extends Component {
   }
 };
 
-export default CardContainer;
+export default CardReceiveTokenContainer;

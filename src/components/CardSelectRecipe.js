@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CONF from '../config'
 
 const RowContainer = styled.span`
   width: 100%;
@@ -62,14 +63,19 @@ const CardSelectRecipe = props => {
       <Left>Earning Reward</Left>
       <Right>
         <Form>
-          <Select name="token" id="currencies" className="icon-menu">
-            <Option value="ETH">ETH</Option>
-            <Option value="WBTC">WBTC</Option>
+          <Select name="token" id="currencies" className="icon-menu" onChange={(e) => props.onChange(e.target.value)}>
+            {props.options.map( o => <Option key={o.outputToken} value={o.outputToken}> {o.label} </Option>)}
           </Select>
         </Form>
       </Right>
     </RowContainer>
   );
 };
+
+CardSelectRecipe.defaultProps = {
+  options: CONF[CONF.selectedNetwork].allowedOutputTokens,
+  onChange: () => {}
+};
+
 
 export default CardSelectRecipe;
