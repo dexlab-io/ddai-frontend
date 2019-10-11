@@ -13,6 +13,8 @@ import Wallet from '../Wallet';
 import U from '../class/utils';
 import CONF from '../config';
 
+const config = CONF[CONF.selectedNetwork];
+
 const Container = styled.div`
   width: 42%;
   margin: 0 27%;
@@ -46,7 +48,7 @@ class CardReceiveTokenContainer extends Component {
     amount: 0,
     balanceDAI: 0,
     needAllowance: false,
-    selectedOutputToken: CONF[CONF.selectedNetwork].allowedOutputTokens[0].outputToken,
+    selectedOutputToken: config.allowedOutputTokens[0].outputToken,
     activeRecipes: []
   }
 
@@ -57,7 +59,7 @@ class CardReceiveTokenContainer extends Component {
 
     setInterval(() => {
       this.refresh()
-    }, 5000);
+    }, 2000);
   }
 
   async onChangeAmount(e) {
@@ -86,12 +88,12 @@ class CardReceiveTokenContainer extends Component {
           balanceDAI: data.BalanceDAI,
           APR: data.Apr,
           activeRecipes: data.Recipes,
+          needAllowance: data.needAllowance
       })
   }
 
   async validate() {
     if(!Wallet.ddai) return;
-    console.log('do things...');
     this.submit();
   }
 
@@ -103,13 +105,11 @@ class CardReceiveTokenContainer extends Component {
     if(!Wallet.ddai) return;
     console.log('do things...');
     const supplyTx = await Wallet.ddai.redeem(this.state.amount);
-    this.refresh();
   }
 
   async claim() {
     if(!Wallet.ddai) return;
-    const supplyTx = await Wallet.ddai.claimInterest();
-    this.refresh();
+    const supplyTx = await Wallet.ddai.distributeStack();
   }
 
   handleChangeToken(token) {
@@ -117,7 +117,7 @@ class CardReceiveTokenContainer extends Component {
   }
 
   renderRecipe(r) {
-    const tokenSymbol = find(CONF[CONF.selectedNetwork].allowedOutputTokens, (o) => compareAddresses(o.outputToken, r.outputToken) );
+    const tokenSymbol = find(config.allowedOutputTokens, (o) => compareAddresses(o.outputToken, (r.outputToken)) );
     return(
         <div key={r.benificiary+r.outputToken}>One Recipe is active buying {tokenSymbol.label} for {r.benificiary}</div>
     );
