@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const PageHeadingContainer = styled.span`
-  padding: 2% 10%;
+  padding: 2% 4%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
 
@@ -46,7 +47,8 @@ const PageHeading = props => {
 
 PageHeading.defaultProps = {
   heading: "Invest now. Secure your principal. Get rewards in ETH or WBTC",
-  subheading: "Smart Contract will automatically rebalance your investment between different protocols in order to maximise your returns."
-}
+  subheading:
+    "Smart Contract will automatically rebalance your investment between different protocols in order to maximise your returns."
+};
 
 export default PageHeading;

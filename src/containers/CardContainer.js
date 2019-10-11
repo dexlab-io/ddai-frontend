@@ -10,8 +10,8 @@ import Wallet from '../Wallet';
 import U from '../class/utils';
 
 const Container = styled.div`
-  width: 36%;
-  margin: 0 30%;
+  width: 42%;
+  margin: 0 27%;
   display: flex;
   flex-direction: column;
   font-size: var(--text-prettysmall);
