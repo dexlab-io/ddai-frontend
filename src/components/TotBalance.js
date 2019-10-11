@@ -13,7 +13,7 @@ const TotBalanceContainer = styled.span`
     display: flex;
     justify-content: space-between;
     width: 90%;
-    margin: 2% 5%;
+    margin: 2% 0%;
   }
 `;
 
@@ -29,6 +29,7 @@ const TotBalanceAmount = styled.span`
   display: flex;
   align-items: center;
   color: #fff;
+  text-align: right;
 `;
 
 const OneDayChange = styled.span`
@@ -37,6 +38,7 @@ const OneDayChange = styled.span`
   color: #fff;
   font-size: var(--text-small);
   font-weight: 500;
+  display: contents;
 `;
 
 const TotBalance = props => {

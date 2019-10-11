@@ -43,6 +43,7 @@ const Select = styled.select`
   background-color: #f2f2f2;
   text-align: right;
   width: 100px;
+  font-size: var(--text-prettysmall);
 
   :focus {
     outline: none;
