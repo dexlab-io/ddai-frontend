@@ -20,7 +20,7 @@ export const from1e18 = (amount, decimals = 18) => new BigNumber(amount.toString
     .dividedBy(new BigNumber(10).pow(new BigNumber(decimals))).toString();
 
 export const UNLIMITED_ALLOWANCE_IN_BASE_UNITS = new BigNumber(2).pow(256).minus(1);
-const mockDaiAddress = '0xC4375B7De8af5a38a93548eb8453a498222C4fF2';
+const mockDaiAddress = "0xC4375B7De8af5a38a93548eb8453a498222C4fF2";
 const BuyTokenRecipe = getRecipeByname('BuyTokenRecipe')
 
 
@@ -31,7 +31,7 @@ class DDAI extends BasePlugin {
     constructor(walletInstance) {
         super(walletInstance);
 
-        this.contractAddress = '0x0eb38ef441a6e64c2569a96bd83b6fb082db0663';
+        this.contractAddress = '0x6bC02fa19c70E48c040de354aF3E3f56E86e2930';
         this.instance = new this.W.web3.eth.Contract(DDAIArtifact.compilerOutput.abi, this.contractAddress);
         this.mockdai = new this.W.web3.eth.Contract(MockDai.compilerOutput.abi, mockDaiAddress);
     }

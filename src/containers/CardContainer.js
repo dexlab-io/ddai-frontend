@@ -117,10 +117,11 @@ class CardReceiveTokenContainer extends Component {
   }
 
   renderRecipe(r) {
-    const tokenSymbol = find(config.allowedOutputTokens, (o) => compareAddresses(o.outputToken, (r.outputToken)) );
-    return(
-        <div key={r.benificiary+r.outputToken}>One Recipe is active buying {tokenSymbol.label} for {r.benificiary}</div>
-    );
+    // console.log("r", config.allowedOutputTokens);
+    // const tokenSymbol = find(config.allowedOutputTokens, (o) => compareAddresses(o.outputToken, r.outputToken) );
+    // return(
+    //     <div key={r.benificiary+r.outputToken}>One Recipe is active buying {tokenSymbol.label} for {r.benificiary}</div>
+    // );
   }
 
   render() {
