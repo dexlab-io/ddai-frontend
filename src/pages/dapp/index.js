@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { PageHeading, CardOneButton, IF } from "../../components";
-import CardContainer from "../../containers/CardContainer";
+import CardReceiveTokenContainer from "../../containers/CardContainer";
 import ActionCardContainer from "../../containers/ActionCardContainer";
 import CardRecap from "../../components/CardRecap";
 
