@@ -9,12 +9,12 @@ const ButtonMain = styled.button`
   color: #000;
   text-align: center;
   font-size: var(--font-main-button);
-  font-weight: 700;
   border-radius: 5px;
   margin: 0% 0;
   border: none;
   transition-property: background-color, color;
   transition-duration: 0.3s;
+  font-weight: 700;
 
   :hover {
     background-color: #000;
