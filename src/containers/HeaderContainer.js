@@ -32,7 +32,6 @@ class HeaderContainer extends Component {
   };
 
   async init() {
-    console.log("adf");
     await Wallet.setWeb3();
 
     const connected = Wallet.getAddress() ? true : false;

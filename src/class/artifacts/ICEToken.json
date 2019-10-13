@@ -1,19 +1,19 @@
 {
 	"schemaVersion": "2.0.0",
-	"contractName": "ISynthetixDepot",
+	"contractName": "ICEToken",
 	"compilerOutput": {
 		"abi": [
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "exchangeEtherForSynths",
-				"outputs": [
+				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "_borrower",
+						"type": "address"
 					}
 				],
+				"name": "repayBorrowBehalf",
+				"outputs": [],
 				"payable": true,
 				"stateMutability": "payable",
 				"type": "function"
@@ -35,14 +35,14 @@
 		}
 	},
 	"sources": {
-		"interfaces/ISynthetixDepot.sol": {
-			"id": 26
+		"interfaces/ICEToken.sol": {
+			"id": 18
 		}
 	},
 	"sourceCodes": {
-		"interfaces/ISynthetixDepot.sol": "pragma solidity >=0.4.21 <0.6.0;\n\ninterface ISynthetixDepot {\n    function exchangeEtherForSynths() external payable returns (uint256); // Returns the number of Synths (sUSD) received\n}"
+		"interfaces/ICEToken.sol": "pragma solidity >=0.4.21 <0.6.0;\n\n// ICE ICE BABY Seperated this from ICToken to allow for repayBorrowBehalf.value()() without compiling errors\ninterface ICEToken {\n    function repayBorrowBehalf(address _borrower) external payable;\n}"
 	},
-	"sourceTreeHashHex": "0xc108f55baf23db54adc5fe246ae7dbd7aa0362781c86c5a37a25a72ff3c7b610",
+	"sourceTreeHashHex": "0xe0929c0b6e75753bfb63f657f5810d952917deb7d480d0e5ac4fcff138909c70",
 	"compiler": {
 		"name": "solc",
 		"version": "soljson-v0.5.12+commit.7709ece9.js",

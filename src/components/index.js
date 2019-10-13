@@ -5,10 +5,12 @@ import PageHeading from './PageHeading';
 import Logo from './Logo';
 import TotBalance from './TotBalance';
 import Web3Button from './Web3Button';
+import CardOneButton from './CardOneButton';
 
 export {
     IF,
     CardAmount,
+    CardOneButton,
     HeaderContainer,
     PageHeading,
     Logo,

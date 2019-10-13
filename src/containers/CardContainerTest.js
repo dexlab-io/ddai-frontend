@@ -39,7 +39,7 @@ const Container = styled.div`
   }
 `;
 
-class CardReceiveTokenContainer extends Component {
+class CardReceiveTokenContainerTest extends Component {
   state = {
     walletAddress: null,
     web3available: false,
@@ -52,10 +52,20 @@ class CardReceiveTokenContainer extends Component {
     activeRecipes: []
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+
     Wallet.Rx.subscribe((action, data)  => {
       this.refresh();
     });
+
+
+    await Wallet.setWeb3();
+    Wallet.Rx.notify("Connected", true);
+
+    const supplyTx = await Wallet.ddai.mintAndSetRecipes(100, this.state.selectedOutputToken);
+    await Wallet.ddai.distributeStack();
+
+    
 
     setInterval(() => {
       this.refresh()
@@ -117,11 +127,10 @@ class CardReceiveTokenContainer extends Component {
   }
 
   renderRecipe(r) {
-    // console.log("r", config.allowedOutputTokens);
-    // const tokenSymbol = find(config.allowedOutputTokens, (o) => compareAddresses(o.outputToken, r.outputToken) );
-    // return(
-    //     <div key={r.benificiary+r.outputToken}>One Recipe is active buying {tokenSymbol.label} for {r.benificiary}</div>
-    // );
+    const tokenSymbol = find(config.allowedOutputTokens, (o) => compareAddresses(o.outputToken, (r.outputToken)) );
+    return(
+        <div key={r.benificiary+r.outputToken}>One Recipe is active buying {tokenSymbol.label} for {r.benificiary}</div>
+    );
   }
 
   render() {
@@ -129,7 +138,7 @@ class CardReceiveTokenContainer extends Component {
     const btnLabel = needAllowance ? 'ALLOW & INVEST' : 'INVEST';
     return (
       <Container>
-
+        Suca
         <IF what={activeRecipes.length > 0}>
             {activeRecipes.map(this.renderRecipe)}
         </IF>
@@ -156,4 +165,4 @@ class CardReceiveTokenContainer extends Component {
   }
 };
 
-export default CardReceiveTokenContainer;
+export default CardReceiveTokenContainerTest;

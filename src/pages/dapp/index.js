@@ -1,8 +1,11 @@
+
 import React, { Component } from "react";
-import { PageHeading } from "../../components";
+import { PageHeading, CardOneButton, IF } from "../../components";
 import CardContainer from "../../containers/CardContainer";
 import ActionCardContainer from "../../containers/ActionCardContainer";
 import CardRecap from "../../components/CardRecap";
+
+
 
 class Dapp extends Component {
   state = {
@@ -10,16 +13,36 @@ class Dapp extends Component {
     web3available: false
   };
 
-  render() {
-    return (
-      <div>
-      <PageHeading />
-        <ActionCardContainer />
-        <CardRecap />
-        <CardContainer />
-      </div>
-    );
-  }
+    state = {
+        walletAddress: null,
+        web3available: false,
+        selectedVehicle: null,
+    }
+
+    render() {
+        const {selectedVehicle} = this.state;
+        return (
+            <div>
+                <PageHeading />
+
+                <IF what={selectedVehicle === 1}>
+                    <CardReceiveTokenContainer />    
+                </IF>
+
+                <IF what={selectedVehicle === 3}>
+                    <CardReceiveTokenContainer />    
+                </IF>
+
+                <IF what={!selectedVehicle}>
+                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 1})} label={'Supply dai earn Token'} />
+                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 3})} label={'Supply dai earn Repay Compound loan'} />
+                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 4})} label={'Supply dai earn Repay Fulcrum loan'} />
+                </IF>
+                
+                
+            </div>
+        );
+    }
 }
 
 export default Dapp;

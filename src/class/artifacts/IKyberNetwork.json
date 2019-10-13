@@ -61,12 +61,18 @@
 				"object": "0x",
 				"opcodes": "",
 				"sourceMap": ""
+			},
+			"deployedBytecode": {
+				"linkReferences": {},
+				"object": "0x",
+				"opcodes": "",
+				"sourceMap": ""
 			}
 		}
 	},
 	"sources": {
 		"interfaces/IKyberNetwork.sol": {
-			"id": 20
+			"id": 21
 		}
 	},
 	"sourceCodes": {
@@ -75,7 +81,7 @@
 	"sourceTreeHashHex": "0x69da2b36bb0182bad32cdbfec0f1686cd5ab34d89419965d1f55acf9b688d92c",
 	"compiler": {
 		"name": "solc",
-		"version": "soljson-v0.5.11+commit.c082d0b4.js",
+		"version": "soljson-v0.5.12+commit.7709ece9.js",
 		"settings": {
 			"optimizer": {
 				"enabled": false
@@ -84,7 +90,10 @@
 				"*": {
 					"*": [
 						"abi",
-						"evm.bytecode.object"
+						"evm.bytecode.object",
+						"evm.bytecode.sourceMap",
+						"evm.deployedBytecode.object",
+						"evm.deployedBytecode.sourceMap"
 					]
 				}
 			},

@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import history from './history';
 import Dapp from './pages/dapp';
+import Test from './pages/test';
 
 
 export default function Routes() {
@@ -15,6 +16,7 @@ export default function Routes() {
             <Switch>
                 <Redirect from="/" exact to="/app" />
                 <Route path="/app" component={Dapp} />
+                <Route path="/test" component={Test} />
             </Switch>
         </Router>
     );
