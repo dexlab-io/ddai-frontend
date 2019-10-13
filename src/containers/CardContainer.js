@@ -8,6 +8,7 @@ import CardInvestmentToken from "../components/CardInvestmentToken";
 import CardAPR from "../components/CardAPR";
 import CardOneButton from "../components/CardOneButton";
 import CardSelectRecipe from "../components/CardSelectRecipe";
+import CardSelectedRecipe from "../components/CardSelectedRecipe";
 import { IF } from "../components";
 import Wallet from '../Wallet';
 import U from '../class/utils';
@@ -48,7 +49,7 @@ class CardReceiveTokenContainer extends Component {
     amount: 0,
     balanceDAI: 0,
     needAllowance: false,
-    selectedOutputToken: config.allowedOutputTokens[0].outputToken,
+    recipe: config.recipes[Object.keys(config.recipes)[0]],
     activeRecipes: []
   }
 
@@ -98,7 +99,7 @@ class CardReceiveTokenContainer extends Component {
   }
 
   async submit() {
-    const supplyTx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.state.selectedOutputToken);
+    const supplyTx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.props.selectedRecipe);
   }
 
   async withdraw() {
@@ -112,8 +113,8 @@ class CardReceiveTokenContainer extends Component {
     const supplyTx = await Wallet.ddai.distributeStack();
   }
 
-  handleChangeToken(token) {
-    this.setState({selectedOutputToken: token})
+  handleChangeRecipe(recipe) {
+    this.setState({recipe: recipe})
   }
 
   renderRecipe(r) {
@@ -139,7 +140,9 @@ class CardReceiveTokenContainer extends Component {
         
         <CardAPR currentRate={this.state.APR}/>
         
-        <CardSelectRecipe onChange={this.handleChangeToken.bind(this)} />
+        <CardSelectedRecipe selectedRecipe={this.props.selectedRecipe} />
+
+        {/* <CardSelectRecipe onChange={this.handleChangeRecipe.bind(this)} /> */}
 
         <CardOneButton onPress={ () => this.validate()} label={btnLabel} />
 

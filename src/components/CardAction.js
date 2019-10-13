@@ -71,6 +71,7 @@ const ColorfulButton = styled.button`
   :hover {
     background-color: #000;
     color: #f8e71c;
+    cursor: pointer;
   }
 
   :focus {
@@ -97,7 +98,7 @@ const CardAction = props => {
       <Heading>{props.heading}</Heading>
       <SubHeading>{props.subheading}</SubHeading>
       <Image src={props.url} />
-      <ColorfulButton onClick={props.onPress}>Start</ColorfulButton>
+      <ColorfulButton onClick={props.onPress}>{props.selected ? "Selected" : "Select"}</ColorfulButton>
     </Container>
   );
 };
