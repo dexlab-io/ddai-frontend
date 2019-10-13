@@ -31,6 +31,13 @@ class HeaderContainer extends Component {
     amount: false
   };
 
+  componentDidMount() {
+    // Hacky coockie for auto login
+    if(window.localStorage.login) {
+      this.init();
+    }
+  }
+
   async init() {
     await Wallet.setWeb3();
 
@@ -44,6 +51,8 @@ class HeaderContainer extends Component {
       web3available: connected,
       totalAmount: U.formatFiat(data.Balance)
     });
+
+    window.localStorage.login = true;
   }
 
   render() {
