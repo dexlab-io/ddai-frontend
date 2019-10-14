@@ -16,9 +16,9 @@ const ButtonSpacer = styled.span`
 const CardTwoButtons = props => {
   return (
     <RowContainer>
-      <PrimaryButton></PrimaryButton>
+      <PrimaryButton>{props.firstButtonText}</PrimaryButton>
       <ButtonSpacer />
-      <PrimaryButton></PrimaryButton>
+      <PrimaryButton>{props.secondButtonText}</PrimaryButton>
     </RowContainer>
   );
 };

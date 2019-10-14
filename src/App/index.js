@@ -13,6 +13,7 @@ class App extends Component {
       context: {
         ...ContextDefaults,
         setRecipe: this.setRecipe,
+        selectedRecipe: "",
       }
     }
   }
@@ -32,12 +33,12 @@ class App extends Component {
 
     const data = await Wallet.ddai.getState();
 
-    this.setState({
+    this.setState((prevState) => ({
       context: {
-        ...ContextDefaults,
+        ...prevState.context,
         DDAI: data
       }
-    })
+    }))
   }
 
   setRecipe = (recipe) => {
@@ -50,6 +51,9 @@ class App extends Component {
   }
 
   render() {
+    // this.state.context.setRecipe("LOL");
+    console.log(this.state.context);
+
     return (
       <Context.Provider value={this.state.context}>
         <div>

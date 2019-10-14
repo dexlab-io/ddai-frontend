@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import CardAction from "../components/CardAction";
-import {Context} from "../context";
+import { Context } from "../context";
+import { withRouter } from "react-router-dom";
 
-import Wallet from '../Wallet';
-
-import '../Wallet'
 import CONF from '../config';
 const config = CONF[CONF.selectedNetwork];
 
@@ -30,7 +28,13 @@ class ActionCardContainer extends React.Component {
 
   handleRecipeSelected = (key) => () => {
     this.context.setRecipe(key);
-    console.log(this.context);
+    
+    if(this.context.DDAI.TotalBalance == 0) {
+      this.props.history.push("/invest");
+    } else {
+      this.props.history.push("/overview");
+    }
+
   }
 
   render() {
@@ -59,4 +63,4 @@ class ActionCardContainer extends React.Component {
 }
 ActionCardContainer.contextType = Context;
 
-export default ActionCardContainer;
+export default withRouter(ActionCardContainer);

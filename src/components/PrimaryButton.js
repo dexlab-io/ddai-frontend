@@ -34,7 +34,7 @@ const ButtonMain = styled.button`
 `;
 
 const PrimaryButton = props => {
-  return <ButtonMain onClick={props.onPress}>{props.label}</ButtonMain>;
+  return <ButtonMain onClick={props.onPress}>{props.children}</ButtonMain>;
 };
 
 PrimaryButton.propTypes = {

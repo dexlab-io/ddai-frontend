@@ -50,8 +50,8 @@ const CardRecap = (props) => {
       <CardInvestmentToken  />
       <CardAPR currentRate={DDAI.Apr} />
       <CardReward />
-      <CardEarned />
-      <CardTwoButtons />
+      <CardEarned investmentTokenAmount={DDAI.OutStandingInterest + DDAI.TotalInterest} />
+      <CardTwoButtons firstButtonText="Invest" secondButtonText="Redeem"/>
     </Container>
   );
 };

@@ -90,10 +90,6 @@ class CardReceiveTokenContainer extends Component {
     const supplyTx = await Wallet.ddai.distributeStack();
   }
 
-  handleChangeRecipe(recipe) {
-    this.setState({recipe: recipe})
-  }
-
   renderRecipe(r) {
     // console.log("r", config.allowedOutputTokens);
     // const tokenSymbol = find(config.allowedOutputTokens, (o) => compareAddresses(o.outputToken, r.outputToken) );
@@ -108,6 +104,8 @@ class CardReceiveTokenContainer extends Component {
     if(!this.context.DDAI.TotalBalance) {
       return(<Container>Loading....</Container>)
     }
+
+    console.log(this.context);
     
     const DDAI = this.context.DDAI;
     const btnLabel = DDAI.NeedAllowance ? 'ALLOW & INVEST' : 'INVEST';
@@ -124,7 +122,7 @@ class CardReceiveTokenContainer extends Component {
         
         <CardAPR currentRate={DDAI.Apr}/>
         
-        <CardSelectedRecipe selectedRecipe={this.props.selectedRecipe} />
+        <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe} />
 
         {/* <CardSelectRecipe onChange={this.handleChangeRecipe.bind(this)} /> */}
 
