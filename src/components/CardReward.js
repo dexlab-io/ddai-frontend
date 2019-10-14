@@ -63,7 +63,7 @@ const CardReward = props => {
     <RowContainer>
       <Left>Earning Reward</Left>
       <Right>
-        <ButtonSmall>Rebalance</ButtonSmall>
+        <ButtonSmall>Change</ButtonSmall>
         <Image src={`../images/eaBoth.png`} />
       </Right>
     </RowContainer>

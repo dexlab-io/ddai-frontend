@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CardAction from "../components/CardAction";
+import {Context} from "../context";
 
 import Wallet from '../Wallet';
 
@@ -12,7 +13,7 @@ const Container = styled.div`
                       display: flex;
                       flex-direction: row;
                       align-items: flex-start;
-                      justify-content: space-between;
+                      justify-content: flex-start;
                       width: 92%;
                       padding: 2% 4% 0 4%;
                       overflow-x: scroll;
@@ -23,30 +24,19 @@ const Container = styled.div`
 
 class ActionCardContainer extends React.Component {
   state = {
-    APR: 0
+    APR: 0,
+    TotalBalance: 0,
   }
 
-  componentDidMount() {
-    Wallet.Rx.subscribe((action, data)  => {
-      this.refresh();
-    });
-
-    setInterval(() => {
-      this.refresh()
-    }, 2000);
-  }
-
-  async refresh() {
-    if(!Wallet.ddai) return;
-
-    const data = await Wallet.ddai.getState();
-
-    this.setState({
-      APR: data.Apr,
-    })
+  handleRecipeSelected = (key) => () => {
+    this.context.setRecipe(key);
+    console.log(this.context);
   }
 
   render() {
+
+    console.log(this.context);
+  
     return (
       <Container>
         {Object.keys(config.recipes).map((key, index) => {
@@ -58,8 +48,8 @@ class ActionCardContainer extends React.Component {
               url={recipe.img}
               heading={recipe.title}
               subheading={recipe.description.replace("{interestRate}", this.state.APR)}
-              onPress={this.props.clickHandler(key)}
-              selected={key == this.props.selectedRecipe ? true : false}
+              onPress={this.handleRecipeSelected(key)}
+              selected={key == this.context.selectedRecipe ? true : false}
             />
           )
         })}
@@ -67,5 +57,6 @@ class ActionCardContainer extends React.Component {
     );
   }
 }
+ActionCardContainer.contextType = Context;
 
 export default ActionCardContainer;

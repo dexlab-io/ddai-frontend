@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import styled from "styled-components";
 import CardInvestmentToken from "../components/CardInvestmentToken";
 import CardAPR from "../components/CardAPR";
@@ -6,6 +6,7 @@ import CardEarned from "../components/CardEarned";
 import CardInvestmentAmount from "./CardInvestmentAmount";
 import CardReward from "./CardReward";
 import CardTwoButtons from "./CardTwoButtons";
+import { Context } from "../context";
 
 const Container = styled.div`
   width: 42%;
@@ -31,12 +32,23 @@ const Container = styled.div`
   }
 `;
 
-const CardRecap = props => {
+const CardRecap = (props) => {
+  const context = useContext(Context);
+  if(context.DDAI.Balance == undefined) {
+    return(
+      <span>Loading....</span>
+    )
+  }
+
+  console.log(context);
+
+  const DDAI = context.DDAI;
+
   return (
     <Container>
-    <CardInvestmentAmount />
+      <CardInvestmentAmount investmentTokenAmount={parseFloat(DDAI.TotalBalance).toFixed(2)} />
       <CardInvestmentToken  />
-      <CardAPR />
+      <CardAPR currentRate={DDAI.Apr} />
       <CardReward />
       <CardEarned />
       <CardTwoButtons />
