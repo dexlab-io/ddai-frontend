@@ -6,6 +6,7 @@ import CardEarned from "../components/CardEarned";
 import CardInvestmentAmount from "./CardInvestmentAmount";
 import CardReward from "./CardReward";
 import CardTwoButtons from "./CardTwoButtons";
+import InvestMoreDAI from "./InvestMoreDAI";
 
 const Container = styled.div`
   width: 42%;
@@ -33,6 +34,7 @@ const Container = styled.div`
 
 const CardRecap = props => {
   return (
+    <div>
     <Container>
     <CardInvestmentAmount />
       <CardInvestmentToken  />
@@ -41,6 +43,8 @@ const CardRecap = props => {
       <CardEarned />
       <CardTwoButtons />
     </Container>
+    <InvestMoreDAI />
+    </div>
   );
 };
 

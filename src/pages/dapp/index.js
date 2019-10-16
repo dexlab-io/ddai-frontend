@@ -25,21 +25,9 @@ class Dapp extends Component {
             <div>
                 <PageHeading />
 
-                <IF what={selectedVehicle === 1}>
-                    <CardReceiveTokenContainer />    
-                </IF>
 
-                <IF what={selectedVehicle === 3}>
-                    <CardReceiveTokenContainer />    
-                </IF>
-
-                <IF what={!selectedVehicle}>
-                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 1})} label={'Supply dai earn Token'} />
-                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 3})} label={'Supply dai earn Repay Compound loan'} />
-                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 4})} label={'Supply dai earn Repay Fulcrum loan'} />
-                </IF>
                 
-                
+                <CardRecap />                
             </div>
         );
     }
