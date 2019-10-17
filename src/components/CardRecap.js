@@ -8,6 +8,7 @@ import CardReward from "./CardReward";
 import CardTwoButtons from "./CardTwoButtons";
 import { Context } from "../context";
 import PrimaryButton from "./PrimaryButton";
+import InvestMoreDAI from "./InvestMoreDAI";
 
 const Container = styled.div`
   width: 42%;
@@ -44,6 +45,7 @@ const CardRecap = (props) => {
   const DDAI = context.DDAI;
 
   return (
+    <div>
     <Container>
       <CardInvestmentAmount investmentTokenAmount={parseFloat(DDAI.TotalBalance).toFixed(2)} />
       <CardInvestmentToken  />
@@ -53,6 +55,8 @@ const CardRecap = (props) => {
       <CardTwoButtons firstButtonText="Invest" secondButtonText="Redeem"/>
       <PrimaryButton onPress={props.onClaimInterest}>Claim Interest</PrimaryButton>
     </Container>
+    <InvestMoreDAI />
+    </div>
   );
 };
 
