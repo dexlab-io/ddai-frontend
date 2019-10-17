@@ -99,6 +99,19 @@ class DDAI extends BasePlugin {
         return tx;
     }
 
+    parseRecipeData(recipeId) {
+        const recipe = config.recipes[recipeId];
+        const user = this.W.getAddress();
+        recipe.recipeData.data = recipe.recipeData.data.map((item) => (item.replace("{userAddress}", user.replace("0x", ""))));
+        return recipe.recipeData;
+    }
+
+    async setRecipes(recipeId) {
+        const recipeData = this.parseRecipeData(recipeId);
+        const tx = await this.instance.methods.setRecipes(recipeData.receivers, recipeData.ratios, recipeData.data).send({from: this.W.getAddress()});
+        return tx;
+    }
+
     async claimInterest() {
         const tx = await this.instance.methods.claimInterest(this.W.getAddress()).send({from: this.W.getAddress()});
         return tx;

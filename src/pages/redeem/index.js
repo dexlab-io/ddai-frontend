@@ -6,7 +6,7 @@ class Redeem extends React.Component {
     render() {
         return(
             <>
-                <CardContainer />
+                <CardContainer action="withdraw" />
             </>
         )
     }

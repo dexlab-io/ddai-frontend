@@ -15,6 +15,7 @@ import U from '../class/utils';
 import CONF from '../config';
 import { Context } from "../context";
 import PropTypes  from "prop-types";
+import history from "../history";
 
 const config = CONF[CONF.selectedNetwork];
 
@@ -73,11 +74,29 @@ class CardReceiveTokenContainer extends Component {
 
   async validate() {
     if(!Wallet.ddai) return;
-    this.submit();
+
+    switch (this.props.action) {
+      case "deposit":
+          await this.deposit();
+        break;
+      case "initialDeposit":
+          await this.submit();
+        break;
+      case "withdraw":
+          await this.withdraw();
+      default:
+        break;
+    }
+
+    history.push("/overview");
   }
 
-  async submit() {
-    const supplyTx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.props.selectedRecipe);
+  async deposit() {
+    if(this.context.DDAI.Balance == 0) {
+      const tx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.context.selectedRecipe);
+    } else {
+      const tx = await Wallet.ddai.mint(this.state.amount);
+    }
   }
 
   async withdraw() {
@@ -111,11 +130,15 @@ class CardReceiveTokenContainer extends Component {
     const DDAI = this.context.DDAI;
     let btnLabel;
     
-    if(this.props.action == "invest") {
-      btnLabel = DDAI.NeedAllowance ? 'ALLOW & INVEST' : 'INVEST';
-    } else {
-      btnLabel = "Redeem";
+    switch (this.props.action) {
+      case "deposit":
+          btnLabel = DDAI.NeedAllowance ? 'Allow & Deposit' : 'Deposit';
+        break;
+      case "withdraw":
+          btnLabel = "Withdraw"
+      default:
     }
+
     return (
       <Container>
 
@@ -154,7 +177,7 @@ CardReceiveTokenContainer.propTypes = {
 }
 
 CardReceiveTokenContainer.defaultProps = {
-  action: "invest"
+  action: "deposit"
 }
 
 export default CardReceiveTokenContainer;

@@ -1,10 +1,11 @@
 import React from "react"
 import CardRecap from "../../components/CardRecap";
+import Wallet from "../../Wallet";
 
 class Overview extends React.Component {
 
-    claimInterest = () => {
-
+    claimInterest = async () => {
+        await Wallet.ddai.distributeStack();
     }
 
     render() {
