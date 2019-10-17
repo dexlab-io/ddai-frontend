@@ -6,7 +6,7 @@ class Invest extends React.Component {
 
     render() {
         return(
-            <CardContainer selectedRecipe={"ETH"} />
+            <CardContainer />
         )
     }
 

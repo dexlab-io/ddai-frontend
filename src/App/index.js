@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { HeaderContainer } from "../components";
 import Routes from "../routes";
-import {Context, ContextDefaults} from "../context";
+import { Context, ContextDefaults } from "../context";
 import Wallet from '../Wallet';
 import "./styles.css";
+import history from '../history';
+import { Router } from "react-router-dom";
 
 class App extends Component {
 
@@ -57,8 +59,10 @@ class App extends Component {
     return (
       <Context.Provider value={this.state.context}>
         <div>
+          <Router history={history}>
             <HeaderContainer />
             <Routes />
+          </Router>
         </div>
       </Context.Provider>
     );

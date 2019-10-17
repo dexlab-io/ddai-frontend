@@ -14,6 +14,7 @@ import Wallet from '../Wallet';
 import U from '../class/utils';
 import CONF from '../config';
 import { Context } from "../context";
+import PropTypes  from "prop-types";
 
 const config = CONF[CONF.selectedNetwork];
 
@@ -108,8 +109,13 @@ class CardReceiveTokenContainer extends Component {
     console.log(this.context);
     
     const DDAI = this.context.DDAI;
-    const btnLabel = DDAI.NeedAllowance ? 'ALLOW & INVEST' : 'INVEST';
+    let btnLabel;
     
+    if(this.props.action == "invest") {
+      btnLabel = DDAI.NeedAllowance ? 'ALLOW & INVEST' : 'INVEST';
+    } else {
+      btnLabel = "Redeem";
+    }
     return (
       <Container>
 
@@ -142,5 +148,13 @@ class CardReceiveTokenContainer extends Component {
 };
 
 CardReceiveTokenContainer.contextType = Context;
+
+CardReceiveTokenContainer.propTypes = {
+  action: PropTypes.string
+}
+
+CardReceiveTokenContainer.defaultProps = {
+  action: "invest"
+}
 
 export default CardReceiveTokenContainer;
