@@ -3,9 +3,13 @@ import CardRecap from "../../components/CardRecap";
 
 class Overview extends React.Component {
 
+    claimInterest = () => {
+
+    }
+
     render() {
         return(
-            <CardRecap />
+            <CardRecap onClaimInterest={this.claimInterest} />
         )
     }
 }

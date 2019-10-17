@@ -38,9 +38,6 @@ class ActionCardContainer extends React.Component {
   }
 
   render() {
-
-    console.log(this.context);
-  
     return (
       <Container>
         {Object.keys(config.recipes).map((key, index) => {
