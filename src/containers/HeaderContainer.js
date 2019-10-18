@@ -5,6 +5,7 @@ import ConnectW3Button from "../components/ConnectW3Button";
 import NotificationIcon from "../components/NotificationIcon";
 import U from "../class/utils";
 import Wallet from "../Wallet";
+import SimpleSnackbar from "../components/SimpleSnackbar";
 
 const Container = styled.div`
   padding: 2%;
@@ -65,7 +66,8 @@ class HeaderContainer extends Component {
             label="Connect metamask"
           />
         </IF>
-        <NotificationIcon />
+        <SimpleSnackbar />
+        {/* <NotificationIcon /> */}
       </Container>
     );
   }

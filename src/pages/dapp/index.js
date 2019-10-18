@@ -4,6 +4,7 @@ import { PageHeading, CardOneButton, IF } from "../../components";
 import CardReceiveTokenContainer from "../../containers/CardContainer";
 import ActionCardContainer from "../../containers/ActionCardContainer";
 import CardRecap from "../../components/CardRecap";
+import SimpleSnackbar from "../../components/SimpleSnackbar";
 
 
 
