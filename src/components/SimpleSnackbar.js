@@ -43,8 +43,8 @@ opacity: 0.9;
 
 const Dot = styled.div`
 position: relative;
-    top: 8px;
-    left: 4px;
+    top: 6px;
+    left: 6px;
     color: #F8E71C;
     font-size: 48px;
     line-height: 0px;
