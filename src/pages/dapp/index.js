@@ -1,7 +1,7 @@
 
 import React, { Component } from "react";
 import { PageHeading, CardOneButton, IF } from "../../components";
-import CardReceiveTokenContainer from "../../containers/CardContainer";
+import CardContainer from "../../containers/CardContainer";
 import ActionCardContainer from "../../containers/ActionCardContainer";
 import CardRecap from "../../components/CardRecap";
 
@@ -17,31 +17,26 @@ class Dapp extends Component {
         walletAddress: null,
         web3available: false,
         selectedVehicle: null,
+        selectedRecipe: "ETH"
+    }
+
+    handleSetRecipe = (recipe) => () => {
+      this.setState({
+        selectedRecipe: recipe
+      });
     }
 
     render() {
-        const {selectedVehicle} = this.state;
+        // const {selectedVehicle} = this.state;
         return (
             <div>
-                <PageHeading />
-
-                <IF what={selectedVehicle === 1}>
-                    <CardReceiveTokenContainer />    
-                </IF>
-
-                <IF what={selectedVehicle === 3}>
-                    <CardReceiveTokenContainer />    
-                </IF>
-
-                <IF what={!selectedVehicle}>
-                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 1})} label={'Supply dai earn Token'} />
-                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 3})} label={'Supply dai earn Repay Compound loan'} />
-                    <CardOneButton onPress={ () => this.setState({selectedVehicle: 4})} label={'Supply dai earn Repay Fulcrum loan'} />
-                </IF>
-                
-                
+                {/* I (Mick) think that having a blob of text at the top of the page takes too much prime real estate. Feel free to uncomment below line */}
+                {/* <PageHeading /> */}
+                <ActionCardContainer selectedRecipe={this.state.selectedRecipe} clickHandler={this.handleSetRecipe} />
+                {/* <CardRecap /> */}
+                <CardContainer selectedRecipe={this.state.selectedRecipe} />
             </div>
-        );
+          );
     }
 }
 

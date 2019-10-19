@@ -83,22 +83,19 @@ class DDAI extends BasePlugin {
         return tx;
     }
 
-    async mintAndSetRecipes(amount, outputToken) {
+    async mintAndSetRecipes(amount, selectedRecipe) {
 
         if( await this.needAllowance(amount) ) {
             await this.giveAllowance();
         }
 
-        const data = this.W.web3.eth.abi.encodeParameters( 
-            ['address','address'], 
-            [outputToken, this.W.getAddress()]
-        );
-
-        console.log('data', data)
-
         const ratio = new BigNumber('100').toString();
         const srcAmount = to1e18(amount);
-        const tx = await this.instance.methods.mintAndSetRecipes(srcAmount, [BuyTokenRecipe], [ratio], [data]).send({from: this.W.getAddress()});
+
+        const recipe = config.recipes[selectedRecipe];
+        recipe.recipeData.data = recipe.recipeData.data.map(value => (value.replace("{userAddress}", this.W.getAddress().replace("0x", ""))))
+    
+        const tx = await this.instance.methods.mintAndSetRecipes(srcAmount, recipe.recipeData.receivers, recipe.recipeData.ratios, recipe.recipeData.data).send({from: this.W.getAddress()});
         return tx;
     }
 
@@ -155,6 +152,7 @@ class DDAI extends BasePlugin {
         return tx;
     }
 
+    // TODO consider caching state if requested multiple times during the same block
     async getState() {
 
         const Recipes = await this.getRecipes();
