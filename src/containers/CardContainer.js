@@ -8,10 +8,14 @@ import CardInvestmentToken from "../components/CardInvestmentToken";
 import CardAPR from "../components/CardAPR";
 import CardOneButton from "../components/CardOneButton";
 import CardSelectRecipe from "../components/CardSelectRecipe";
+import CardSelectedRecipe from "../components/CardSelectedRecipe";
 import { IF } from "../components";
 import Wallet from '../Wallet';
 import U from '../class/utils';
 import CONF from '../config';
+import { Context } from "../context";
+import PropTypes  from "prop-types";
+import history from "../history";
 
 const config = CONF[CONF.selectedNetwork];
 
@@ -19,6 +23,7 @@ const Container = styled.div`
   width: 42%;
   margin: 0 27%;
   display: flex;
+  margin-top: 5%;
   flex-direction: column;
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
@@ -48,18 +53,8 @@ class CardReceiveTokenContainer extends Component {
     amount: 0,
     balanceDAI: 0,
     needAllowance: false,
-    selectedOutputToken: config.allowedOutputTokens[0].outputToken,
+    recipe: config.recipes[Object.keys(config.recipes)[0]],
     activeRecipes: []
-  }
-
-  componentDidMount() {
-    Wallet.Rx.subscribe((action, data)  => {
-      this.refresh();
-    });
-
-    setInterval(() => {
-      this.refresh()
-    }, 2000);
   }
 
   async onChangeAmount(e) {
@@ -77,28 +72,31 @@ class CardReceiveTokenContainer extends Component {
     
   }
 
-  async refresh() {
-      if(!Wallet.ddai) return;
-
-      const data = await Wallet.ddai.getState();
-
-      this.setState({
-          dDaiBalanceLabel: U.formatFiat(data.Balance),
-          dDaiBalance: data.Balance,
-          balanceDAI: data.BalanceDAI,
-          APR: data.Apr,
-          activeRecipes: data.Recipes,
-          needAllowance: data.needAllowance
-      })
-  }
-
   async validate() {
     if(!Wallet.ddai) return;
-    this.submit();
+
+    switch (this.props.action) {
+      case "deposit":
+          await this.deposit();
+        break;
+      case "initialDeposit":
+          await this.submit();
+        break;
+      case "withdraw":
+          await this.withdraw();
+      default:
+        break;
+    }
+
+    history.push("/overview");
   }
 
-  async submit() {
-    const supplyTx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.state.selectedOutputToken);
+  async deposit() {
+    if(this.context.DDAI.Balance == 0) {
+      const tx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.context.selectedRecipe);
+    } else {
+      const tx = await Wallet.ddai.mint(this.state.amount);
+    }
   }
 
   async withdraw() {
@@ -112,10 +110,6 @@ class CardReceiveTokenContainer extends Component {
     const supplyTx = await Wallet.ddai.distributeStack();
   }
 
-  handleChangeToken(token) {
-    this.setState({selectedOutputToken: token})
-  }
-
   renderRecipe(r) {
     // console.log("r", config.allowedOutputTokens);
     // const tokenSymbol = find(config.allowedOutputTokens, (o) => compareAddresses(o.outputToken, r.outputToken) );
@@ -125,35 +119,65 @@ class CardReceiveTokenContainer extends Component {
   }
 
   render() {
-    const { dDaiBalance, activeRecipes, amount, needAllowance, balanceDAI, dDaiBalanceLabel } = this.state;
-    const btnLabel = needAllowance ? 'ALLOW & INVEST' : 'INVEST';
+    const { amount } = this.state;
+    
+    if(!this.context.DDAI.TotalBalance) {
+      return(<Container>Loading....</Container>)
+    }
+
+    console.log(this.context);
+    
+    const DDAI = this.context.DDAI;
+    let btnLabel;
+    
+    switch (this.props.action) {
+      case "deposit":
+          btnLabel = DDAI.NeedAllowance ? 'Allow & Deposit' : 'Deposit';
+        break;
+      case "withdraw":
+          btnLabel = "Withdraw"
+      default:
+    }
+
     return (
       <Container>
 
-        <IF what={activeRecipes.length > 0}>
+        {/* <IF what={activeRecipes.length > 0}>
             {activeRecipes.map(this.renderRecipe)}
-        </IF>
+        </IF> */}
         
-        <CardAmount maxValue={balanceDAI} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
-        <CardInvestmentToken investmentTokenAmount={dDaiBalanceLabel} />
+        <CardAmount maxValue={DDAI.BalanceDAI} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
+        <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         
-        <CardAPR currentRate={this.state.APR}/>
+        <CardAPR currentRate={DDAI.Apr}/>
         
-        <CardSelectRecipe onChange={this.handleChangeToken.bind(this)} />
+        <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe} />
+
+        {/* <CardSelectRecipe onChange={this.handleChangeRecipe.bind(this)} /> */}
 
         <CardOneButton onPress={ () => this.validate()} label={btnLabel} />
 
-        <IF what={dDaiBalance > 0}>
+        {/* <IF what={dDaiBalance > 0}>
           <CardOneButton onPress={ () => this.withdraw()} label={'Withdraw'} />
         </IF>
 
         <IF what={dDaiBalance > 0}>
           <CardOneButton onPress={ () => this.claim()} label={'Claim Interest'} />
-        </IF>
+        </IF> */}
         
       </Container>
     );
   }
 };
+
+CardReceiveTokenContainer.contextType = Context;
+
+CardReceiveTokenContainer.propTypes = {
+  action: PropTypes.string
+}
+
+CardReceiveTokenContainer.defaultProps = {
+  action: "deposit"
+}
 
 export default CardReceiveTokenContainer;

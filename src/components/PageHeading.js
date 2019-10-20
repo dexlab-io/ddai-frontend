@@ -8,6 +8,7 @@ const PageHeadingContainer = styled.span`
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  padding-bottom: 0px;
 
   @media (max-width: 800px) {
     width: 90%;

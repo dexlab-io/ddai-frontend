@@ -13,7 +13,7 @@ const RowContainer = styled.span`
 const CardOneButton = props => {
   return (
     <RowContainer>
-      <PrimaryButton label={props.label} onPress={props.onPress}></PrimaryButton>
+      <PrimaryButton onPress={props.onPress}>{props.label}</PrimaryButton>
     </RowContainer>
   );
 };

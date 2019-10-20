@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const LogoContainer = styled.div`
   display: flex;
   text-align: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Image = styled.img`
@@ -12,9 +14,11 @@ const Image = styled.img`
 `;
 
 const Logo = props => {
+  const history = useHistory();
+
   return (
     <LogoContainer>
-      <Image src={`../images/earn-logo.svg`} />
+      <Image onClick={() => (history.push("/"))} src={`../images/earn-logo.svg`} />
     </LogoContainer>
   );
 };

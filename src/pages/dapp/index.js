@@ -1,33 +1,27 @@
-import React, { Component } from "react";
-import { PageHeading, CardOneButton, IF } from "../../components";
-import CardReceiveTokenContainer from "../../containers/CardContainer";
-import ActionCardContainer from "../../containers/ActionCardContainer";
-import CardRecap from "../../components/CardRecap";
-import NotificationCard from "../../components/NotificationCard";
-import SimpleSnackbar from "../../components/SimpleSnackbar";
+import React from "react";
+import { Context } from "../../context";
+import {
+  Router,
+  Switch,
+  Redirect,
+  Route,
+} from 'react-router-dom';
 
-class Dapp extends Component {
-  state = {
-    walletAddress: null,
-    web3available: false
-  };
+class Dapp extends React.Component {
 
-  state = {
-    walletAddress: null,
-    web3available: false,
-    selectedVehicle: null
-  };
+    render() {
+        if(this.context.DDAI.Balance == undefined) {
+          return <span>Loading......</span>
+        }
 
-  render() {
-    const { selectedVehicle } = this.state;
-    return (
-      <div>
-        <NotificationCard />
-        <PageHeading />
-        <CardRecap />
-      </div>
-    );
-  }
+        if(this.context.DDAI.Balance == 0) {
+          return (<Redirect to="/recipes" />);
+        } else {
+          return (<Redirect to="/overview" />);
+        }
+    }
 }
+
+Dapp.contextType = Context
 
 export default Dapp;

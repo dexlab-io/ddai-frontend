@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const RowContainer = styled.span`
   display: flex;
@@ -63,7 +64,7 @@ const CardReward = props => {
     <RowContainer>
       <Left>Earning Reward</Left>
       <Right>
-        <ButtonSmall>Rebalance</ButtonSmall>
+        <ButtonSmall><Link style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
         <Image src={`../images/eaBoth.png`} />
       </Right>
     </RowContainer>
