@@ -99,6 +99,19 @@ class DDAI extends BasePlugin {
         return tx;
     }
 
+    parseRecipeData(recipeId) {
+        const recipe = config.recipes[recipeId];
+        const user = this.W.getAddress();
+        recipe.recipeData.data = recipe.recipeData.data.map((item) => (item.replace("{userAddress}", user.replace("0x", ""))));
+        return recipe.recipeData;
+    }
+
+    async setRecipes(recipeId) {
+        const recipeData = this.parseRecipeData(recipeId);
+        const tx = await this.instance.methods.setRecipes(recipeData.receivers, recipeData.ratios, recipeData.data).send({from: this.W.getAddress()});
+        return tx;
+    }
+
     async claimInterest() {
         const tx = await this.instance.methods.claimInterest(this.W.getAddress()).send({from: this.W.getAddress()});
         return tx;
@@ -134,6 +147,18 @@ class DDAI extends BasePlugin {
         return tx;
     }
 
+    async getTotalInterest() {
+        const events = await this.instance.getPastEvents("InterestClaimed",{fromBlock: 0, filter: {"_receiver": this.W.getAddress()}});
+        
+        let totalInterest = 0;
+
+        for (const event of events) {
+            totalInterest += parseFloat(event.returnValues._interestEarned);
+        }
+        totalInterest = totalInterest / 1e18
+        return totalInterest;
+    }
+
     async getRecipes() {
         const tx = await this.instance.methods.getRecipesOf(this.W.getAddress()).call();
         return tx.recipes.map( re => {
@@ -154,10 +179,10 @@ class DDAI extends BasePlugin {
 
     // TODO consider caching state if requested multiple times during the same block
     async getState() {
-
+        const TotalInterest = await this.getTotalInterest();
         const Recipes = await this.getRecipes();
         const Stack = await this.getStack();
-        const OutStandingInterest = await this.getOutStandingInterest();
+        const OutStandingInterest = await this.getOutStandingInterest() / 1e18;
         const TotalBalance = from1e18(await this.getTotalBalance());
         const Balance = from1e18(await this.getBalance());
         //const Balance = await this.getBalance());
@@ -170,6 +195,7 @@ class DDAI extends BasePlugin {
             Recipes,
             Stack,
             OutStandingInterest,
+            TotalInterest,
             TotalBalance,
             Balance,
             Earned,

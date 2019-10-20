@@ -5,6 +5,7 @@ import ConnectW3Button from "../components/ConnectW3Button";
 import NotificationIcon from "../components/NotificationIcon";
 import U from "../class/utils";
 import Wallet from "../Wallet";
+import { Context } from "../context";
 
 const Container = styled.div`
   padding: 2%;
@@ -44,24 +45,22 @@ class HeaderContainer extends Component {
     const connected = Wallet.getAddress() ? true : false;
     Wallet.Rx.notify("Connected", connected);
 
-    const data = await Wallet.ddai.getState();
-
     this.setState({
       walletAddress: Wallet.getAddress(),
       web3available: connected,
-      totalAmount: U.formatFiat(data.Balance)
     });
 
     window.localStorage.login = true;
   }
 
   render() {
-    const { walletAddress, totalAmount, web3available } = this.state;
+    const { walletAddress, web3available } = this.state;
+    const balance = this.context.DDAI.Balance|| 0;
     return (
       <Container>
         <Logo />
         <TotBalance
-          amount={web3available ? "$" + totalAmount : "no wallet connected"}
+          amount={web3available ? "$" +  U.formatFiat(balance): "no wallet connected"}
         />
 
         <IF what={Wallet.getAddress()}>
@@ -79,5 +78,7 @@ class HeaderContainer extends Component {
     );
   }
 }
+
+HeaderContainer.contextType = Context;
 
 export default HeaderContainer;
