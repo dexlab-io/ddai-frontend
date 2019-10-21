@@ -24,6 +24,12 @@ const Container = styled.div`
 
 class ActionCardContainer extends React.Component {
   handleRecipeSelected = (key) => async () => {
+    const isLoading = this.context.DDAI.Apr == undefined;
+    if(isLoading) {
+      alert('Please install Metamask first');
+      return;
+    }
+
     this.context.setRecipe(key);
     
     if(this.context.DDAI.TotalBalance == 0) {
@@ -50,13 +56,7 @@ class ActionCardContainer extends React.Component {
               url={recipe.img}
               heading={recipe.title}
               subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr ? this.context.DDAI.Apr : 2)}
-              onPress={ (key) => {
-                if(isLoading) {
-                  alert('Please install Metamask first');
-                  return;
-                }
-                this.handleRecipeSelected(key)
-              }}
+              onPress={this.handleRecipeSelected(key)}
               selected={key == this.context.selectedRecipe ? true : false}
             />
           )
