@@ -8,9 +8,11 @@ import Web3Button from './Web3Button';
 import CardOneButton from './CardOneButton';
 import CardInvestmentToken from './CardInvestmentToken';
 import CardAction from './CardAction';
-
+import InvestMoreDAI from "./InvestMoreDAI";
+import SecondaryButton from './SecondaryButton';
 export {
     CardInvestmentToken,
+    InvestMoreDAI,
     IF,
     CardAmount,
     CardAction,
@@ -20,4 +22,5 @@ export {
     Logo,
     TotBalance,
     Web3Button,
+    SecondaryButton,
 }

@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import CardInvestmentToken from "./CardInvestmentToken";
-import CardAPR from "./CardAPR";
-import CardEarned from "./CardEarned";
-import CardInvestmentAmount from "./CardInvestmentAmount";
-import CardReward from "./CardReward";
-import CardTwoButtons from "./CardTwoButtons";
 
-const Container = styled.div`
+const Container = styled.button`
   width: 42%;
   margin: 2% 27%;
   display: flex;
@@ -56,17 +50,21 @@ const Image = styled.img`
 
 const InvestMoreDAI = props => {
   return (
-    <a href="#">
-      <Container>
-        <Left>Invest More DAI</Left>
+      <Container onClick={props.onPress}>
+        <Left>{props.label}</Left>
         <Right>
           <Image src={`../images/r_dai.png`} />
           <Image src={`../images/little_arrow.png`} />
           <Image src={`../images/eaBoth.png`} />
         </Right>
       </Container>
-    </a>
   );
 };
+
+InvestMoreDAI.defaultProps = {
+  label: "Invest More DAI",
+  onPress: () => {}
+}
+
 
 export default InvestMoreDAI;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { CardAction, IF } from "../components";
+import { CardAction, IF, InvestMoreDAI } from "../components";
 import { Context } from "../context";
 import { withRouter } from "react-router-dom";
 import Wallet from '../Wallet';
@@ -41,28 +41,38 @@ class ActionCardContainer extends React.Component {
 
   }
 
+  goOverview() {
+    console.log('overview')
+    this.props.history.push("/overview")
+    console.log('overview')
+  }
+
   render() {
   
     const isLoading = this.context.DDAI.Apr == undefined;
 
     return (
-      <Container>
-        {Object.keys(config.recipes).map((key, index) => {
-          const recipe = config.recipes[key];
-          return (
-            <CardAction 
-              key={key}
-              recipeKey={recipe.key}
-              url={recipe.img}
-              heading={recipe.title}
-              subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr ? this.context.DDAI.Apr : 2)}
-              onPress={this.handleRecipeSelected(key)}
-              selected={key == this.context.selectedRecipe ? true : false}
-            />
-          )
-        })}
-        
-      </Container>
+      <React.Fragment>
+        <IF what={this.context.DDAI.TotalBalance > 0}>
+            <InvestMoreDAI onPress={() => this.goOverview()} label={"Go to Overview"}/>
+        </IF>
+        <Container>
+          {Object.keys(config.recipes).map((key, index) => {
+            const recipe = config.recipes[key];
+            return (
+              <CardAction 
+                key={key}
+                recipeKey={recipe.key}
+                url={recipe.img}
+                heading={recipe.title}
+                subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr ? this.context.DDAI.Apr : 2)}
+                onPress={this.handleRecipeSelected(key)}
+                selected={key == this.context.selectedRecipe ? true : false}
+              />
+            )
+          })}
+        </Container>
+      </React.Fragment>
     );
   }
 }
