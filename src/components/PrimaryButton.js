@@ -12,6 +12,7 @@ const ButtonMain = styled.button`
   border-radius: 5px;
   margin: 0% 0;
   border: none;
+  cursor: pointer;
   transition-property: background-color, color;
   transition-duration: 0.3s;
   font-weight: 700;

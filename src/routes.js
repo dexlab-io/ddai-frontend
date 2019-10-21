@@ -18,7 +18,7 @@ export default function Routes() {
     return (
         <Switch>
             {/* <Redirect from="/" exact to="/app" /> */}
-            <Route exact path="/" component={Dapp} />
+            <Route exact path="/" component={Recipes} />
             <Route path="/recipes" component={Recipes} />
             <Route path="/invest" component={Invest} />
             <Route path="/redeem" component={Redeem} />

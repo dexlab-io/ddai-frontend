@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import CardInvestmentToken from "../components/CardInvestmentToken";
+import { CardInvestmentToken, IF } from "../components";
 import CardAPR from "../components/CardAPR";
 import CardEarned from "../components/CardEarned";
 import CardInvestmentAmount from "./CardInvestmentAmount";
@@ -38,27 +38,25 @@ const Container = styled.div`
 const CardRecap = (props) => {
   const context = useContext(Context);
   const history = useHistory();
-
-  if(context.DDAI.Balance == undefined) {
-    return(
-      <span>Loading....</span>
-    )
-  }
-
   const DDAI = context.DDAI;
 
   return (
     <div>
-    <Container>
-      <CardInvestmentAmount investmentTokenAmount={parseFloat(DDAI.TotalBalance).toFixed(2)} />
-      <CardInvestmentToken  />
-      <CardAPR currentRate={DDAI.Apr} />
-      <CardReward />
-      <CardEarned investmentTokenAmount={DDAI.OutStandingInterest + DDAI.TotalInterest} />
-      <CardTwoButtons onFirstPress={() => history.push("/invest")} firstButtonText="Deposit" secondButtonText="Withdraw" onSecondPress={() => {history.push("/redeem")}}/>
-      <PrimaryButton onPress={props.onClaimInterest}>Claim Interest</PrimaryButton>
-    </Container>
-    <InvestMoreDAI />
+      <IF what={context.DDAI.Balance == undefined}>
+            Loading ⏳
+      </IF>
+      <InvestMoreDAI />
+      <Container>
+        <CardInvestmentAmount investmentTokenAmount={parseFloat(DDAI.TotalBalance).toFixed(2)} />
+        <CardInvestmentToken  />
+        <CardAPR currentRate={DDAI.Apr} />
+        <CardReward />
+        <CardEarned investmentTokenAmount={DDAI.OutStandingInterest + DDAI.TotalInterest} />
+        <CardTwoButtons onFirstPress={() => history.push("/invest")} firstButtonText="Deposit" secondButtonText="Withdraw" onSecondPress={() => {history.push("/redeem")}}/>
+        <PrimaryButton onPress={props.onClaimInterest}>Claim Interest</PrimaryButton>
+        
+      </Container>
+    
     </div>
   );
 };

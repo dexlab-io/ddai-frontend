@@ -6,10 +6,14 @@ import Logo from './Logo';
 import TotBalance from './TotBalance';
 import Web3Button from './Web3Button';
 import CardOneButton from './CardOneButton';
+import CardInvestmentToken from './CardInvestmentToken';
+import CardAction from './CardAction';
 
 export {
+    CardInvestmentToken,
     IF,
     CardAmount,
+    CardAction,
     CardOneButton,
     HeaderContainer,
     PageHeading,

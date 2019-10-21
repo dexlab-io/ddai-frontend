@@ -57,14 +57,14 @@ const Image = styled.img`
 const InvestMoreDAI = props => {
   return (
     <a href="#">
-    <Container>
-            <Left>Invest More DAI</Left>
-      <Right>
-        <Image src={`../images/r_dai.png`} />
-        <Image src={`../images/little_arrow.png`} />
-        <Image src={`../images/eaBoth.png`} />
-      </Right>
-    </Container>
+      <Container>
+        <Left>Invest More DAI</Left>
+        <Right>
+          <Image src={`../images/r_dai.png`} />
+          <Image src={`../images/little_arrow.png`} />
+          <Image src={`../images/eaBoth.png`} />
+        </Right>
+      </Container>
     </a>
   );
 };

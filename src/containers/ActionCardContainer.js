@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CardAction from "../components/CardAction";
+import { CardAction, IF } from "../components";
 import { Context } from "../context";
 import { withRouter } from "react-router-dom";
 import Wallet from '../Wallet';
@@ -36,10 +36,8 @@ class ActionCardContainer extends React.Component {
   }
 
   render() {
-
-    if(this.context.DDAI.Apr == undefined) {
-      return "Loading....";
-    }
+  
+    const isLoading = this.context.DDAI.Apr == undefined;
 
     return (
       <Container>
@@ -51,12 +49,19 @@ class ActionCardContainer extends React.Component {
               recipeKey={recipe.key}
               url={recipe.img}
               heading={recipe.title}
-              subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr)}
-              onPress={this.handleRecipeSelected(key)}
+              subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr ? this.context.DDAI.Apr : 2)}
+              onPress={ (key) => {
+                if(isLoading) {
+                  alert('Please install Metamask first');
+                  return;
+                }
+                this.handleRecipeSelected(key)
+              }}
               selected={key == this.context.selectedRecipe ? true : false}
             />
           )
         })}
+        
       </Container>
     );
   }
