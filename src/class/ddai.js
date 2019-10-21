@@ -5,6 +5,7 @@ import MockDai from './artifacts/MockDai.json';
 import get from 'lodash/get';
 import CONF from '../config';
 import findKey from 'lodash/findKey';
+import utils from 'web3-utils';
 
 
 const config = CONF[CONF.selectedNetwork];
@@ -13,8 +14,7 @@ const getRecipeByname = (name) => {
     return findKey(config.recipes, {label: name});
 };
 
-export const to1e18 = (amount, decimals = 18) => new BigNumber(amount.toString())
-  .multipliedBy(new BigNumber(10).pow(new BigNumber(decimals))).toString();
+export const to1e18 = (amount, decimals = 18) => utils.toWei(amount);
 
 export const from1e18 = (amount, decimals = 18) => new BigNumber(amount.toString())
     .dividedBy(new BigNumber(10).pow(new BigNumber(decimals))).toString();
@@ -61,8 +61,11 @@ class DDAI extends BasePlugin {
         if( await this.needAllowance(amount) ) {
             await this.giveAllowance();
         }
-        const srcAmount = to1e18(amount);
-        const tx = await this.instance.methods.mint(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()});
+        const srcAmount = to1e18(amount).toString();
+        const tx = await this.instance.methods.mint(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()}).on('transactionHash', (hash) => {
+            this.W.Rx.add(hash);
+        });
+        console.log("TX", tx);
         return tx;
     }
 

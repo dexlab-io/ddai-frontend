@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const LogoContainer = styled.div`
-
+cursor: pointer
 @media (max-width: 800px) {
     margin: 2% 0 0 0;
   }
@@ -27,12 +27,9 @@ const A = styled.a`
 
 const NotificationIcon = props => {
   return (
-    
-    <LogoContainer>
-    <A href="">
-    <Dot>•</Dot>
+    <LogoContainer onClick={props.onPress}>
+      <Dot>•</Dot>
       <Image src={`../images/notificationIcon.svg`} />
-      </A>
     </LogoContainer>
   );
 };

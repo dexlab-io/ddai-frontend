@@ -65,6 +65,7 @@ export default {
                 img: "../../images/actionCardEthWbtc.png",
                 recipeData: {
                     receivers: [
+                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8",
                         "0x930B42BaAfe936fB827bd1efd3383d700989F6B8"
                     ],
                     data: [

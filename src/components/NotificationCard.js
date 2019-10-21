@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import CONF from '../config';
 
 const Container = styled.div`
-  width: 42%;
-  margin: 1% 27%;
+  width: 95%;
+  margin: 1% 1%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -59,34 +61,63 @@ const A = styled.a`
   text-decoration: underline!important;
 `;
 
+const statusImages = {
+  "pending": "../images/pending.svg",
+  "rejected": "../images/rejected.svg",
+  "approved": "../images/approved.svg"
+}
+
+const methods = {
+  "0x40c10f19": {
+    "name": "deposit",
+  },
+  "unknown": {
+    "name": "unknown method",
+  }
+}
+
 const NotificationCard = props => {
+  let status;
+  const { tx } = props;
+
+  if(tx.status === true) {
+    status = "approved"
+  } else if(tx.status === false) {
+    status = "rejected"
+  } else {
+    status = "pending"
+  }
+  
+  let method;
+  if(!tx.input || methods[tx.input] == undefined){
+    method = methods["unknown"];
+  } else {
+    method = methods[tx.input.substring(0, 9)];  
+  }
+  console.log(method);
+  
+  let explorerURL;
+  if(CONF.selectedNetwork == "mainnet") {
+    explorerURL = `https://etherscan.io/tx/${tx.hash}`;
+  } else {
+    explorerURL = `https://${CONF.selectedNetwork}.etherscan.io/tx/${tx.hash}`;
+  }
+
   return (
     <span>
-    <Container>
-      <Left>
-        <Image src={`../images/pending.svg`} />
-      </Left>
-      <Right>Your withdrawl of 100 DAI is pending</Right>
-      <A href="#">Etherscan</A>
-    </Container>
-
-    <Container>
-      <Left>
-        <Image src={`../images/rejected.svg`} />
-      </Left>
-      <Right>Your withdrawl of 100 DAI was rejected</Right>
-      <A href="#">Etherscan</A>
-    </Container>
-
-    <Container>
-      <Left>
-        <Image src={`../images/approved.svg`} />
-      </Left>
-      <Right>Your withdrawl of 100 DAI was approved</Right>
-      <A href="#">Etherscan</A>
-    </Container>
+      <Container>
+        <Left>
+          <Image src={statusImages[status]} />
+        </Left>
+        <Right>Your {method} is {tx.status}</Right>
+        <A target="_blank" href={explorerURL}>Etherscan</A>
+      </Container>
     </span>
   );
 };
+
+NotificationCard.propTypes = {
+  status: PropTypes.oneOf(["approved", "rejected", "pending"]).isRequired
+}
 
 export default NotificationCard;
