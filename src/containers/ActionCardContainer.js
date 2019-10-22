@@ -26,7 +26,7 @@ class ActionCardContainer extends React.Component {
     this.context.setRecipe(key);
     
     if(this.context.DDAI.TotalBalance == 0) {
-      this.props.history.push("/invest");
+      this.props.history.push("/deposit");
     } else {
       await Wallet.ddai.setRecipes(key);
       this.props.history.push("/overview");
