@@ -71,6 +71,12 @@ const methods = {
   "0x40c10f19": {
     "name": "deposit",
   },
+  "0x1e9a6950": {
+    "name": "withdraw",
+  },
+  "0x21edf266": {
+    "name": "claim interest"
+  },
   "unknown": {
     "name": "unknown method",
   }
@@ -89,10 +95,10 @@ const NotificationCard = props => {
   }
   
   let method;
-  if(!tx.input || methods[tx.input] == undefined){
+  if(!tx.input || methods[tx.input.substring(0, 10)] == undefined){
     method = methods["unknown"];
   } else {
-    method = methods[tx.input.substring(0, 9)];  
+    method = methods[tx.input.substring(0, 10)];  
   }
   console.log(method);
   
@@ -109,7 +115,7 @@ const NotificationCard = props => {
         <Left>
           <Image src={statusImages[status]} />
         </Left>
-        <Right>Your {method} is {tx.status}</Right>
+        <Right>Your {method.name} is {status}</Right>
         <A target="_blank" href={explorerURL}>Etherscan</A>
       </Container>
     </span>

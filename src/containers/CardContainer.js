@@ -151,7 +151,7 @@ class CardReceiveTokenContainer extends Component {
         
         <CardAPR currentRate={DDAI.Apr}/>
         
-        <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe} />
+        <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe || this.context.DDAI.Recipe} />
 
         {/* <CardSelectRecipe onChange={this.handleChangeRecipe.bind(this)} /> */}
 

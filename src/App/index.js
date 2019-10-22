@@ -44,8 +44,6 @@ class App extends Component {
         transactions: Wallet.Rx.poolMap
       }
     }))
-
-    console.log(Wallet.Rx);
   }
 
   setRecipe = (recipe) => {
