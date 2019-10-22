@@ -31,7 +31,7 @@ class DDAI extends BasePlugin {
     constructor(walletInstance) {
         super(walletInstance);
 
-        this.contractAddress = '0x6bC02fa19c70E48c040de354aF3E3f56E86e2930';
+        this.contractAddress = '0x6aa2e961b38edD0C2C981B6a583f5fCdd3E37ccA';
         this.instance = new this.W.web3.eth.Contract(DDAIArtifact.compilerOutput.abi, this.contractAddress);
         this.mockdai = new this.W.web3.eth.Contract(MockDai.compilerOutput.abi, mockDaiAddress);
     }
@@ -77,6 +77,20 @@ class DDAI extends BasePlugin {
         });
         return tx;
     }
+
+    async mintAndDistribute(amount) {
+        // function mintAndDistribute(address _receiver, uint256 _amount) public {
+        if( await this.needAllowance(amount) ) {
+            await this.giveAllowance();
+        }
+
+        const srcAmount = to1e18(amount).toString();
+        const tx = await this.instance.methods.mintAndDistribute(this.W.getAddress(), srcAmount).send({from: this.W.getAddress()}).on('transactionHash', (hash) => {
+            this.W.Rx.add(hash);
+        });
+        return tx;
+    }
+    
 
     async addRecipe() {
         const data = this.W.web3.eth.abi.encodeParameters( 

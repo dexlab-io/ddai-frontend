@@ -1,15 +1,14 @@
 import React from "react";
 import CardContainer from "../../containers/CardContainer";
 
-
-class Deposit extends React.Component {
+class Invest extends React.Component {
 
     render() {
         return(
-            <CardContainer />
+            <CardContainer action="invest" />
         )
     }
 
 }
 
-export default Deposit;
+export default Invest;

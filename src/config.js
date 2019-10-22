@@ -32,7 +32,7 @@ export default {
                 img: "../../images/actionCardEth.png",
                 recipeData: {
                     receivers: [
-                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8"
+                        "0x2714aa3d3c2507569655b6609475e569911cc333"
                     ],
                     data: [
                         "0x000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000{userAddress}"
@@ -48,7 +48,7 @@ export default {
                 img: "../../images/actionCardWbtc.png",
                 recipeData: {
                     receivers: [
-                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8"
+                        "0x2714aa3d3c2507569655b6609475e569911cc333"
                     ],
                     data: [
                         // This is actually MKR, WBTC is not supported on kovan
@@ -65,8 +65,8 @@ export default {
                 img: "../../images/actionCardEthWbtc.png",
                 recipeData: {
                     receivers: [
-                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8",
-                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8"
+                        "0x2714aa3d3c2507569655b6609475e569911cc333",
+                        "0x2714aa3d3c2507569655b6609475e569911cc333"
                     ],
                     data: [
                         "0x000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000{userAddress}",
@@ -86,7 +86,7 @@ export default {
                 img: "../../images/actionCardWbtc.png",
                 recipeData: {
                     receivers: [
-                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8"
+                        "0x2714aa3d3c2507569655b6609475e569911cc333"
                     ],
                     data: [
                         // TODO set KNC address
@@ -105,7 +105,7 @@ export default {
                 // TODO setup data
                 recipeData: {
                     receivers: [
-                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8"
+                        "0x2714aa3d3c2507569655b6609475e569911cc333"
                     ],
                     data: [
                         "0x000000000000000000000000aaf64bfcc32d0f15873a02163e7e500671a4ffcd000000000000000000000000{userAddress}"
@@ -123,7 +123,7 @@ export default {
                 // TODO setup data
                 recipeData: {
                     receivers: [
-                        "0x930B42BaAfe936fB827bd1efd3383d700989F6B8"
+                        "0x2714aa3d3c2507569655b6609475e569911cc333"
                     ],
                     data: [
                         "0x000000000000000000000000aaf64bfcc32d0f15873a02163e7e500671a4ffcd000000000000000000000000{userAddress}"
