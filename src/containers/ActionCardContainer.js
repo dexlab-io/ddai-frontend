@@ -11,12 +11,13 @@ const config = CONF[CONF.selectedNetwork];
 const Container = styled.div`
                       display: flex;
                       flex-direction: row;
-                      align-items: flex-start;
-                      justify-content: flex-start;
+                      align-items: center;
+                      justify-content: center;
                       width: 92%;
                       padding: 2% 4% 0 4%;
                       overflow-x: scroll;
                       overflow-y: hidden;
+                      flex-wrap: wrap;
                       -webkit-overflow-scrolling: touch;
   }
 `;

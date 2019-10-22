@@ -18,7 +18,7 @@ const Logo = props => {
 
   return (
     <LogoContainer>
-      <Image onClick={() => (history.push("/"))} src={`../images/earn-logo.svg`} />
+      <Image onClick={() => (history.push("/"))} src={`../images/dDAILogo.svg`} />
     </LogoContainer>
   );
 };
