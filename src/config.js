@@ -81,7 +81,6 @@ export default {
             KNC: {
                 title: "Earn KNC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to KNC",
-                // TODO update image
                 img: "../../images/actionCardKNC.png",
                 recipeData: {
                     receivers: [
@@ -99,7 +98,6 @@ export default {
             COMPOUNDREPAYDAI: {
                 title: "Repay Compound DAI Loan",
                 description: "Start earning {interestRate}% on DAI while automatically repaying your DAI loan on compound",
-                // TODO update image
                 img: "../../images/actionCardCompoundLoan.png",
                 // TODO setup data
                 recipeData: {
@@ -117,7 +115,6 @@ export default {
             FULCRUMREPAYDAI: {
                 title: "Repay Fulcrum DAI loan",
                 description: "Start earning {interestRate}% on DAI while automatically repaying your DAI loan on Fulcrum",
-                // TODO update image
                 img: "../../images/actionCardFulcrum.png",
                 // TODO setup data
                 recipeData: {

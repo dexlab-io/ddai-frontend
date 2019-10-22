@@ -1,0 +1,122 @@
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+
+const FullWidth = styled.span`
+  padding: 2% 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 0px;
+
+  @media (max-width: 800px) {
+    width: 90%;
+    padding: 2% 5%;
+    text-align: justify;
+  }
+`;
+
+const Container = styled.div`
+  width: 292px;
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--text-prettysmall);
+  padding: 1% 2%;
+  border-radius: 10px;
+  background-color: var(--white);
+  flex: 0 0 auto;
+
+  @media (max-width: 800px) {
+    width: 80%;
+    margin: 0 5%;
+    padding: 1% 5%;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    font-size: var(--text-prettysmall);
+    border-radius: 10px;
+    background-color: var(--white);
+  }
+`;
+
+const Heading = styled.h1`
+  font-size: var(--text-big);
+  text-align: center;
+
+  @media (max-width: 800px) {
+    font-size: var(--text-big-mobile);
+  }
+`;
+
+const SubHeading = styled.h2`
+  font-size: var(--text-medium);
+  font-weight: 300;
+  margin-top: -10px;
+  text-align: center;
+  word-wrap: break-word;
+
+  @media (max-width: 800px) {
+    font-size: var(--text-medium-mobile);
+    font-weight: 300;
+    margin-top: -10px;
+  }
+`;
+
+
+const ColorfulButton = styled.button`
+  width: 100%;
+  padding: 4% 10%;
+  background-color: #f8e71c;
+  color: #000;
+  text-align: center;
+  font-size: var(--font-main-button);
+  font-weight: 700;
+  border-radius: 5px;
+  margin: 0% 0;
+  border: none;
+  transition-property: background-color, color;
+  transition-duration: 0.3s;
+
+  :hover {
+    background-color: #000;
+    color: #f8e71c;
+    cursor: pointer;
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  @media (max-width: 800px) {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 2% 0;
+  }
+`;
+
+const Image = styled.img`
+  width: 120px;
+  text-align: center;
+  margin-bottom: 8%;
+`;
+
+const InstallMetamask = props => {
+  return (
+    <FullWidth>
+    <Container>
+      <Heading>Install Metamask</Heading>
+      <Image src={`../images/metamaskLogo.svg`} />
+      <SubHeading>MetaMask is an extension for accessing Ethereum enabled distributed applications, or "Dapps" in your browser!</SubHeading>
+      <ColorfulButton onClick={props.onPress}>Get Metamask</ColorfulButton>
+    </Container>
+    </FullWidth>
+  );
+};
+
+export default InstallMetamask;
