@@ -46,6 +46,55 @@ const Form = styled.form`
   }
 `;
 
+
+const SelectForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  text-align: right;
+  width: 70px;
+  margin-left: 10px;
+  padding: 21px 6px;
+  }
+
+`;
+
+const Select = styled.select`
+  border:0px solid #F2F2F2;
+  border-radius: 5px;
+  background-color: #F2F2F2;
+  text-align: right;
+  width: 100px;
+  font-size: 14px;
+  }
+
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    font-family: var(--main-font);
+    font-weight: 300;
+    color: var(--light-black);
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  :focus::placeholder {
+    color: transparent;
+  }
+`;
+
+const Option = styled.option`
+  background-repeat:no-repeat;
+  background-position: cover;
+  padding-left:0px;
+  }
+`;
+
+
 const Input = styled.input`
   display: flex;
   width: 74%;
@@ -76,8 +125,8 @@ const ButtonMax = styled.button`
   background: #000;
   color: white;
   font-size: var(--text-small);
-  width: 20%;
-  padding: 2% 3% 2% 6%;
+  width: 50px;
+  padding: 2% 3%;
   margin: 0 3% 0 1%;
   font-weight: 300;
   border-radius: 2px;
@@ -98,6 +147,12 @@ const CardAmount = props => {
     <RowContainer>
       <Left>Amount</Left>
       <Right>
+      <SelectForm>
+          <Select name="token" id="currencies">
+            <Option value="ETH">DAI</Option>
+            <Option value="WBTC">dDAI</Option>
+          </Select>
+        </SelectForm>
         <Form>
           <Input
             type="number"
