@@ -57,7 +57,7 @@ const Image = styled.img`
 const InvestMoreDAI = props => {
   return (
     <a href="#">
-    <Container>
+    <Container onClick={props.onPress}>
             <Left>Invest More DAI</Left>
       <Right>
         <Image src={`../images/r_dai.png`} />

@@ -55,10 +55,10 @@ const CardRecap = (props) => {
       <CardAPR currentRate={DDAI.Apr} />
       <CardReward />
       <CardEarned investmentTokenAmount={DDAI.OutStandingInterest + DDAI.TotalInterest} />
-      <CardTwoButtons onFirstPress={() => history.push("/invest")} firstButtonText="Deposit" secondButtonText="Withdraw" onSecondPress={() => {history.push("/redeem")}}/>
+      <CardTwoButtons onFirstPress={() => history.push("/deposit")} firstButtonText="Deposit" secondButtonText="Withdraw" onSecondPress={() => {history.push("/withdraw")}}/>
       <PrimaryButton onPress={props.onClaimInterest}>Claim Interest</PrimaryButton>
     </Container>
-    <InvestMoreDAI />
+    <InvestMoreDAI onPress={() => history.push("/invest-more")} />
     </div>
   );
 };

@@ -54,7 +54,8 @@ class CardReceiveTokenContainer extends Component {
     balanceDAI: 0,
     needAllowance: false,
     recipe: config.recipes[Object.keys(config.recipes)[0]],
-    activeRecipes: []
+    activeRecipes: [],
+    useDai: false
   }
 
   async onChangeAmount(e) {
@@ -69,7 +70,12 @@ class CardReceiveTokenContainer extends Component {
         needAllowance
       });
     }
-    
+  }
+
+  onChangeSource = (e) => {
+    this.setState((prevState) => ({
+      useDai: !prevState.useDai
+    }));
   }
 
   async validate() {
@@ -79,11 +85,12 @@ class CardReceiveTokenContainer extends Component {
       case "deposit":
           await this.deposit();
         break;
-      case "initialDeposit":
-          await this.submit();
-        break;
       case "withdraw":
           await this.withdraw();
+        break;
+      case "invest":
+          await this.invest();
+        break;
       default:
         break;
     }
@@ -105,6 +112,11 @@ class CardReceiveTokenContainer extends Component {
     const supplyTx = await Wallet.ddai.redeem(this.state.amount);
   }
 
+  async invest() {
+    if(!Wallet.ddai) return;
+    const tx = await Wallet.ddai.mintAndDistribute(this.state.amount);
+  }
+
   async claim() {
     if(!Wallet.ddai) return;
     const supplyTx = await Wallet.ddai.distributeStack();
@@ -120,6 +132,7 @@ class CardReceiveTokenContainer extends Component {
 
   render() {
     const { amount } = this.state;
+    const { action } = this.props;
     
     if(!this.context.DDAI.TotalBalance) {
       return(<Container>Loading....</Container>)
@@ -129,15 +142,24 @@ class CardReceiveTokenContainer extends Component {
     
     const DDAI = this.context.DDAI;
     let btnLabel;
+    let maxValue;
     
-    switch (this.props.action) {
+    switch (action) {
       case "deposit":
           btnLabel = DDAI.NeedAllowance ? 'Allow & Deposit' : 'Deposit';
+          maxValue = DDAI.BalanceDAI;
         break;
       case "withdraw":
           btnLabel = "Withdraw"
+          maxValue = DDAI.Balance
+        break;
+      case "invest":
+          btnLabel = "Invest"
+          maxValue = DDAI.Balance
+        break;
       default:
     }
+
 
     return (
       <Container>
@@ -146,7 +168,7 @@ class CardReceiveTokenContainer extends Component {
             {activeRecipes.map(this.renderRecipe)}
         </IF> */}
         
-        <CardAmount maxValue={DDAI.BalanceDAI} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
+        <CardAmount maxValue={maxValue} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         
         <CardAPR currentRate={DDAI.Apr}/>
