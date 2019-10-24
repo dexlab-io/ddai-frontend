@@ -6,6 +6,7 @@ import NotificationIcon from "../components/NotificationIcon";
 import U from "../class/utils";
 import Wallet from "../Wallet";
 import SimpleSnackbar from "../components/SimpleSnackbar";
+import NotificationsDrawer from "../components/NotificationsDrawer";
 import { Context } from "../context";
 
 const Container = styled.div`
@@ -74,8 +75,9 @@ class HeaderContainer extends Component {
             label="Connect metamask"
           />
         </IF>
-        <SimpleSnackbar />
-        {/* <NotificationIcon /> */}
+        {/* <SimpleSnackbar /> */}
+        <NotificationIcon onPress={this.context.toggleNotificationsDrawer} />
+        <NotificationsDrawer />
       </Container>
     );
   }
