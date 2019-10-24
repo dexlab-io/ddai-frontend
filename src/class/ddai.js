@@ -31,7 +31,7 @@ class DDAI extends BasePlugin {
     constructor(walletInstance) {
         super(walletInstance);
 
-        this.contractAddress = '0x6aa2e961b38edD0C2C981B6a583f5fCdd3E37ccA';
+        this.contractAddress = '0xca43709f1c865ad79d1c1f7b08d412e4574ae499';
         this.instance = new this.W.web3.eth.Contract(DDAIArtifact.compilerOutput.abi, this.contractAddress);
         this.mockdai = new this.W.web3.eth.Contract(MockDai.compilerOutput.abi, mockDaiAddress);
     }
