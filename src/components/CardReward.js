@@ -65,7 +65,7 @@ const CardReward = props => {
       <Left>Earning Reward</Left>
       <Right>
         <ButtonSmall><Link style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
-        <Image src={`../images/eaBoth.png`} />
+        <Image src={`../images/recap_earhBTCETH.png`} />
       </Right>
     </RowContainer>
   );

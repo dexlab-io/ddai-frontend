@@ -39,7 +39,7 @@ export default {
             ETH4X: {
                 title: "Long ETH x4",
                 description: "Start earning {interestRate}% on DAI while automatically going long x4 on ETH with your gains",
-                img: "../../images/actionCardEth.png",
+                img: "../../images/ethlong4x.png",
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac"
@@ -55,7 +55,7 @@ export default {
             ETHS4X: {
                 title: "Short ETH x4",
                 description: "Start earning {interestRate}% on DAI while automatically going long x4 on ETH with your gains",
-                img: "../../images/actionCardEth.png",
+                img: "../../images/ethshort4x.png",
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac"
@@ -71,7 +71,7 @@ export default {
             SOV: {
                 title: "Store of Value",
                 description: "Start earning {interestRate}% on DAI and convert gains to sBTC and sXAU (synthetix gold)",
-                img: "../../images/actionCardEth.png",
+                img: "../../images/actionCardsBTCsXAU.png",
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac",
@@ -142,7 +142,7 @@ export default {
             XTZ : {
                 title: "Earn sXTZ(Tezos)",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sXTZ on Syntetix",
-                img: "../../images/actionCardCompoundLoan.png",
+                img: "../../images/actionCardsXTZ.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3"
@@ -158,7 +158,7 @@ export default {
             GOLD : {
                 title: "Earn sXAU(Gold)",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sXAU on Syntetix",
-                img: "../../images/actionCardCompoundLoan.png",
+                img: "../../images/actionCardsXAU.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3"
@@ -174,7 +174,7 @@ export default {
             SBTC : {
                 title: "Earn sBTC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sBTC",
-                img: "../../images/actionCardCompoundLoan.png",
+                img: "../../images/actionCardsbtc.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3"
@@ -190,7 +190,7 @@ export default {
             ETHSBTC : {
                 title: "Earn ETH and sBTC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to ETH and sBTC",
-                img: "../../images/actionCardCompoundLoan.png",
+                img: "../../images/actionCardETHsBTC.png",
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb",
@@ -209,7 +209,7 @@ export default {
             ETHMAXI : {
                 title: "ETH Maximalist",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to ETH and iBTC",
-                img: "../../images/actionCardCompoundLoan.png",
+                img: "../../images/actionCardETHiBTC.png",
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb",
@@ -228,7 +228,7 @@ export default {
             BTCMAXI : {
                 title: "BTC Maximalist",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to iETH and sBTC",
-                img: "../../images/actionCardCompoundLoan.png",
+                img: "../../images/actionCardiETHsBTC.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3",
@@ -247,7 +247,7 @@ export default {
             WBTC4X: {
                 title: "Long WBTC x4",
                 description: "Not working on kovan. WBTC is not supported on kovan fulcrum. :(",
-                img: "../../images/actionCardEth.png",
+                img: "../../images/actionCardLong4xBTC.png",
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac"
