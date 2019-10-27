@@ -94,11 +94,11 @@ const Image = styled.img`
 
 const CardAction = props => {
   return (
-    <Container>
+    <Container style={props.disabled ? { filter: "grayscale(100%)" } : {}}>
       <Heading>{props.heading}</Heading>
       <SubHeading>{props.subheading}</SubHeading>
       <Image src={props.url} />
-      <ColorfulButton onClick={props.onPress}>{props.selected ? "Selected" : "Select"}</ColorfulButton>
+      <ColorfulButton onClick={props.disabled ? () => {alert("Recipe disabled for this network")} : props.onPress}>{props.disabled ? "DISABLED" : (props.selected ? "Selected" : "Select")}</ColorfulButton>
     </Container>
   );
 };
