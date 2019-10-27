@@ -8,6 +8,7 @@ export default {
                 title: "Earn DAI",
                 description: "Start earning {interestRate}% on DAI. Your interest is automatically accrued in your wallet",
                 img: "../../images/actionCardDAI.png",
+                imgRecap: "../../images/recap_DAI.png",
                 recipeData: {
                     receivers: [
                         
@@ -24,6 +25,7 @@ export default {
                 title: "Earn Ether",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to ETH",
                 img: "../../images/actionCardEth.png",
+                imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb"
@@ -40,6 +42,7 @@ export default {
                 title: "Long ETH x4",
                 description: "Start earning {interestRate}% on DAI while automatically going long x4 on ETH with your gains",
                 img: "../../images/ethlong4x.png",
+                imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac"
@@ -56,6 +59,7 @@ export default {
                 title: "Short ETH x4",
                 description: "Start earning {interestRate}% on DAI while automatically going long x4 on ETH with your gains",
                 img: "../../images/ethshort4x.png",
+                imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac"
@@ -72,6 +76,7 @@ export default {
                 title: "Store of Value",
                 description: "Start earning {interestRate}% on DAI and convert gains to sBTC and sXAU (synthetix gold)",
                 img: "../../images/actionCardsBTCsXAU.png",
+                imgRecap: "../../images/recap_sXAUsBTC.png",
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac",
@@ -91,6 +96,7 @@ export default {
                 title: "Earn KNC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to KNC",
                 img: "../../images/actionCardKNC.png",
+                imgRecap: "../../images/recap_KNC.png",
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb"
@@ -143,6 +149,7 @@ export default {
                 title: "Earn sXTZ(Tezos)",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sXTZ on Syntetix",
                 img: "../../images/actionCardsXTZ.png",
+                imgRecap: "../../images/recap_sXTZ.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3"
@@ -159,6 +166,7 @@ export default {
                 title: "Earn sXAU(Gold)",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sXAU on Syntetix",
                 img: "../../images/actionCardsXAU.png",
+                imgRecap: "../../images/recap_sXAU.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3"
@@ -175,6 +183,7 @@ export default {
                 title: "Earn sBTC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sBTC",
                 img: "../../images/actionCardsbtc.png",
+                imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3"
@@ -191,6 +200,7 @@ export default {
                 title: "Earn ETH and sBTC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to ETH and sBTC",
                 img: "../../images/actionCardETHsBTC.png",
+                imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb",
@@ -210,6 +220,7 @@ export default {
                 title: "ETH Maximalist",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to ETH and iBTC",
                 img: "../../images/actionCardETHiBTC.png",
+                imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb",
@@ -229,6 +240,7 @@ export default {
                 title: "BTC Maximalist",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to iETH and sBTC",
                 img: "../../images/actionCardiETHsBTC.png",
+                imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
                     receivers: [
                         "0x12e9dab2980635b0037751679cd364b93b969de3",

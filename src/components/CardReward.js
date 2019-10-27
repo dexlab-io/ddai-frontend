@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Context } from "../context";
+import CONF from '../config';
+const config = CONF[CONF.selectedNetwork];
 
 const RowContainer = styled.span`
   display: flex;
@@ -60,15 +63,18 @@ const ButtonSmall = styled.button`
 `;
 
 const CardReward = props => {
+  const context = useContext(Context);
+
   return (
     <RowContainer>
       <Left>Earning Reward</Left>
       <Right>
         <ButtonSmall><Link style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
-        <Image src={`../images/recap_earhBTCETH.png`} />
+        <Image src={context.DDAI.Recipe ? config.recipes[context.DDAI.Recipe].imgRecap : ""} />
       </Right>
     </RowContainer>
   );
 };
+
 
 export default CardReward;
