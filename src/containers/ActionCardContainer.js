@@ -51,6 +51,7 @@ class ActionCardContainer extends React.Component {
               recipeKey={recipe.key}
               url={recipe.img}
               heading={recipe.title}
+              disabled={recipe.disabled}
               subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr)}
               onPress={this.handleRecipeSelected(key)}
               selected={key == this.context.selectedRecipe ? true : false}
