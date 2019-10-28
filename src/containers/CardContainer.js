@@ -1,17 +1,11 @@
 import React ,{ Component } from "react";
 import styled from "styled-components";
-
-import { compareAddresses } from 'eth-dexcore-js';
-import find from 'lodash/find';
 import CardAmount from "../components/CardAmount";
 import CardInvestmentToken from "../components/CardInvestmentToken";
 import CardAPR from "../components/CardAPR";
-import CardOneButton from "../components/CardOneButton";
-import CardSelectRecipe from "../components/CardSelectRecipe";
+import { CardOneButton, } from "../components";
 import CardSelectedRecipe from "../components/CardSelectedRecipe";
-import { IF } from "../components";
 import Wallet from '../Wallet';
-import U from '../class/utils';
 import CONF from '../config';
 import { Context } from "../context";
 import PropTypes  from "prop-types";
@@ -155,7 +149,7 @@ class CardReceiveTokenContainer extends Component {
         break;
       case "invest":
           btnLabel = "Invest"
-          maxValue = DDAI.Balance
+          maxValue = DDAI.BalanceDAI
         break;
       default:
     }
@@ -163,30 +157,11 @@ class CardReceiveTokenContainer extends Component {
 
     return (
       <Container>
-
-        {/* <IF what={activeRecipes.length > 0}>
-            {activeRecipes.map(this.renderRecipe)}
-        </IF> */}
-        
         <CardAmount maxValue={maxValue} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
-        
         <CardAPR currentRate={DDAI.Apr}/>
-        
         <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe || this.context.DDAI.Recipe} />
-
-        {/* <CardSelectRecipe onChange={this.handleChangeRecipe.bind(this)} /> */}
-
         <CardOneButton onPress={ () => this.validate()} label={btnLabel} />
-
-        {/* <IF what={dDaiBalance > 0}>
-          <CardOneButton onPress={ () => this.withdraw()} label={'Withdraw'} />
-        </IF>
-
-        <IF what={dDaiBalance > 0}>
-          <CardOneButton onPress={ () => this.claim()} label={'Claim Interest'} />
-        </IF> */}
-        
       </Container>
     );
   }

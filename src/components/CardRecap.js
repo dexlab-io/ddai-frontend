@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import CardInvestmentToken from "../components/CardInvestmentToken";
+import { CardInvestmentToken, IF } from "../components";
 import CardAPR from "../components/CardAPR";
 import CardEarned from "../components/CardEarned";
 import CardInvestmentAmount from "./CardInvestmentAmount";
 import CardReward from "./CardReward";
 import CardTwoButtons from "./CardTwoButtons";
 import { Context } from "../context";
-import PrimaryButton from "./PrimaryButton";
+import SecondaryButton from "./SecondaryButton";
 import InvestMoreDAI from "./InvestMoreDAI";
 import { useHistory } from "react-router-dom";
 
+const Center = styled.div`
+  margin: 0 auto;
+`;
 const Container = styled.div`
   width: 42%;
   margin: 2% 27%;
@@ -38,27 +41,25 @@ const Container = styled.div`
 const CardRecap = (props) => {
   const context = useContext(Context);
   const history = useHistory();
-
-  if(context.DDAI.Balance == undefined) {
-    return(
-      <span>Loading....</span>
-    )
-  }
-
   const DDAI = context.DDAI;
 
   return (
     <div>
-    <Container>
-      <CardInvestmentAmount investmentTokenAmount={parseFloat(DDAI.TotalBalance).toFixed(2)} />
-      <CardInvestmentToken  />
-      <CardAPR currentRate={DDAI.Apr} />
-      <CardReward />
-      <CardEarned investmentTokenAmount={DDAI.OutStandingInterest + DDAI.TotalInterest} />
-      <CardTwoButtons onFirstPress={() => history.push("/deposit")} firstButtonText="Deposit" secondButtonText="Withdraw" onSecondPress={() => {history.push("/withdraw")}}/>
-      <PrimaryButton onPress={props.onClaimInterest}>Claim Interest</PrimaryButton>
-    </Container>
-    <InvestMoreDAI onPress={() => history.push("/invest-more")} />
+      <Center>
+        <InvestMoreDAI label={"Change recipe"} onPress={() => history.push("/recipes")} />
+      </Center>
+      <Container>
+        <IF what={context.DDAI.Balance == undefined}>
+              Loading ⏳
+        </IF>
+        <CardEarned investmentTokenAmount={DDAI.OutStandingInterest + DDAI.TotalInterest} />
+        <CardInvestmentAmount investmentTokenAmount={parseFloat(DDAI.TotalBalance).toFixed(2)} />
+        <CardAPR currentRate={DDAI.Apr} />
+        <CardReward />
+        <CardTwoButtons onFirstPress={props.onClaimInterest} firstButtonText="Claim Interest" secondButtonText="Withdraw" onSecondPress={() => {history.push("/withdraw")}}/>
+      </Container>
+      <InvestMoreDAI onPress={() => history.push("/invest-more")} />
+      
     </div>
   );
 };

@@ -21,6 +21,7 @@ const Right = styled.span`
   flex-direction: row-reverse;
   padding: 1.5% 0;
   align-items: center;
+  font-size: 27px;
 `;
 
 const CardEarned = props => {

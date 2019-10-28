@@ -44,8 +44,7 @@ const ConnectedAddress = styled.span`
 const Web3Button = props => {
   return (
     <Web3ButtonConnected>
-      <ConnectedAddress>{props.address} ❇️ Mainnet</ConnectedAddress>
-      {/* <ConnectedMainnet>❇️ Mainnet</ConnectedMainnet> */}
+      <ConnectedAddress>{props.address} ❇️ Kovan</ConnectedAddress>
     </Web3ButtonConnected>
   );
 };

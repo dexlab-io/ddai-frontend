@@ -1,16 +1,17 @@
 import React from 'react';
-import { PageHeading, CardOneButton, IF } from "../../components";
+import { InvestMoreDAI } from "../../components";
 import CardContainer from "../../containers/CardContainer";
+import { useHistory } from "react-router-dom";
 
-class Withdraw extends React.Component {
-    render() {
-        return(
-            <>
-                <CardContainer action="withdraw" />
-            </>
-        )
-    }
 
+const Redeem = (props) => {
+    const history = useHistory();
+    return(
+        <div>
+            <InvestMoreDAI label={"Go to Overview"} onPress={() => history.push("/overview")} />
+            <CardContainer action="withdraw" />
+        </div>
+    )
 }
 
-export default Withdraw;
+export default Redeem;

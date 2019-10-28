@@ -67,7 +67,7 @@ const CardReward = props => {
 
   return (
     <RowContainer>
-      <Left>Earning Reward</Left>
+      <Left>Earning Reward in {context.DDAI.Recipe}</Left>
       <Right>
         <ButtonSmall><Link style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
         <Image src={context.DDAI.Recipe ? config.recipes[context.DDAI.Recipe].imgRecap : ""} />

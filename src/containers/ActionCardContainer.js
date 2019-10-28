@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CardAction from "../components/CardAction";
+import { CardAction, IF, InvestMoreDAI } from "../components";
 import { Context } from "../context";
 import { withRouter } from "react-router-dom";
 import Wallet from '../Wallet';
@@ -24,6 +24,12 @@ const Container = styled.div`
 
 class ActionCardContainer extends React.Component {
   handleRecipeSelected = (key) => async () => {
+    const isLoading = this.context.DDAI.Apr == undefined;
+    if(isLoading) {
+      alert('Please install Metamask first');
+      return;
+    }
+
     this.context.setRecipe(key);
     
     if(this.context.DDAI.TotalBalance == 0) {
@@ -35,30 +41,40 @@ class ActionCardContainer extends React.Component {
 
   }
 
-  render() {
+  goOverview() {
+    console.log('overview')
+    this.props.history.push("/overview")
+    console.log('overview')
+  }
 
-    if(this.context.DDAI.Apr == undefined) {
-      return "Loading....";
-    }
+  render() {
+  
+    const isLoading = this.context.DDAI.Apr == undefined;
+    console.log('this.context.selectedRecipe', this.context)
 
     return (
-      <Container>
-        {Object.keys(config.recipes).map((key, index) => {
-          const recipe = config.recipes[key];
-          return (
-            <CardAction 
-              key={key}
-              recipeKey={recipe.key}
-              url={recipe.img}
-              heading={recipe.title}
-              disabled={recipe.disabled}
-              subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr)}
-              onPress={this.handleRecipeSelected(key)}
-              selected={key == this.context.selectedRecipe ? true : false}
-            />
-          )
-        })}
-      </Container>
+      <React.Fragment>
+        <IF what={this.context.DDAI.TotalBalance > 0}>
+            <InvestMoreDAI onPress={() => this.goOverview()} label={"Go to Overview"}/>
+        </IF>
+        <Container>
+          {Object.keys(config.recipes).map((key, index) => {
+            const recipe = config.recipes[key];
+            return (
+              <CardAction 
+                key={key}
+                recipeKey={recipe.key}
+                url={recipe.img}
+                heading={recipe.title}
+                disabled={recipe.disabled}
+                subheading={recipe.description.replace("{interestRate}", this.context.DDAI.Apr ? this.context.DDAI.Apr : 2)}
+                onPress={this.handleRecipeSelected(key)}
+                selected={key == this.context.selectedRecipe ? true : false}
+              />
+            )
+          })}
+        </Container>
+      </React.Fragment>
     );
   }
 }
