@@ -15,6 +15,8 @@ class App extends Component {
       context: {
         ...ContextDefaults,
         setRecipe: this.setRecipe,
+        toggleNotificationsDrawer: this.toggleNotificationsDrawer,
+        closeNotificationsDrawer: this.closeNotificationsDrawer,
         selectedRecipe: "",
       }
     }
@@ -25,7 +27,7 @@ class App extends Component {
       this.refresh();
     });
 
-    setInterval(() => {
+  setInterval(() => {
       this.refresh()
     }, 2000);
   }
@@ -38,7 +40,8 @@ class App extends Component {
     this.setState((prevState) => ({
       context: {
         ...prevState.context,
-        DDAI: data
+        DDAI: data,
+        transactions: Wallet.Rx.poolMap
       }
     }))
   }
@@ -52,10 +55,25 @@ class App extends Component {
     }))
   }
 
-  render() {
-    // this.state.context.setRecipe("LOL");
-    console.log(this.state.context);
+  closeNotificationsDrawer = () => {
+    this.setState((prevState => ({
+      context:{
+        ...prevState.context,
+        notificationDrawerOpen: false
+      }
+    })))
+  }
 
+  toggleNotificationsDrawer = () => {
+    this.setState((prevState => ({
+      context:{
+        ...prevState.context,
+        notificationDrawerOpen: !prevState.context.notificationDrawerOpen
+      }
+    })))
+  }
+
+  render() {
     return (
       <Context.Provider value={this.state.context}>
         <div>

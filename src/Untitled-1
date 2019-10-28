@@ -1,0 +1,20 @@
+MacBook-Pro-van-Mick-3:migrations mickdegraaf$ yarn migrate:using-env
+yarn run v1.15.2
+$ USE_CONFIG=1 yarn migrate
+$ ts-node ./src/run.ts
+Starting Migrations
+Using DAI deployed at: 0xC4375B7De8af5a38a93548eb8453a498222C4fF2
+Deployed MockRep at: 0x917d6fa9af3c1b0cf75da59fbee859bcc353072c
+Using Fulcrum IDAI deployed at: 0xA1e58F3B1927743393b25f261471E1f2D3D9f0F6
+Deployed mockCDai at: 0x6b35a9136c8725547c0c6609a4b750c3cc69b0b8
+Deployed mockCEth at: 0x888f83ec4b084f77384a5d3782a36d4cb9665037
+Deployed mockCrep at: 0x33d77e422b0613cae24bf47db497c6d33221cf18
+Using Kyber network deployed at: 0x692f391bCc85cefCe8C237C01e1f636BbD70EA4D
+Deployed DDAI at: 0x9ee09f6564a5241508029f9451558dd58d3b957b
+Deployed CompoundRepayRecipe at: 0x4c917fcf98fe4dd9d3638e5285f4e725e3b63905
+Deployed MockRecipe: 0x572610cb3d00063fb59bb58807069003284228d6
+Deployed BuyTokenRecipe: 0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb
+Deployed buyPTokenRecipe: 0xfa60c27d0f894df8f1cf3b919be49099b09e6cac
+Deployed BuySynthRecipe: 0x12e9dab2980635b0037751679cd364b93b969de3
+✨  Done in 58.79s.
+MacBook-Pro-van-Mick-3:migrations mickdegraaf$  

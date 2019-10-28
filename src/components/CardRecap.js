@@ -60,6 +60,7 @@ const CardRecap = (props) => {
         <SecondaryButton onPress={props.onClaimInterest}>Claim Interest</SecondaryButton>
         
       </Container>
+      <InvestMoreDAI onPress={() => history.push("/invest-more")} />
     </div>
   );
 };
