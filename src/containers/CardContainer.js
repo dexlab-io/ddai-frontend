@@ -149,7 +149,7 @@ class CardReceiveTokenContainer extends Component {
         break;
       case "invest":
           btnLabel = "Invest"
-          maxValue = DDAI.Balance
+          maxValue = DDAI.BalanceDAI
         break;
       default:
     }
@@ -157,7 +157,7 @@ class CardReceiveTokenContainer extends Component {
 
     return (
       <Container>
-        <CardAmount maxValue={DDAI.BalanceDAI} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
+        <CardAmount maxValue={maxValue} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         <CardAPR currentRate={DDAI.Apr}/>
         <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe || this.context.DDAI.Recipe} />

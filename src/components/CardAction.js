@@ -93,13 +93,23 @@ const Image = styled.img`
 `;
 
 const CardAction = props => {
-  console.log('props', props);
+  console.log('props', props)
   return (
     <Container style={props.disabled ? { filter: "grayscale(100%)" } : {}}>
       <Heading>{props.heading}</Heading>
       <SubHeading>{props.subheading}</SubHeading>
       <Image src={props.url} />
-      <ColorfulButton onClick={props.disabled ? () => {alert("Recipe disabled for this network")} : props.onPress}>{props.disabled ? "DISABLED" : (props.selected ? "Selected" : "Select")}</ColorfulButton>
+      <ColorfulButton onClick={() => {
+        if(props.disabled) {
+          alert("Recipe disabled for this network");
+        } else if(props.selected) {
+          alert(`It's already selected :)`);
+        } else {
+          props.onPress()
+        }
+        }}>
+        {props.disabled ? "DISABLED" : (props.selected ? "Selected" : "Select")}
+      </ColorfulButton>
     </Container>
   );
 };

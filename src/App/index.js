@@ -36,12 +36,13 @@ class App extends Component {
     if(!Wallet.ddai) return;
 
     const data = await Wallet.ddai.getState();
-
+    console.log('data', data)
     this.setState((prevState) => ({
       context: {
         ...prevState.context,
         DDAI: data,
-        transactions: Wallet.Rx.poolMap
+        transactions: Wallet.Rx.poolMap,
+        selectedRecipe: data.Recipe
       }
     }))
   }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Container = styled.button`
-  width: 42%;
+  width: 46%;
   margin: 2% 27%;
   display: flex;
   flex-direction: row;
