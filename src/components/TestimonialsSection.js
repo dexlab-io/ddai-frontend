@@ -24,19 +24,19 @@ function TestimonialsSection(props) {
               link: "https://twitter.com/mw_burgess/status/1189257050699849734?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1189257050699849734&ref_url=https%3A%2F%2Fpublish.twitter.com%2F%3Fquery%3Dhttps%253A%252F%252Ftwitter.com%252Fmw_burgess%252Fstatus%252F1189257050699849734%26widget%3DTweet"
             },
             {
-              avatar: "https://uploads.divjoy.com/pravatar-150x-48.jpeg",
-              name: "Shawna Murray",
+              avatar: "https://pbs.twimg.com/profile_images/1170881713926365184/gI59qCJT_400x400.jpg",
+              name: "Kain Warwick",
               quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo, corporis totam!",
-              company: "Company"
+                "This is an amazing DeFi mashup. Love the eth maxi recipe, short BTC and long ETH.",
+              company: "Synthetix.io"
             },
             {
-              avatar: "https://uploads.divjoy.com/pravatar-150x-12.jpeg",
-              name: "Blake Elder",
+              avatar: "https://pbs.twimg.com/profile_images/1184083008242016258/mlQ4vHYC_400x400.jpg",
+              name: "Emiliano Bonassi",
               quote:
-                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae.",
-              company: "Company"
-            }
+                "dDai is really the equivalent of  IFTTT for the DeFi. This ecosystem is the next big thing! Thanks to Compound.finance, b0xNet, synthetix_io and KyberSwap for building the atoms of the #DeFi",
+              company: "Eidoo"
+            },
           ]}
         />
       </div>
