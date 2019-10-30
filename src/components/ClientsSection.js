@@ -6,7 +6,7 @@ import Clients from "./Clients";
 function ClientsSection(props) {
   return (
     <Section color={props.color} size={props.size}>
-      <div className="container">
+      <div >
         <SectionHeader
           title={props.title}
           subtitle={props.subtitle}
@@ -35,6 +35,11 @@ function ClientsSection(props) {
               image: "../images/synthetix.png",
               width: "180px"
             },
+            {
+            name: "Bzx",
+            image: "../images/bzxlogo.svg",
+            width: "120px"
+          },
           ]}
         />
       </div>
