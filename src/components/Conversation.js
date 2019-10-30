@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Section from "./Section";
 import styled from "styled-components";
 import TextLoop from "react-text-loop";
@@ -94,26 +94,48 @@ const RecipesCustom = styled.select`
   :focus {
     outline: none;
   }
+
+  background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 16px 6px;
+  background-repeat: repeat-x;
+  max-width: 342px;
 `;
 
 const OptionCustom = styled.option`
-color: #000000;
+  color: #000000;
 `;
 
-
-
-
-
 const Input = styled.input`
-  display: flex;
-  background-color: #f2f2f2;
-  padding: 20px 15px;
-  border: none;
-  font-size: 1rem;
+  background: transparent;
+  border: 0px;
+  border-radius: 5px;
+  text-align: right;
+  font-size: 3em;
+  color: black;
+  font-weight: 700;
+  margin: 0;
+  -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    /* border-bottom: 4px dotted #000; */
+    text-decoration:underline;
+    text-decoration-style: dotted;
+
+
+
+  :focus {
+    outline: none;
+  }
+
+  background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+  background-position: bottom;
+  background-size: 16px 6px;
+  background-repeat: repeat-x;
+  max-width: 200px;
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    font-size: 1.2rem;
     font-weight: 300;
     color: #000000;
   }
@@ -129,7 +151,7 @@ const Input = styled.input`
 
   input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
-}
+
 `;
 
 const DaiLogo = styled.img`
@@ -137,7 +159,30 @@ const DaiLogo = styled.img`
   margin-right: 15px;
 `;
 
+const Button = styled.button`
+    background: transparent;
+    border: 0px;
+    border: 0px solid #ffffff;
+    border-radius: 5px;
+    background-color: #ffffff;
+    text-align: right;
+    font-size: 16px;
+    color: black;
+    font-weight: 700;
+    margin: 0;
+    -moz-appearance:none; /* Firefox */
+      -webkit-appearance:none; /* Safari and Chrome */
+      appearance:none;
+      /* border-bottom: 4px dotted #000; */
+      text-decoration:underline;
+      text-decoration-style: dotted;
+    :focus {
+      outline: none;
+    }
+`;
+
 function Conversation(props) {
+  const [selectOpen, setSelectOpen] = useState(false);
   return (
     <Section color={props.color} size={props.size}>
       <div className="container">
@@ -146,14 +191,14 @@ function Conversation(props) {
           <Text>want </Text>
           <Text>to </Text>
           <Text>gain </Text>
-          <TextLoop interval={500} className='textloop'>
-          <Text>🤑 </Text>
-          <Text>💳 </Text>
-          <Text>💵 </Text>
-          <Text>💶 </Text>
-          <Text>💲 </Text>
-          <Text>💹 </Text>                 
-           </TextLoop>
+          {/* <TextLoop interval={500} className='textloop'>
+            <Text>🤑 </Text>
+            <Text>💳 </Text>
+            <Text>💵 </Text>
+            <Text>💶 </Text>
+            <Text>💲 </Text>
+            <Text>💹 </Text>                 
+          </TextLoop> */}
           <APR>9,5% </APR>
           <Text>per year </Text>
           <Text>by depositing </Text>
@@ -168,32 +213,43 @@ function Conversation(props) {
           </Form>
           <DaiLogo src='../images/daiIcon.svg'></DaiLogo>
           <Text>DAI </Text>
-          {/* <Form>
-            <Select name="token" id="currencies" className="icon-menu">
-              <Option>DAI</Option>
-              <Option>ETH</Option>
-            </Select>
-          </Form> */}
           <Text>and </Text>
           <Text>automatically </Text>
           <Text>reinvest </Text>
           <Text>my </Text>
           <Text>earnings </Text>
           <Text>in</Text>
-          {/* <Form>
-            <Recipes name="token" id="currencies" className="icon-menu">
-            <Option>Select Recipe ...</Option>
-              <Option>ETH + BTC</Option>
-              <Option>Repay Compound Loan</Option>
-            </Recipes>
-          </Form> */}
           <FormCustom>
-            <RecipesCustom name="token" id="currencies" className="icon-menu">
-            <OptionCustom>ETH Maximalist</OptionCustom>
-              <OptionCustom>ETH + BTC</OptionCustom>
-              <OptionCustom>Repay Compound Loan</OptionCustom>
-            </RecipesCustom>
-          </FormCustom>
+            { !selectOpen ?
+              <Button onClick={(e) => {
+                e.preventDefault();
+                setSelectOpen(true);
+                }} >
+                <TextLoop interval={500} className='textloop'>
+                  <Text>ETH</Text>
+                  <Text>ETH + BTC</Text>
+                  <Text>GOLD</Text>
+                  <Text>Short ETH x4</Text>
+                  <Text>Repay Compound Loan</Text>
+                  <Text>Long ETH x4</Text>        
+                  <Text>Short ETH x4</Text>        
+                  <Text>BTC + GOLD</Text>        
+                  <Text>KNC</Text>        
+                  <Text>Bitcoin</Text>
+                  <Text>Long ETH + Short BTC</Text>
+                  <Text>Long BTC + Short ETH</Text>
+
+                </TextLoop>
+              </Button>
+            :
+              <RecipesCustom name="token" id="currencies" className="icon-menu">
+                <OptionCustom>ETH Maximalist</OptionCustom>
+                  <OptionCustom>ETH + BTC</OptionCustom>
+                  <OptionCustom>Repay Compound Loan</OptionCustom>
+
+              </RecipesCustom>
+            }
+            </FormCustom>
         </Container>
       </div>
     </Section>
