@@ -16,7 +16,6 @@ import CONF from '../config';
 const config = CONF[CONF.selectedNetwork];
 
 const Container = styled.div`
-  width: 42%;
   margin: 0 27%;
   display: flex;
   flex-direction: column;

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Section from "./Section";
 import styled from "styled-components";
 import TextLoop from "react-text-loop";
-
+import SectionButton from "./SectionButton";
+import { Link, useRouter } from "./../util/router.js";
 
 const Text = styled.span`
   font-size: 3em;
@@ -24,6 +25,11 @@ const Container = styled.span`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+`;
+
+const Center = styled(Container)`
+  display: flex;
+  justify-content: center;
 `;
 
 const Form = styled.form`
@@ -181,8 +187,40 @@ const Button = styled.button`
     }
 `;
 
+const CtaButton = styled.button`
+    display: flex;
+    margin-top: 30px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px;
+    background: #F00093;
+    border: solid 1px #fff;
+    color: #fff; 
+    border-radius: 5px;
+      
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 32rem;
+    font-size: 31px;
+    font-weight: 700;
+
+    @media (max-width: 980px) {
+      max-width: 17rem;
+    }
+
+    @media (max-width:640px) {
+      max-width: 15rem;
+    }
+
+    @media (max-width:460px) {
+      max-width: 12rem;
+    }
+`;
+
 function Conversation(props) {
   const [selectOpen, setSelectOpen] = useState(false);
+  const router = useRouter();
   return (
     <Section color={props.color} size={props.size}>
       <div className="container">
@@ -251,6 +289,18 @@ function Conversation(props) {
             }
             </FormCustom>
         </Container>
+        
+        <Center>
+          <CtaButton
+                  parentColor={props.color}
+                  size="normal"
+                  onClick={() => {
+                    router.push("/recipes");
+                  }}
+                >
+                  Start earning now
+            </CtaButton>
+        </Center>
       </div>
     </Section>
   );

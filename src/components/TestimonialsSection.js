@@ -16,11 +16,12 @@ function TestimonialsSection(props) {
         <Testimonials
           items={[
             {
-              avatar: "https://uploads.divjoy.com/pravatar-150x-5.jpeg",
-              name: "Sarah Kline",
+              avatar: "https://pbs.twimg.com/profile_images/1016178318251560962/kOOtikO6_400x400.jpg",
+              name: "Michael Burgess",
               quote:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-              company: "Company"
+                "Have been waiting for something like this... It's the next evolutionary step for #defi composability and will have a profound impact on the space. As a product, this far exceeds what available in legacy finance. 👏 ",
+              company: "Ren Protocol",
+              link: "https://twitter.com/mw_burgess/status/1189257050699849734?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1189257050699849734&ref_url=https%3A%2F%2Fpublish.twitter.com%2F%3Fquery%3Dhttps%253A%252F%252Ftwitter.com%252Fmw_burgess%252Fstatus%252F1189257050699849734%26widget%3DTweet"
             },
             {
               avatar: "https://uploads.divjoy.com/pravatar-150x-48.jpeg",

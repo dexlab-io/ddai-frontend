@@ -8,10 +8,10 @@ const NavBarItem = styled.div`
 `;
 
 const Logo = styled.img`
-height: 80px;
+  height: 80px;
 
-@media (max-width: 1000px) {
-margin: 20px;
+  @media (max-width: 1000px) {
+    margin: 20px;
   }
 `;
 
