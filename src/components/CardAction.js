@@ -10,7 +10,8 @@ const Container = styled.div`
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
   border-radius: 10px;
-  background-color: var(--white);
+  background-color: #fff;
+  border: 1px solid #827f7f;
   flex: 0 0 auto;
 
   @media (max-width: 800px) {
@@ -29,7 +30,7 @@ const Container = styled.div`
 const Heading = styled.h1`
   font-size: var(--text-big);
   text-align: center;
-
+  margin-bottom: 10px;
   @media (max-width: 800px) {
     font-size: var(--text-big-mobile);
   }

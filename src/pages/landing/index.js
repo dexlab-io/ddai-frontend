@@ -27,14 +27,14 @@ function IndexPage(props) {
         title="Here's what people are saying"
         subtitle=""
       />
-      <ContactSection
+      {/* <ContactSection
         color="white"
         size="medium"
         title="Contact Us"
         subtitle=""
         showNameField={true}
         buttonText="Send message"
-      />
+      /> */}
       <Footer
         color="white"
         size="medium"

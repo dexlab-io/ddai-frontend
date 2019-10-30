@@ -39,15 +39,15 @@ function Navbar(props) {
         </div>
         <div className={"navbar-menu" + (menuOpen ? " is-active" : "")}>
           <div className="navbar-end">
-            <Link className="navbar-item" to="/about">
-              About
-            </Link>
-            <Link className="navbar-item" to="/pricing">
+            <a className="navbar-item" href="https://devpost.com/software/ddai">
+              Devpost
+            </a>
+            <a className="navbar-item" href="https://www.dexwallet.io">
               Dexwallet
-            </Link>
-            <Link className="navbar-item" to="/faq">
+            </a>
+            {/* <Link className="navbar-item" to="/faq">
               FAQ
-            </Link>
+            </Link> */}
 
             <div className="navbar-item">
               <SectionButton

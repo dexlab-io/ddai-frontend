@@ -228,7 +228,7 @@ function Conversation(props) {
           <Text>I </Text>
           <Text>want </Text>
           <Text>to </Text>
-          <Text>gain </Text>
+          <Text>earn up to </Text>
           {/* <TextLoop interval={500} className='textloop'>
             <Text>🤑 </Text>
             <Text>💳 </Text>
@@ -237,18 +237,18 @@ function Conversation(props) {
             <Text>💲 </Text>
             <Text>💹 </Text>                 
           </TextLoop> */}
-          <APR>9,5% </APR>
+          <APR>10% </APR>
           <Text>per year </Text>
           <Text>by depositing </Text>
-          <Text>🏦 </Text>
-          <Form>
+          <Text>🏦 $100</Text>
+          {/* <Form>
             <Input
               type="number"
               value={props.amount}
               onChange={props.onChange}
               placeholder="100"
             ></Input>
-          </Form>
+          </Form> */}
           <DaiLogo src='../images/daiIcon.svg'></DaiLogo>
           <Text>DAI </Text>
           <Text>and </Text>

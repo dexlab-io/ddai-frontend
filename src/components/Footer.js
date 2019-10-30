@@ -36,16 +36,13 @@ function Footer(props) {
                   <p className="menu-label">Products</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="https://www.dexwallet.io/">Dexwallet</Link>
+                      <a href="https://www.dexwallet.io/">Dexwallet</a>
                     </li>
                     <li>
-                      <Link to="https://defitracker.io/">DeFi Tracker</Link>
+                      <a href="https://defitracker.io/">DeFi Tracker</a>
                     </li>
                     <li>
-                      <Link to="https://dexpay.me/">Dexay</Link>
-                    </li>
-                    <li>
-                      <Link to="https://ddai.netlify.com/">dDAI Advanced</Link>
+                      <a href="https://dexpay.me/">Dexpay</a>
                     </li>
                   </ul>
                 </div>

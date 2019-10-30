@@ -43,7 +43,6 @@ code {
   html,
   body {
     margin: 0;
-    background-color: var(--almost-white);
     font-family: var(--main-font);
     font-weight: 300;
   }

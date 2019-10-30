@@ -4,6 +4,7 @@ import Routes from "../routes";
 import { Context, ContextDefaults } from "../context";
 import Wallet from '../Wallet';
 import "./global.scss";
+import "./styles.css";
 import history from '../history';
 import { Router } from "react-router-dom";
 
