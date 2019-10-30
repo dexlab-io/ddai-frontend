@@ -55,15 +55,15 @@ function Footer(props) {
                   <p className="menu-label">Company</p>
                   <ul className="menu-list">
                     <li>
-                      <Link to="/about">About</Link>
+                      <Link to="https://hackmd.io/@8O08261_SpWdZUBJKxeF5Q/rk7VotSpE?type=view">About</Link>
                     </li>
                     <li>
-                      <Link to="/contact">Contact</Link>
+                      <Link to="founders@dexlab.io">Contact</Link>
                     </li>
                     <li>
                       <a
                         target="_blank"
-                        href="https://medium.com"
+                        href="https://medium.com/dexlab-io"
                         rel="noopener noreferrer"
                       >
                         Blog
@@ -78,28 +78,28 @@ function Footer(props) {
                   <ul className="menu-list">
                     <li>
                       <a
-                        href="https://facebook.com"
+                        href="https://discord.gg/DxttPVm"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <img
-                          src="https://uploads.divjoy.com/icon-facebook.svg"
-                          alt="Facebook"
+                          src="../images/discord.svg"
+                          alt="Discord"
                         />
-                        Facebook
+                        Discord
                       </a>
                     </li>
                     <li>
                       <a
-                        href="https://instagram.com"
+                        href="https://t.me/joindexlab"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <img
-                          src="https://uploads.divjoy.com/icon-instagram.svg"
-                          alt="Instagram"
+                          src="../images/telegram.svg"
+                          alt="Telegram"
                         />
-                        Instagram
+                        Telegram
                       </a>
                     </li>
                     <li>
