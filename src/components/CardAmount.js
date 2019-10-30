@@ -6,6 +6,9 @@ const RowContainer = styled.span`
   display: flex;
   justify-content: space-between;
   padding: 2% 0;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 const Left = styled.span`
   display: flex;

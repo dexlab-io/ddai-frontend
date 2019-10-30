@@ -14,8 +14,8 @@ const Web3ButtonConnected = styled.div`
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: space-between;
-    width: 90%;
+    justify-content: center;
+    width: 100%;
     margin: 2% 0;
   }
 `;
@@ -31,15 +31,7 @@ const ConnectedAddress = styled.span`
   max-width: 32rem;
 
   @media (max-width: 980px) {
-    max-width: 17rem;
-  }
-
-  @media (max-width:640px) {
-    max-width: 15rem;
-  }
-
-  @media (max-width:460px) {
-    max-width: 12rem;
+    width: 50%
   }
 `;
 

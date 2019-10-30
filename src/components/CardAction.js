@@ -15,8 +15,8 @@ const Container = styled.div`
   flex: 0 0 auto;
 
   @media (max-width: 800px) {
-    width: 80%;
-    margin: 0 5%;
+    width: 90%;
+    margin: 5%;
     padding: 1% 5%;
     display: flex;
     flex: 0 0 auto;
@@ -81,9 +81,9 @@ const ColorfulButton = styled.button`
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: space-between;
     width: 100%;
-    margin: 2% 0;
+    justify-content: center;
+    margin: 2%;
   }
 `;
 

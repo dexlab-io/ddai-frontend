@@ -28,7 +28,7 @@ const ButtonMain = styled.button`
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     margin: 2% 0;
   }

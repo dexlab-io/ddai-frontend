@@ -14,17 +14,23 @@ const Text = styled.span`
 `;
 
 const APR = styled.span`
-  font-size: 3em;
+  font-size: 3.3em;
   font-weight: 700;
   margin-right: 15px;
   color: #60E71F;
-  margin-top: 15px;  
+  margin-top: 15px;
 `;
 
 const Container = styled.span`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  @media (max-width: 800px) {
+    margin: 0 20px;
+    letter-spacing: -2px;
+    line-height: 57px;
+  }
 `;
 
 const Center = styled(Container)`
@@ -205,17 +211,6 @@ const CtaButton = styled.button`
     font-size: 31px;
     font-weight: 700;
 
-    @media (max-width: 980px) {
-      max-width: 17rem;
-    }
-
-    @media (max-width:640px) {
-      max-width: 15rem;
-    }
-
-    @media (max-width:460px) {
-      max-width: 12rem;
-    }
 `;
 
 function Conversation(props) {
@@ -225,10 +220,7 @@ function Conversation(props) {
     <Section color={props.color} size={props.size}>
       <div className="container">
         <Container>
-          <Text>I </Text>
-          <Text>want </Text>
-          <Text>to </Text>
-          <Text>earn up to </Text>
+          <Text>I want to earn up to </Text>
           {/* <TextLoop interval={500} className='textloop'>
             <Text>🤑 </Text>
             <Text>💳 </Text>
@@ -238,9 +230,7 @@ function Conversation(props) {
             <Text>💹 </Text>                 
           </TextLoop> */}
           <APR>10% </APR>
-          <Text>per year </Text>
-          <Text>by depositing </Text>
-          <Text>🏦 $100</Text>
+          <Text>per year by depositing 🏦 $100</Text>
           {/* <Form>
             <Input
               type="number"
@@ -250,13 +240,7 @@ function Conversation(props) {
             ></Input>
           </Form> */}
           <DaiLogo src='../images/daiIcon.svg'></DaiLogo>
-          <Text>DAI </Text>
-          <Text>and </Text>
-          <Text>automatically </Text>
-          <Text>reinvest </Text>
-          <Text>my </Text>
-          <Text>earnings </Text>
-          <Text>in</Text>
+          <Text>DAI and automatically reinvest my earnings in </Text>
           <FormCustom>
             { !selectOpen ?
               <Button onClick={(e) => {
@@ -270,12 +254,13 @@ function Conversation(props) {
                   <Text>Short ETH x4</Text>
                   <Text>Repay Compound Loan</Text>
                   <Text>Long ETH x4</Text>        
+                  <Text>BTC + iETH</Text>
                   <Text>Short ETH x4</Text>        
                   <Text>BTC + GOLD</Text>        
                   <Text>KNC</Text>        
                   <Text>Bitcoin</Text>
-                  <Text>Long ETH + Short BTC</Text>
-                  <Text>Long BTC + Short ETH</Text>
+                  <Text>ETH + iBTC</Text>
+                  
 
                 </TextLoop>
               </Button>

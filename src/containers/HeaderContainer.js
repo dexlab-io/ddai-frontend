@@ -28,6 +28,21 @@ const Container = styled.div`
   }
 `;
 
+const Mobilerow = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
 class HeaderContainer extends Component {
   state = {
     walletAddress: null,
@@ -64,6 +79,7 @@ class HeaderContainer extends Component {
        pathname !== '/' ? 
          <Container>
             <Logo />
+            <Mobilerow>
             <TotBalance
               amount={web3available ? "$" +  U.formatFiat(balance): "no wallet connected"}
             />
@@ -78,6 +94,7 @@ class HeaderContainer extends Component {
                 label="Connect metamask"
               />
             </IF>
+            </Mobilerow>
             {/* <SimpleSnackbar /> */}
             <NotificationIcon onPress={this.context.toggleNotificationsDrawer} />
             <NotificationsDrawer />

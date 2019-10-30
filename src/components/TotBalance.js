@@ -11,8 +11,8 @@ const TotBalanceContainer = styled.span`
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: space-between;
-    width: 90%;
+    justify-content: center;
+    width: 70%;
     margin: 2% 0%;
   }
 `;
@@ -44,9 +44,7 @@ const OneDayChange = styled.span`
 const TotBalance = props => {
   return (
     <TotBalanceContainer>
-      <TotBalanceTitle>Tot Balance </TotBalanceTitle>
       <TotBalanceAmount>{props.amount}</TotBalanceAmount>
-      <OneDayChange>{props.OneDayChange}</OneDayChange>
     </TotBalanceContainer>
   );
 };

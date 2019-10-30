@@ -11,6 +11,10 @@ const LogoContainer = styled.div`
 
 const Image = styled.img`
   height: 80px;
+
+  @media (max-width: 800px) {
+    width: 100px;
+  }
 `;
 
 const Logo = props => {
