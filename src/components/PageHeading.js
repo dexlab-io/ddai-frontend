@@ -22,6 +22,7 @@ const Heading = styled.h1`
 
   @media (max-width: 800px) {
     font-size: var(--text-big-mobile);
+    margin-bottom: 20px;
   }
 `;
 
@@ -33,7 +34,8 @@ const SubHeading = styled.h2`
   @media (max-width: 800px) {
     font-size: var(--text-medium-mobile);
     font-weight: 300;
-    margin-top: -10px;
+
+    margin-bottom: 20px;
   }
 `;
 

@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 const LogoContainer = styled.div`
 cursor: pointer
-@media (max-width: 800px) {
-    margin: 2% 0 0 0;
+  @media (max-width: 800px) {
+    position: absolute;
+    top:30px;
+    right:50px;
   }
 
 `;

@@ -14,10 +14,11 @@ const Container = styled.button`
   flex: 0 0 auto;
 
   @media (max-width: 800px) {
-    width: 80%;
-    margin: 0 5%;
+    width: 90%;
+    margin: 0 auto;
     padding: 0 5%;
     display: flex;
+    padding: 10px 10px;
     flex: 0 0 auto;
     flex-direction: row;
     align-items: center;

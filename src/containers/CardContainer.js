@@ -14,7 +14,6 @@ import history from "../history";
 const config = CONF[CONF.selectedNetwork];
 
 const Container = styled.div`
-  width: 42%;
   margin: 0 27%;
   display: flex;
   margin-top: 5%;
@@ -26,8 +25,8 @@ const Container = styled.div`
   flex: 0 0 auto;
 
   @media (max-width: 800px) {
-    width: 80%;
-    margin: 0 5%;
+    width: 100%;
+    margin: 0 0;
     padding: 1% 5%;
     display: flex;
     flex: 0 0 auto;

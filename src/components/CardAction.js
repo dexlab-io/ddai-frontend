@@ -10,12 +10,13 @@ const Container = styled.div`
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
   border-radius: 10px;
-  background-color: var(--white);
+  background-color: #fff;
+  border: 1px solid #827f7f;
   flex: 0 0 auto;
 
   @media (max-width: 800px) {
-    width: 80%;
-    margin: 0 5%;
+    width: 90%;
+    margin: 5%;
     padding: 1% 5%;
     display: flex;
     flex: 0 0 auto;
@@ -29,7 +30,7 @@ const Container = styled.div`
 const Heading = styled.h1`
   font-size: var(--text-big);
   text-align: center;
-
+  margin-bottom: 10px;
   @media (max-width: 800px) {
     font-size: var(--text-big-mobile);
   }
@@ -57,8 +58,8 @@ const BoldGreen = styled.span`
 const ColorfulButton = styled.button`
   width: 100%;
   padding: 4% 10%;
-  background-color: #f8e71c;
-  color: #000;
+  background-color: #F00093;
+  color: #fff;
   text-align: center;
   font-size: var(--font-main-button);
   font-weight: 700;
@@ -80,9 +81,9 @@ const ColorfulButton = styled.button`
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: space-between;
     width: 100%;
-    margin: 2% 0;
+    justify-content: center;
+    margin: 2%;
   }
 `;
 
@@ -93,7 +94,6 @@ const Image = styled.img`
 `;
 
 const CardAction = props => {
-  console.log('props', props)
   return (
     <Container style={props.disabled ? { filter: "grayscale(100%)" } : {}}>
       <Heading>{props.heading}</Heading>

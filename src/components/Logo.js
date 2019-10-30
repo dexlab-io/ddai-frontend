@@ -10,7 +10,11 @@ const LogoContainer = styled.div`
 `;
 
 const Image = styled.img`
-  height: 50px;
+  height: 80px;
+
+  @media (max-width: 800px) {
+    width: 100px;
+  }
 `;
 
 const Logo = props => {
@@ -18,7 +22,7 @@ const Logo = props => {
 
   return (
     <LogoContainer>
-      <Image onClick={() => (history.push("/"))} src={`../images/dDAILogo.svg`} />
+      <Image onClick={() => (history.push("/"))} src={`../images/logo.svg`} />
     </LogoContainer>
   );
 };

@@ -6,6 +6,10 @@ const RowContainer = styled.span`
   justify-content: space-between;
   width: 100%;
   padding: 2% 0;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    margin-top:20px;
+  }
 `;
 const Left = styled.span`
   display: flex;
@@ -22,6 +26,12 @@ const Right = styled.span`
   padding: 1.5% 0;
   align-items: center;
   font-size: 27px;
+  @media (max-width: 800px) {
+    flex-grow: 0;
+    padding: 0;
+    font-size: 19px;
+    padding: 0;
+  }
 `;
 
 const CardEarned = props => {

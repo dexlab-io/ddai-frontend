@@ -13,7 +13,7 @@ const Container = styled.div`
                       flex-direction: row;
                       align-items: center;
                       justify-content: center;
-                      width: 92%;
+                      width: 100%;
                       padding: 2% 4% 0 4%;
                       overflow-x: scroll;
                       overflow-y: hidden;
@@ -42,9 +42,7 @@ class ActionCardContainer extends React.Component {
   }
 
   goOverview() {
-    console.log('overview')
     this.props.history.push("/overview")
-    console.log('overview')
   }
 
   render() {

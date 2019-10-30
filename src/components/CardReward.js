@@ -10,6 +10,9 @@ const RowContainer = styled.span`
   justify-content: space-between;
   width: 100%;
   padding: 2% 0;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 const Left = styled.span`
   display: flex;
@@ -25,6 +28,10 @@ const Right = styled.span`
   flex-direction: row-reverse;
   padding: 1.5% 0;
   align-items: center;
+  @media (max-width: 800px) {
+    flex-grow: 0;
+    padding: 1.5% 0;
+  }
 `;
 
 const Image = styled.img`

@@ -10,11 +10,15 @@ import Deposit from './pages/deposit';
 import Overview from './pages/overview';
 import Withdraw from './pages/withdraw';
 
+import Landing from './pages/landing';
+
 
 export default function Routes() {
     return (
         <Switch>
-            <Route exact path="/" component={Recipes} />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/landing" component={Landing} />
+            
             <Route path="/recipes" component={Recipes} />
             <Route path="/deposit" component={Deposit} />
             <Route path="/withdraw" component={Withdraw} />
