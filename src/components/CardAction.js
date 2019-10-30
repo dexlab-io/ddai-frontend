@@ -57,8 +57,8 @@ const BoldGreen = styled.span`
 const ColorfulButton = styled.button`
   width: 100%;
   padding: 4% 10%;
-  background-color: #f8e71c;
-  color: #000;
+  background-color: #F00093;
+  color: #fff;
   text-align: center;
   font-size: var(--font-main-button);
   font-weight: 700;
@@ -93,7 +93,6 @@ const Image = styled.img`
 `;
 
 const CardAction = props => {
-  console.log('props', props)
   return (
     <Container style={props.disabled ? { filter: "grayscale(100%)" } : {}}>
       <Heading>{props.heading}</Heading>

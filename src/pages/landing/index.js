@@ -18,7 +18,7 @@ function IndexPage(props) {
       <ClientsSection
         color="white"
         size="medium"
-        title="You're in good company"
+        title="Built on"
         subtitle=""
       />
       <TestimonialsSection

@@ -5,16 +5,17 @@ import ConnectW3Button from "../components/ConnectW3Button";
 import NotificationIcon from "../components/NotificationIcon";
 import U from "../class/utils";
 import Wallet from "../Wallet";
-import SimpleSnackbar from "../components/SimpleSnackbar";
+import { withRouter } from "react-router-dom";
 import NotificationsDrawer from "../components/NotificationsDrawer";
 import { Context } from "../context";
 
 const Container = styled.div`
-  padding: 2%;
+  width: 100%;
+  padding: 1rem 0rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #fff;
 
   @media (max-width: 800px) {
@@ -58,31 +59,34 @@ class HeaderContainer extends Component {
   render() {
     const { walletAddress, web3available } = this.state;
     const balance = this.context.DDAI.Balance|| 0;
+    const {pathname} = this.props.location;
     return (
-      <Container>
-        <Logo />
-        <TotBalance
-          amount={web3available ? "$" +  U.formatFiat(balance): "no wallet connected"}
-        />
+       pathname !== '/' ? 
+         <Container>
+            <Logo />
+            <TotBalance
+              amount={web3available ? "$" +  U.formatFiat(balance): "no wallet connected"}
+            />
 
-        <IF what={Wallet.getAddress()}>
-          <Web3Button address={walletAddress} />
-        </IF>
+            <IF what={Wallet.getAddress()}>
+              <Web3Button address={walletAddress} />
+            </IF>
 
-        <IF what={!Wallet.getAddress()}>
-          <ConnectW3Button
-            onPress={() => this.init()}
-            label="Connect metamask"
-          />
-        </IF>
-        {/* <SimpleSnackbar /> */}
-        <NotificationIcon onPress={this.context.toggleNotificationsDrawer} />
-        <NotificationsDrawer />
-      </Container>
+            <IF what={!Wallet.getAddress()}>
+              <ConnectW3Button
+                onPress={() => this.init()}
+                label="Connect metamask"
+              />
+            </IF>
+            {/* <SimpleSnackbar /> */}
+            <NotificationIcon onPress={this.context.toggleNotificationsDrawer} />
+            <NotificationsDrawer />
+          </Container>
+      : null
     );
   }
 }
 
 HeaderContainer.contextType = Context;
 
-export default HeaderContainer;
+export default withRouter(HeaderContainer);

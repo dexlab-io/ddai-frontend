@@ -7,10 +7,12 @@ const Web3Button = styled.button`
   display: inline-block;
   padding: 4% 10%;
   border-radius: 4px;
-  border: solid 1px #000;
   transition-property: background-color, color;
   transition-duration: 0.3s;
   text-align: center;
+  background: #F00093;
+  border: solid 1px #fff;
+  color: #fff; 
 
   :hover {
     background-color: #000;

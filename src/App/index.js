@@ -3,7 +3,6 @@ import { HeaderContainer } from "../components";
 import Routes from "../routes";
 import { Context, ContextDefaults } from "../context";
 import Wallet from '../Wallet';
-import "./styles.css";
 import "./global.scss";
 import history from '../history';
 import { Router } from "react-router-dom";
@@ -37,7 +36,6 @@ class App extends Component {
     if(!Wallet.ddai) return;
 
     const data = await Wallet.ddai.getState();
-    console.log('data', data)
     this.setState((prevState) => ({
       context: {
         ...prevState.context,
@@ -80,8 +78,10 @@ class App extends Component {
       <Context.Provider value={this.state.context}>
         <div>
           <Router history={history}>
+            <div className="container">
             <HeaderContainer />
             <Routes />
+            </div>
           </Router>
         </div>
       </Context.Provider>

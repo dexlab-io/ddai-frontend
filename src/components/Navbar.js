@@ -54,10 +54,10 @@ function Navbar(props) {
                 parentColor={props.color}
                 size="normal"
                 onClick={() => {
-                  router.push("/signup");
+                  router.push("/recipes");
                 }}
               >
-                Connect Metamask
+                Open App
               </SectionButton>
             </div>
           </div>

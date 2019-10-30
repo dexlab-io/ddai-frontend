@@ -16,7 +16,7 @@ import Landing from './pages/landing';
 export default function Routes() {
     return (
         <Switch>
-            <Route exact path="/" component={Recipes} />
+            <Route exact path="/" component={Landing} />
             <Route exact path="/landing" component={Landing} />
             
             <Route path="/recipes" component={Recipes} />

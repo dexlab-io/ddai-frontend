@@ -225,7 +225,7 @@ function Conversation(props) {
                 e.preventDefault();
                 setSelectOpen(true);
                 }} >
-                <TextLoop interval={500} className='textloop'>
+                <TextLoop interval={800} className='textloop'>
                   <Text>ETH</Text>
                   <Text>ETH + BTC</Text>
                   <Text>GOLD</Text>
