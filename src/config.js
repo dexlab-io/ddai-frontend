@@ -80,7 +80,7 @@ export default {
                 recipeData: {
                     receivers: [
                         "0xfa60c27d0f894df8f1cf3b919be49099b09e6cac",
-                        "0x12e9dab2980635b0037751679cd364b93b969de3"
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
                     ],
                     data: [
                         "0x0000000000000000000000000E5f87BDcD6285F930b6bbcC3E21CA9d985e12fE",
@@ -152,7 +152,7 @@ export default {
                 imgRecap: "../../images/recap_sXTZ.png",
                 recipeData: {
                     receivers: [
-                        "0x12e9dab2980635b0037751679cd364b93b969de3"
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
                     ],
                     data: [
                         "0x7358545a00000000000000000000000000000000000000000000000000000000000000000000000000000000{userAddress}"
@@ -169,7 +169,7 @@ export default {
                 imgRecap: "../../images/recap_sXAU.png",
                 recipeData: {
                     receivers: [
-                        "0x12e9dab2980635b0037751679cd364b93b969de3"
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
                     ],
                     data: [
                         "0x7358415500000000000000000000000000000000000000000000000000000000000000000000000000000000{userAddress}"
@@ -186,7 +186,7 @@ export default {
                 imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
                     receivers: [
-                        "0x12e9dab2980635b0037751679cd364b93b969de3"
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
                     ],
                     data: [
                         "0x7342544300000000000000000000000000000000000000000000000000000000000000000000000000000000{userAddress}"
@@ -204,7 +204,7 @@ export default {
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb",
-                        "0x12e9dab2980635b0037751679cd364b93b969de3"
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
                     ],
                     data: [
                         "0x000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000{userAddress}",
@@ -224,7 +224,7 @@ export default {
                 recipeData: {
                     receivers: [
                         "0xdd7abc70d52032ec0960cac6e7d9acf42f9acbfb",
-                        "0x12e9dab2980635b0037751679cd364b93b969de3"
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
                     ],
                     data: [
                         "0x000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000{userAddress}",
@@ -243,8 +243,8 @@ export default {
                 imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
                     receivers: [
-                        "0x12e9dab2980635b0037751679cd364b93b969de3",
-                        "0x12e9dab2980635b0037751679cd364b93b969de3"
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b",
+                        "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
                     ],
                     data: [
                         "0x7342544300000000000000000000000000000000000000000000000000000000000000000000000000000000{userAddress}",
