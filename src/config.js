@@ -57,7 +57,7 @@ export default {
             },
             ETHS4X: {
                 title: "Short ETH x4",
-                description: "Start earning {interestRate}% on DAI while automatically going long x4 on ETH with your gains",
+                description: "Start earning {interestRate}% on DAI while automatically going short x4 on ETH with your gains",
                 img: "../../images/ethshort4x.png",
                 imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
