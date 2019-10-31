@@ -12,6 +12,8 @@ const Container = styled.button`
   border-radius: 10px;
   background-color: var(--white);
   flex: 0 0 auto;
+  cursor:pointer;
+
 
   @media (max-width: 800px) {
     width: 90%;
