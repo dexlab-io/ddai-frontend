@@ -29,7 +29,7 @@ const Heading = styled.h1`
 const SubHeading = styled.h2`
   font-size: var(--text-medium);
   font-weight: 300;
-  margin-top: -10px;
+  margin-top: 5px;
 
   @media (max-width: 800px) {
     font-size: var(--text-medium-mobile);
