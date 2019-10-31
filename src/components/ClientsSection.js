@@ -43,7 +43,7 @@ function ClientsSection(props) {
           name: "Ethereum",
           image: "../images/buildonethereum.png",
           width: "120px"
-        },
+        }
           ]}
         />
       </div>
