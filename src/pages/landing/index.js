@@ -12,7 +12,7 @@ function IndexPage(props) {
       <Navbar
         color="white"
         spaced={true}
-        logo="../images/logo.svg"
+        logo="../images/ddailogo.png"
       />
       <Conversation />
       <ClientsSection

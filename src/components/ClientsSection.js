@@ -40,6 +40,10 @@ function ClientsSection(props) {
             image: "../images/bzxlogo.svg",
             width: "120px"
           },
+          name: "Ethereum",
+          image: "../images/buildonethereum.png",
+          width: "120px"
+        },
           ]}
         />
       </div>
