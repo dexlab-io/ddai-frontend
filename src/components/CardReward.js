@@ -46,15 +46,19 @@ const ButtonSmall = styled.button`
   font-size: var(--font-small);
   font-weight: 700;
   border-radius: 2px;
-  margin: 0% 0;
+  margin: 0;
   border: none;
   transition-property: background-color, color;
   transition-duration: 0.3s;
   margin-left: 2%;
+  cursor: pointer;
+
 
   :hover {
     opacity: 0.8;
     color: #fff;
+    cursor:pointer;
+    
   }
 
   :focus {
