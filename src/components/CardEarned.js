@@ -25,7 +25,7 @@ const Right = styled.span`
   flex-direction: row-reverse;
   padding: 1.5% 0;
   align-items: center;
-  font-size: 27px;
+  font-size: 18px;
   @media (max-width: 800px) {
     flex-grow: 0;
     padding: 0;

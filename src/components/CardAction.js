@@ -58,20 +58,20 @@ const BoldGreen = styled.span`
 const ColorfulButton = styled.button`
   width: 100%;
   padding: 4% 10%;
-  background-color: #F00093;
+  background-color: #000;
   color: #fff;
   text-align: center;
   font-size: var(--font-main-button);
   font-weight: 700;
   border-radius: 5px;
-  margin: 0% 0;
+  margin: 0 0 10px 0;
   border: none;
   transition-property: background-color, color;
   transition-duration: 0.3s;
 
   :hover {
-    background-color: #000;
-    color: #f8e71c;
+    opacity: 0.8;
+    color: #fff;
     cursor: pointer;
   }
 

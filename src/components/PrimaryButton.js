@@ -18,8 +18,8 @@ const ButtonMain = styled.button`
   font-weight: 700;
 
   :hover {
-    background-color: #000;
-    color: #f8e71c;
+    opacity: 0.8;
+    color: #fff;
   }
 
   :focus {

@@ -21,6 +21,7 @@ const Container = styled.div`
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
   border-radius: 10px;
+  border: 1px solid rgb(186, 186, 186);
   background-color: var(--white);
   flex: 0 0 auto;
 
