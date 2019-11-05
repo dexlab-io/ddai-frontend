@@ -1,11 +1,14 @@
 import React from "react"
 import CardRecap from "../../components/CardRecap";
 import Wallet from "../../Wallet";
+import DB from '../../class/models/actions';
+import { async } from "q";
 
 class Overview extends React.Component {
-
     claimInterest = async () => {
-        await Wallet.ddai.distributeStack();
+        const tx = await Wallet.ddai.distributeStack();
+        const selectedRecipe = await Wallet.ddai.getRecipe()
+        DB.claim(selectedRecipe, Wallet.getAddress(), tx.transactionHash);
     }
 
     render() {

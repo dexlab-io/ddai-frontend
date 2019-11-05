@@ -8,6 +8,8 @@ import "./styles.css";
 import history from '../history';
 import { Router } from "react-router-dom";
 
+import DB from '../class/models/actions';
+
 class App extends Component {
 
   constructor(props) {
@@ -19,6 +21,7 @@ class App extends Component {
         toggleNotificationsDrawer: this.toggleNotificationsDrawer,
         closeNotificationsDrawer: this.closeNotificationsDrawer,
         selectedRecipe: "",
+        logs: []
       }
     }
   }
@@ -35,13 +38,16 @@ class App extends Component {
 
   async refresh() {
     if(!Wallet.ddai) return;
-
+    DB.account = Wallet.getAddress();
+    
     const data = await Wallet.ddai.getState();
+    await DB.fetchAll( );
     this.setState((prevState) => ({
       context: {
         ...prevState.context,
         DDAI: data,
         transactions: Wallet.Rx.poolMap,
+        logs: DB.data,
         selectedRecipe: data.Recipe
       }
     }))

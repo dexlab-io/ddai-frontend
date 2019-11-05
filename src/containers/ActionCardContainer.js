@@ -4,6 +4,7 @@ import { CardAction, IF, InvestMoreDAI } from "../components";
 import { Context } from "../context";
 import { withRouter } from "react-router-dom";
 import Wallet from '../Wallet';
+import DB from '../class/models/actions';
 
 import CONF from '../config';
 const config = CONF[CONF.selectedNetwork];
@@ -32,10 +33,12 @@ class ActionCardContainer extends React.Component {
 
     this.context.setRecipe(key);
     
+    
     if(this.context.DDAI.TotalBalance == 0) {
       this.props.history.push("/deposit");
     } else {
-      await Wallet.ddai.setRecipes(key);
+      const tx = await Wallet.ddai.setRecipes(key);
+      await DB.setRecipe(key, Wallet.getAddress(), tx.transactionHash, tx.status ? 'approved' : 'rejected');
       this.props.history.push("/overview");
     }
 
@@ -46,9 +49,7 @@ class ActionCardContainer extends React.Component {
   }
 
   render() {
-  
     const isLoading = this.context.DDAI.Apr == undefined;
-    console.log('this.context.selectedRecipe', this.context)
 
     return (
       <React.Fragment>

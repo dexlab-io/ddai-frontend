@@ -10,6 +10,7 @@
     "@types/node": "12.7.4",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
+    "airtable": "^0.7.2",
     "bignumber.js": "^9.0.0",
     "bulma": "^0.8.0",
     "eth-dexcore-js": "^0.1.11",

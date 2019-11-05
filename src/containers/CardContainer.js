@@ -10,6 +10,7 @@ import CONF from '../config';
 import { Context } from "../context";
 import PropTypes  from "prop-types";
 import history from "../history";
+import DB from '../class/models/actions';
 
 const config = CONF[CONF.selectedNetwork];
 
@@ -94,20 +95,26 @@ class CardReceiveTokenContainer extends Component {
   async deposit() {
     if(this.context.DDAI.Balance == 0) {
       const tx = await Wallet.ddai.mintAndSetRecipes(this.state.amount, this.context.selectedRecipe);
+      DB.mint(this.state.amount, 'DAI', Wallet.getAddress(), this.state.amount, tx.transactionHash, tx.status ? 'approved' : 'rejected');
     } else {
       const tx = await Wallet.ddai.mint(this.state.amount);
+      DB.mint(this.state.amount, 'DAI', Wallet.getAddress(), this.state.amount, tx.transactionHash, tx.status ? 'approved' : 'rejected');
     }
+    
   }
 
   async withdraw() {
     if(!Wallet.ddai) return;
     console.log('do things...');
-    const supplyTx = await Wallet.ddai.redeem(this.state.amount);
+    const tx = await Wallet.ddai.redeem(this.state.amount);
+    DB.burn(this.state.amount, 'DAI', Wallet.getAddress(), this.state.amount, tx.transactionHash, tx.status ? 'approved' : 'rejected');
   }
 
   async invest() {
     if(!Wallet.ddai) return;
     const tx = await Wallet.ddai.mintAndDistribute(this.state.amount);
+    DB.mint(this.state.amount, 'DAI', Wallet.getAddress(), this.state.amount, tx.transactionHash, tx.status ? 'approved' : 'rejected');
+    
   }
 
   async claim() {
@@ -130,8 +137,6 @@ class CardReceiveTokenContainer extends Component {
     if(!this.context.DDAI.TotalBalance) {
       return(<Container>Loading....</Container>)
     }
-
-    console.log(this.context);
     
     const DDAI = this.context.DDAI;
     let btnLabel;
