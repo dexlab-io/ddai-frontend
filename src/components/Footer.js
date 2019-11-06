@@ -19,7 +19,7 @@ function Footer(props) {
         <div className="FooterComponent__container container">
           <div className="columns">
             <div className="column is-5 is-4-widescreen">
-              <Link className="brand" to="/">
+              <a className="brand" to="/">
                 <div className="brand-icon">
                   <img
                     className="FooterComponent__logo"
@@ -27,7 +27,7 @@ function Footer(props) {
                     alt="Logo"
                   />
                 </div>
-              </Link>
+              </a>
 
               {props.description && (
                 <p className="FooterComponent__description">
@@ -62,10 +62,10 @@ function Footer(props) {
                     <p className="menu-label">Company</p>
                     <ul className="menu-list">
                       <li>
-                        <Link to="https://hackmd.io/@8O08261_SpWdZUBJKxeF5Q/rk7VotSpE?type=view">About</Link>
+                        <a href="https://hackmd.io/@8O08261_SpWdZUBJKxeF5Q/rk7VotSpE?type=view">About</a>
                       </li>
                       <li>
-                        <Link to="founders@dexlab.io">Contact</Link>
+                        <a href="founders@dexlab.io">Contact</a>
                       </li>
                       <li>
                         <a
