@@ -27,7 +27,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Wallet.Rx.subscribe((action, data)  => {
+    Wallet.Rx.subscribe( async (action, data)  => {
+      DB.account = Wallet.getAddress();
+      await DB.fetchAll();
       this.refresh();
     });
 
@@ -38,10 +40,7 @@ class App extends Component {
 
   async refresh() {
     if(!Wallet.ddai) return;
-    DB.account = Wallet.getAddress();
-    
     const data = await Wallet.ddai.getState();
-    await DB.fetchAll( );
     this.setState((prevState) => ({
       context: {
         ...prevState.context,

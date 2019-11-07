@@ -32,6 +32,7 @@ class Db {
     }
 
     async fetchAll() {
+        console.log('called for some reasonm')
         return await new Promise( async (resolve, reject) => {
             const getActionById = this.getActionById.bind(this);
             const data = [];
@@ -44,7 +45,7 @@ class Db {
             
             await actions.eachPage( async (records, fetchNextPage) => {
                     await Promise.all(records.map( async (record) => {
-                        const action = await getActionById(record.get('action_id')) 
+                        const action = await getActionById(record.get('action_id'));
                         data.push({
                             product: record.get('product_id'),
                             action: action,

@@ -23,9 +23,13 @@ class Rx {
     }
 
     async checkPending() {
+        if(this.shouldStop()){
+            return;
+        }
         console.log('Checking....', this.poolMap.filter( t => t.statusInternal !== Rx.TX_STATES.MINED ))
+        
         this.poolMap
-            // .filter( t => t.statusInternal !== Rx.TX_STATES.MINED )
+            .filter( t => t.statusInternal !== Rx.TX_STATES.MINED )
             .forEach( async (tx, index)  => {
                 if(tx.statusInternal == Rx.TX_STATES.MINED) {
                     return;
@@ -77,6 +81,7 @@ class Rx {
         if(this.poolMap.filter( t => t.statusInternal !== Rx.TX_STATES.MINED ).length === 0) {
             clearInterval(this.handle);
             this.handle = null;
+            return true;
         }
     }
 
