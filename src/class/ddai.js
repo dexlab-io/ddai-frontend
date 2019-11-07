@@ -14,7 +14,7 @@ const getRecipeByname = (name) => {
     return findKey(config.recipes, {label: name});
 };
 
-export const to1e18 = (amount, decimals = 18) => utils.toWei(amount);
+export const to1e18 = (amount, decimals = 18) => utils.toWei(amount.toString());
 
 export const from1e18 = (amount, decimals = 18) => new BigNumber(amount.toString())
     .dividedBy(new BigNumber(10).pow(new BigNumber(decimals))).toString();
