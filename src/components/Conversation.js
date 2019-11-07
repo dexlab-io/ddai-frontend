@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Section from "./Section";
 import styled from "styled-components";
 import TextLoop from "react-text-loop";
-import SectionButton from "./SectionButton";
-import { Link, useRouter } from "./../util/router.js";
+import { useRouter } from "./../util/router.js";
+import { cta } from "../mixpanel";
 
 const Text = styled.span`
   font-size: 3em;
@@ -17,7 +17,7 @@ const APR = styled.span`
   font-size: 3.3em;
   font-weight: 700;
   margin-right: 15px;
-  color: #60E71F;
+  color: #60e71f;
   margin-top: 15px;
 `;
 
@@ -48,10 +48,9 @@ const Form = styled.form`
   text-align: right;
   margin-right: 15px;
   margin-top: 15px;
-  -moz-appearance:none; /* Firefox */
-  -webkit-appearance:none; /* Safari and Chrome */
-  appearance:none;
-
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
 
   @media (max-width: 800px) {
     display: flex;
@@ -94,20 +93,22 @@ const RecipesCustom = styled.select`
   color: black;
   font-weight: 700;
   margin: 0;
-  -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-    /* border-bottom: 4px dotted #000; */
-    text-decoration:underline;
-    text-decoration-style: dotted;
-
-
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  /* border-bottom: 4px dotted #000; */
+  text-decoration: underline;
+  text-decoration-style: dotted;
 
   :focus {
     outline: none;
   }
 
-  background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+  background-image: linear-gradient(
+    to right,
+    black 33%,
+    rgba(255, 255, 255, 0) 0%
+  );
   background-position: bottom;
   background-size: 16px 6px;
   background-repeat: repeat-x;
@@ -127,20 +128,22 @@ const Input = styled.input`
   color: black;
   font-weight: 700;
   margin: 0;
-  -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari and Chrome */
-    appearance:none;
-    /* border-bottom: 4px dotted #000; */
-    text-decoration:underline;
-    text-decoration-style: dotted;
-
-
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  /* border-bottom: 4px dotted #000; */
+  text-decoration: underline;
+  text-decoration-style: dotted;
 
   :focus {
     outline: none;
   }
 
-  background-image: linear-gradient(to right, black 33%, rgba(255,255,255,0) 0%);
+  background-image: linear-gradient(
+    to right,
+    black 33%,
+    rgba(255, 255, 255, 0) 0%
+  );
   background-position: bottom;
   background-size: 16px 6px;
   background-repeat: repeat-x;
@@ -154,16 +157,16 @@ const Input = styled.input`
 
   :focus {
     outline: none;
-    appearance:none;
+    appearance: none;
   }
 
   :focus::placeholder {
-    color: transparent;    
+    color: transparent;
   }
 
-  input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `;
 
 const DaiLogo = styled.img`
@@ -172,45 +175,44 @@ const DaiLogo = styled.img`
 `;
 
 const Button = styled.button`
-    background: transparent;
-    border: 0px;
-    border: 0px solid #ffffff;
-    border-radius: 5px;
-    background-color: #ffffff;
-    text-align: right;
-    font-size: 16px;
-    color: black;
-    font-weight: 700;
-    margin: 0;
-    -moz-appearance:none; /* Firefox */
-      -webkit-appearance:none; /* Safari and Chrome */
-      appearance:none;
-      /* border-bottom: 4px dotted #000; */
-      text-decoration:underline;
-      text-decoration-style: dotted;
-    :focus {
-      outline: none;
-    }
+  background: transparent;
+  border: 0px;
+  border: 0px solid #ffffff;
+  border-radius: 5px;
+  background-color: #ffffff;
+  text-align: right;
+  font-size: 16px;
+  color: black;
+  font-weight: 700;
+  margin: 0;
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  /* border-bottom: 4px dotted #000; */
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  :focus {
+    outline: none;
+  }
 `;
 
 const CtaButton = styled.button`
-    display: flex;
-    margin-top: 30px;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 15px;
-    background: #F00093;
-    border: solid 1px #fff;
-    color: #fff; 
-    border-radius: 5px;
-      
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    max-width: 32rem;
-    font-size: 31px;
-    font-weight: 700;
+  display: flex;
+  margin-top: 30px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+  background: #f00093;
+  border: solid 1px #fff;
+  color: #fff;
+  border-radius: 5px;
 
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 32rem;
+  font-size: 31px;
+  font-weight: 700;
 `;
 
 function Conversation(props) {
@@ -239,52 +241,57 @@ function Conversation(props) {
               placeholder="100"
             ></Input>
           </Form> */}
-          <DaiLogo src='../images/daiIcon.svg'></DaiLogo>
+          <DaiLogo src="../images/daiIcon.svg"></DaiLogo>
           <Text>DAI and automatically reinvest my earnings in </Text>
           <FormCustom>
-            { !selectOpen ?
-              <Button onClick={(e) => {
-                e.preventDefault();
-                setSelectOpen(true);
-                }} >
-                <TextLoop interval={800} className='textloop'>
+            {!selectOpen ? (
+              <Button
+                onClick={e => {
+                  e.preventDefault();
+                  setSelectOpen(true);
+                }}
+              >
+                <TextLoop interval={800} className="textloop">
                   <Text>ETH</Text>
                   <Text>ETH + BTC</Text>
                   <Text>GOLD</Text>
                   <Text>Short ETH x4</Text>
                   <Text>Repay Compound Loan</Text>
-                  <Text>Long ETH x4</Text>        
+                  <Text>Long ETH x4</Text>
                   <Text>BTC + iETH</Text>
-                  <Text>Short ETH x4</Text>        
-                  <Text>BTC + GOLD</Text>        
-                  <Text>KNC</Text>        
+                  <Text>Short ETH x4</Text>
+                  <Text>BTC + GOLD</Text>
+                  <Text>KNC</Text>
                   <Text>Bitcoin</Text>
                   <Text>ETH + iBTC</Text>
-                  
-
                 </TextLoop>
               </Button>
-            :
+            ) : (
               <RecipesCustom name="token" id="currencies" className="icon-menu">
                 <OptionCustom>ETH Maximalist</OptionCustom>
-                  <OptionCustom>ETH + BTC</OptionCustom>
-                  <OptionCustom>Repay Compound Loan</OptionCustom>
-
+                <OptionCustom>ETH + BTC</OptionCustom>
+                <OptionCustom>Repay Compound Loan</OptionCustom>
               </RecipesCustom>
-            }
-            </FormCustom>
+            )}
+          </FormCustom>
         </Container>
-        
+
         <Center>
           <CtaButton
-                  parentColor={props.color}
-                  size="normal"
-                  onClick={() => {
-                    router.push("/recipes");
-                  }}
-                >
-                  Start earning now
-            </CtaButton>
+            parentColor={props.color}
+            size="normal"
+            onClick={() => {
+              cta({
+                position: "conversation",
+                to: "/recipes",
+                type: "button",
+                label: "Start earning now"
+              });
+              router.push("/recipes");
+            }}
+          >
+            Start earning now
+          </CtaButton>
         </Center>
       </div>
     </Section>
