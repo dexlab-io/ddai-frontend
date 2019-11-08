@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { link } from "../mixpanel";
+
 
 const LogoContainer = styled.div`
 cursor: pointer
@@ -29,7 +31,15 @@ const A = styled.a`
 
 const NotificationIcon = props => {
   return (
-    <LogoContainer onClick={props.onPress}>
+    <LogoContainer onClick={() => {
+      link({
+        position: "navbar",
+        to: "open notification drawer",
+        type: "button",
+        label: "Notification Icon"
+      });
+     props.onPress()
+     }}>
       <Dot>•</Dot>
       <Image src={`../images/notificationIcon.svg`} />
     </LogoContainer>

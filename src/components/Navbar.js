@@ -3,9 +3,9 @@ import NavbarContainer from "./NavbarContainer";
 import { Link, useRouter } from "./../util/router.js";
 import SectionButton from "./SectionButton";
 import styled from "styled-components";
+import {link, cta} from "../mixpanel";
 
-const NavBarItem = styled.div`
-`;
+const NavBarItem = styled.div``;
 
 const Logo = styled.img`
   height: 80px;
@@ -24,7 +24,7 @@ function Navbar(props) {
       <div className="container">
         <div className="navbar-brand">
           <NavBarItem>
-            <Link to="/">
+            <Link onClick={() => link({position: 'navbar', to: '/', type: 'logo'})} to="/">
               <Logo src={props.logo} alt="Logo" />
             </Link>
           </NavBarItem>
@@ -39,10 +39,20 @@ function Navbar(props) {
         </div>
         <div className={"navbar-menu" + (menuOpen ? " is-active" : "")}>
           <div className="navbar-end">
-            <a className="navbar-item" href="https://devpost.com/software/ddai">
+            <a
+              onClick={() => link({position: 'navbar', to: 'devpost.com/software/ddai', type: 'text'})}
+              className="navbar-item"
+              href="https://devpost.com/software/ddai"
+              target="_blank"
+            >
               Devpost
             </a>
-            <a className="navbar-item" href="https://www.dexwallet.io">
+            <a
+              onClick={() => link({position: 'navbar', to: 'dexwallet.io', type: 'text'})}
+              className="navbar-item"
+              href="https://www.dexwallet.io"
+              target="_blank"
+            >
               Dexwallet
             </a>
             {/* <Link className="navbar-item" to="/faq">
@@ -54,6 +64,7 @@ function Navbar(props) {
                 parentColor={props.color}
                 size="normal"
                 onClick={() => {
+                  cta({position: 'navbar', to: '/recipes', type: 'button', label: 'Open App'})
                   router.push("/recipes");
                 }}
               >

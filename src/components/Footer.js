@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Section from "./Section";
 import { Link } from "./../util/router.js";
 import "./Footer.scss";
+import {link} from "../mixpanel";
 
 const Container = styled.div`
   @media (max-width: 800px) {
@@ -19,7 +20,8 @@ function Footer(props) {
         <div className="FooterComponent__container container">
           <div className="columns">
             <div className="column is-5 is-4-widescreen">
-              <a className="brand" to="/">
+              <a className="brand" to="/"
+               onClick={() => link({position: 'footer', to: '/', type: 'logo'})}>
                 <div className="brand-icon">
                   <img
                     className="FooterComponent__logo"
@@ -46,13 +48,24 @@ function Footer(props) {
                     <p className="menu-label">Products</p>
                     <ul className="menu-list">
                       <li>
-                        <a href="https://www.dexwallet.io/">Dexwallet</a>
+                        <a
+                          onClick={() => link({position: 'footer', to: 'dexwallet.io', type: 'text'})}
+                          target="_blank"
+                          href="https://dexwallet.io"
+                          
+                        >
+                          Dexwallet
+                        </a>
                       </li>
                       <li>
-                        <a href="https://defitracker.io/">DeFi Tracker</a>
+                        <a onClick={() => link({position: 'footer', to: 'defitracker.io', type: 'text'})}
+                          target="_blank"
+                          href="https://defitracker.io/">DeFi Tracker</a>
                       </li>
                       <li>
-                        <a href="https://dexpay.me/">Dexpay</a>
+                        <a onClick={() => link({position: 'footer', to: 'dexpay.io', type: 'text'})}
+                          target="_blank"
+                          href="https://dexpay.me/">Dexpay</a>
                       </li>
                     </ul>
                   </div>
@@ -62,13 +75,20 @@ function Footer(props) {
                     <p className="menu-label">Company</p>
                     <ul className="menu-list">
                       <li>
-                        <a href="https://hackmd.io/@8O08261_SpWdZUBJKxeF5Q/rk7VotSpE?type=view">About</a>
+                        <a onClick={() => link({position: 'footer', to: 'about', type: 'text'})}
+                          target="_blank"
+                          href="https://github.com/dexlab-io/whitepaper-official/blob/master/README.md">
+                          About
+                        </a>
                       </li>
                       <li>
-                        <a href="founders@dexlab.io">Contact</a>
+                        <a onClick={() => link({position: 'footer', to: 'contact', type: 'text'})}
+                          target="_blank"
+                          href="founders@dexlab.io">Contact</a>
                       </li>
                       <li>
                         <a
+                          onClick={() => link({position: 'footer', to: 'medium.com/dexlab-io', type: 'text'})}
                           target="_blank"
                           href="https://medium.com/dexlab-io"
                           rel="noopener noreferrer"
@@ -85,32 +105,29 @@ function Footer(props) {
                     <ul className="menu-list">
                       <li>
                         <a
-                          href="https://discord.gg/DxttPVm"
+                          onClick={() => link({position: 'footer', to: 'dexwallet.io/discord', type: 'icon'})}
+                          href="https://www.dexwallet.io/discord/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <img
-                            src="../images/discord.svg"
-                            alt="Discord"
-                          />
+                          <img src="../images/discord.svg" alt="Discord" />
                           Discord
                         </a>
                       </li>
                       <li>
                         <a
+                        onClick={() => link({position: 'footer', to: 't.me/joindexlab', type: 'icon'})}
+                        target="_blank"
                           href="https://t.me/joindexlab"
-                          target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <img
-                            src="../images/telegram.svg"
-                            alt="Telegram"
-                          />
+                          <img src="../images/telegram.svg" alt="Telegram" />
                           Telegram
                         </a>
                       </li>
                       <li>
                         <a
+                          onClick={() => link({position: 'footer', to: 'twitter.com/Dexwallet', type: 'icon'})}
                           href="https://twitter.com/Dexwallet"
                           target="_blank"
                           rel="noopener noreferrer"

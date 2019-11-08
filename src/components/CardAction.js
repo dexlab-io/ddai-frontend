@@ -99,7 +99,7 @@ const CardAction = props => {
       <Heading>{props.heading}</Heading>
       <SubHeading>{props.subheading}</SubHeading>
       <Image src={props.url} />
-      <ColorfulButton onClick={() => {
+      <ColorfulButton style={props.selected || props.disabled ? {backgroundColor: '#cccccc'} : {}} onClick={() => {
         if(props.disabled) {
           alert("Recipe disabled for this network");
         } else if(props.selected) {
