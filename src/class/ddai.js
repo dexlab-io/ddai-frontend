@@ -114,8 +114,6 @@ class DDAI extends BasePlugin {
         const ratio = new BigNumber('100').toString();
         const srcAmount = to1e18(amount);
 
-        console.log(selectedRecipe);
-
         const recipe = config.recipes[selectedRecipe];
         recipe.recipeData.data = recipe.recipeData.data.map(value => (value.replace("{userAddress}", this.W.getAddress().replace("0x", ""))))
     
