@@ -1,0 +1,5 @@
+# These rules will change if you change your site’s custom domains or HTTPS settings
+
+# Redirect default Netlify subdomain to primary domain
+https://ddai.netlify.com/* https://ddai.dexwallet.io/:splat 301!
+https://www.ddai.netlify.com/* https://ddai.dexwallet.io/:splat 301!
