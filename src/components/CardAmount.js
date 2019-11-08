@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { cta } from "../mixpanel";
+
 
 const RowContainer = styled.span`
   width: 100%;
@@ -110,6 +112,11 @@ const CardAmount = props => {
           ></Input>
           <ButtonMax
             onClick={e => {
+              cta({
+                position: "invest",
+                type: "button",
+                label: "MAX"
+              });
               props.onChange({ target: { value: props.maxValue } });
               e.preventDefault();
             }}

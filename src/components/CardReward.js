@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Context } from "../context";
 import CONF from '../config';
+import { cta } from "../mixpanel";
+
 const config = CONF[CONF.selectedNetwork];
+
 
 const RowContainer = styled.span`
   display: flex;
@@ -80,7 +83,15 @@ const CardReward = props => {
     <RowContainer>
       <Left>Earning Reward in {context.DDAI.Recipe}</Left>
       <Right>
-        <ButtonSmall><Link style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
+        <ButtonSmall><Link onClick={() => {
+           cta({
+            position: "overview",
+            to: "/recipes",
+            type: "button",
+            label: "Change recipe"
+          });
+          } }
+          style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
         <Image src={context.DDAI.Recipe ? config.recipes[context.DDAI.Recipe].imgRecap : ""} />
       </Right>
     </RowContainer>

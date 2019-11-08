@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { cta } from "../mixpanel";
+
 
 const Container = styled.button`
   width: 46%;
@@ -66,7 +68,14 @@ const InvestMoreDAI = props => {
 
 InvestMoreDAI.defaultProps = {
   label: "Invest More DAI",
-  onPress: () => {}
+  onPress: () => {
+    cta({
+      position: "conversation",
+      to: "/invest",
+      type: "button",
+      label: "Invest More DAI"
+    });
+  }
 }
 
 

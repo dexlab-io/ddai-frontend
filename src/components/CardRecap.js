@@ -10,6 +10,8 @@ import { Context } from "../context";
 import SecondaryButton from "./SecondaryButton";
 import InvestMoreDAI from "./InvestMoreDAI";
 import { useHistory } from "react-router-dom";
+import { cta } from "../mixpanel";
+
 
 const Center = styled.div`
   margin: 0 auto;
@@ -46,7 +48,15 @@ const CardRecap = (props) => {
   return (
     <div>
       <Center>
-        <InvestMoreDAI label={"Change recipe"} onPress={() => history.push("/recipes")} />
+        <InvestMoreDAI label={"Change recipe"} onPress={() => {
+           cta({
+            position: "overview",
+            to: "/recipes",
+            type: "button",
+            label: "Change recipe"
+          });
+           history.push("/recipes")
+          }}/>
       </Center>
       <Container>
         <IF what={context.DDAI.Balance == undefined}>
@@ -56,9 +66,36 @@ const CardRecap = (props) => {
         <CardInvestmentAmount investmentTokenAmount={parseFloat(DDAI.TotalBalance).toFixed(2)} />
         <CardAPR currentRate={DDAI.Apr} />
         <CardReward />
-        <CardTwoButtons onFirstPress={props.onClaimInterest} firstButtonText="Claim Interest" secondButtonText="Withdraw" onSecondPress={() => {history.push("/withdraw")}}/>
+        <CardTwoButtons
+        firstButtonText="Claim Interest" 
+        onFirstPress={ () => {
+          cta({
+            position: "overview",
+            type: "button",
+            label: "Claim Interest"
+          });
+          props.onClaimInterest()
+        }} 
+        secondButtonText="Withdraw" 
+        onSecondPress={ () => {
+          cta({
+            position: "overview",
+            to: "/withdraw",
+            type: "button",
+            label: "Withdraw"
+          });
+          history.push("/withdraw")
+          }}/>
       </Container>
-      <InvestMoreDAI onPress={() => history.push("/invest-more")} />
+      <InvestMoreDAI onPress={() => {
+        cta({
+          position: "overview",
+          to: "/invest-more",
+          type: "button",
+          label: "Invest more DAI"
+        });
+         history.push("/invest-more");
+      }} />
       
     </div>
   );

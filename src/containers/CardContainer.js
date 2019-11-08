@@ -11,6 +11,8 @@ import { Context } from "../context";
 import PropTypes  from "prop-types";
 import history from "../history";
 import DB from '../class/models/actions';
+import { cta } from "../mixpanel";
+
 
 const config = CONF[CONF.selectedNetwork];
 
@@ -165,7 +167,15 @@ class CardReceiveTokenContainer extends Component {
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         <CardAPR currentRate={DDAI.Apr}/>
         <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe || this.context.DDAI.Recipe} />
-        <CardOneButton onPress={ () => this.validate()} label={btnLabel} />
+        <CardOneButton onPress={ () => {
+          cta({
+            position: "invest",
+            to: "/deposit",
+            type: "button",
+            label: action
+          });
+          this.validate()
+          }} label={btnLabel} />
       </Container>
     );
   }

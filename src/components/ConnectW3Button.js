@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { cta } from "../mixpanel";
+
 
 const Web3Button = styled.button`
   width: 100%;
@@ -39,7 +41,15 @@ const ConnectedMetamask = styled.span`
 
 const ConnectW3Button = props => {
   return (
-    <Web3Button onClick={props.onPress}>
+    <Web3Button onClick={() => {
+      cta({
+        position: "navbar",
+        to: "Metamask",
+        type: "button",
+        label: "Connect Metamask"
+      });
+    props.onPress()
+    }}>
       <ConnectedMetamask >
           Connect Metamask
       </ConnectedMetamask>

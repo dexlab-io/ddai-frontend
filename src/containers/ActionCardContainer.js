@@ -33,7 +33,11 @@ class ActionCardContainer extends React.Component {
 
     this.context.setRecipe(key);
 
-    if (this.context.DDAI.TotalBalance == 0) {
+    console.log(this.context.DDAI)
+    
+
+    if (this.context.DDAI.TotalBalance == 0 && this.context.DDAI.Stack === '0') {
+
       cta({
         position: "content",
         to: "/deposit",
@@ -104,7 +108,7 @@ class ActionCardContainer extends React.Component {
                   this.context.DDAI.Apr ? this.context.DDAI.Apr : 10
                 )}
                 onPress={this.handleRecipeSelected(key)}
-                selected={key == this.context.selectedRecipe ? true : false}
+                selected={key == this.context.DDAI.Recipe ? true : false}
               />
             );
           })}
