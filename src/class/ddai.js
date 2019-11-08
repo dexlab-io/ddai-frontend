@@ -14,7 +14,7 @@ const getRecipeByname = (name) => {
     return findKey(config.recipes, {label: name});
 };
 
-export const to1e18 = (amount, decimals = 18) => utils.toWei(amount);
+export const to1e18 = (amount, decimals = 18) => utils.toWei(amount.toString());
 
 export const from1e18 = (amount, decimals = 18) => new BigNumber(amount.toString())
     .dividedBy(new BigNumber(10).pow(new BigNumber(decimals))).toString();
@@ -114,6 +114,8 @@ class DDAI extends BasePlugin {
         const ratio = new BigNumber('100').toString();
         const srcAmount = to1e18(amount);
 
+        console.log(selectedRecipe);
+
         const recipe = config.recipes[selectedRecipe];
         recipe.recipeData.data = recipe.recipeData.data.map(value => (value.replace("{userAddress}", this.W.getAddress().replace("0x", ""))))
     
@@ -193,6 +195,8 @@ class DDAI extends BasePlugin {
         const tx = await this.instance.methods.getRecipesOf(this.W.getAddress()).call();
         const recipes = tx.recipes;
 
+        console.log('recipes', recipes)
+
         if(recipes.length == 0) {
             return "DAI";
         }
@@ -200,6 +204,8 @@ class DDAI extends BasePlugin {
         // loop over all recipes in config
         for (const key in config.recipes) {
             const recipeData = this.parseRecipeData(key);
+            // console.log('key', key)
+            // console.log('recipeData', recipeData)
             let invalid = false;
             // loop over all recipes returned from the blockchain
             for(let i = 0; i < recipes.length; i ++) {
