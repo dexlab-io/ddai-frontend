@@ -193,8 +193,6 @@ class DDAI extends BasePlugin {
         const tx = await this.instance.methods.getRecipesOf(this.W.getAddress()).call();
         const recipes = tx.recipes;
 
-        console.log('recipes', recipes)
-
         if(recipes.length == 0) {
             return "DAI";
         }
