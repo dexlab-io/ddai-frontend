@@ -8,7 +8,7 @@ import Wallet from "../Wallet";
 import { withRouter } from "react-router-dom";
 import NotificationsDrawer from "../components/NotificationsDrawer";
 import { Context } from "../context";
-
+import { identify, track } from '../mixpanel';
 const Container = styled.div`
   width: 100%;
   padding: 1rem 0rem;
@@ -51,10 +51,6 @@ class HeaderContainer extends Component {
   };
 
   componentDidMount() {
-    // Hacky coockie for auto login
-    if(window.localStorage.login) {
-      this.init();
-    }
   }
 
   async init() {
@@ -62,6 +58,10 @@ class HeaderContainer extends Component {
 
     const connected = Wallet.getAddress() ? true : false;
     Wallet.Rx.notify("Connected", connected);
+    
+    identify( Wallet.getAddress() );
+    
+    track('Connected', {status: connected});
 
     this.setState({
       walletAddress: Wallet.getAddress(),
