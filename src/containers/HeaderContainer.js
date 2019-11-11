@@ -58,17 +58,23 @@ class HeaderContainer extends Component {
   }
 
   async init() {
-    await Wallet.setWeb3();
+    // Checking if metamask is installed on browser
+    if (typeof window.ethereum !== "undefined" || typeof window.web3 !== "undefined") {
+      await Wallet.setWeb3();
 
-    const connected = Wallet.getAddress() ? true : false;
-    Wallet.Rx.notify("Connected", connected);
+      const connected = Wallet.getAddress() ? true : false;
+      Wallet.Rx.notify("Connected", connected);
 
-    this.setState({
-      walletAddress: Wallet.getAddress(),
-      web3available: connected,
-    });
+      this.setState({
+        walletAddress: Wallet.getAddress(),
+        web3available: connected
+      });
 
-    window.localStorage.login = true;
+      window.localStorage.login = true;
+
+    } else {
+      window.open("https://metamask.io", "_blank");
+    }
   }
 
   render() {
