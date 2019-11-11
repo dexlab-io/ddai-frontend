@@ -22,9 +22,9 @@ code {
     -moz-osx-font-smoothing: grayscale;
     text-decoration: none !important;
   }
-  
+
   @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700&display=swap");
-  
+
   :root {
     --almost-black: #0a0a0a;
     --light-black: #797979;
@@ -39,20 +39,23 @@ code {
     --main-font: "Roboto Mono", monospace;
     --font-main-button: 1rem;
   }
-  
+
   html,
   body {
     margin: 0;
     font-family: var(--main-font);
     font-weight: 300;
   }
-  
+
   a {
     color: var(--almost-black);
     opacity: 1;
   }
-  
+
   a:hover {
     opacity: 0.6;
   }
-  
+
+  button {
+    cursor: pointer;
+  }
