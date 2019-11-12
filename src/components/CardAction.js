@@ -79,6 +79,10 @@ const ColorfulButton = styled.button`
     outline: none;
   }
 
+  :disabled {
+    pointer-events: none;
+  }
+
   @media (max-width: 800px) {
     display: flex;
     width: 100%;
@@ -99,16 +103,22 @@ const CardAction = props => {
       <Heading>{props.heading}</Heading>
       <SubHeading>{props.subheading}</SubHeading>
       <Image src={props.url} />
-      <ColorfulButton style={props.selected || props.disabled ? {backgroundColor: '#cccccc'} : {}} onClick={() => {
-        if(props.disabled) {
-          alert("Recipe disabled for this network");
-        } else if(props.selected) {
-          alert(`It's already selected :)`);
-        } else {
-          props.onPress()
+      <ColorfulButton
+        disabled={props.disabled}
+        style={
+          props.selected || props.disabled ? { backgroundColor: "#cccccc" } : {}
         }
-        }}>
-        {props.disabled ? "DISABLED" : (props.selected ? "Selected" : "Select")}
+        onClick={() => {
+          if (props.disabled) {
+            alert("Recipe disabled for this network");
+          } else if (props.selected) {
+            alert(`It's already selected :)`);
+          } else {
+            props.onPress();
+          }
+        }}
+      >
+        {props.disabled ? "DISABLED" : props.selected ? "Selected" : "Select"}
       </ColorfulButton>
     </Container>
   );
