@@ -59,7 +59,7 @@ class HeaderContainer extends Component {
 
   async init(buttonPressed) {
     // Checking if metamask is installed on browser and an address is active
-    if (typeof window.ethereum === "undefined" || !typeof window.web3 === "undefined") {
+    if (typeof window.ethereum === "undefined" || typeof window.web3 === "undefined") {
 
       window.open("https://metamask.io", "_blank");
 
