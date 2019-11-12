@@ -82,13 +82,19 @@ class HeaderContainer extends Component {
     const balance = this.context.DDAI.Balance|| 0;
     const {pathname} = this.props.location;
     return (
-       pathname !== '/' ? 
+       pathname !== '/' ?
          <Container>
             <Logo />
             <Mobilerow>
-            <TotBalance
-              amount={web3available ? "$" +  U.formatFiat(balance): "no wallet connected"}
-            />
+              <TotBalance
+                amount={
+                  web3available && balance
+                    ? "$" + U.formatFiat(balance)
+                    : web3available
+                    ? "$0"
+                    : "no wallet connected"
+                }
+              />
 
             <IF what={Wallet.getAddress()}>
               <Web3Button address={walletAddress} />
