@@ -3,28 +3,15 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Container = styled.div`
-  width: 292px;
-  margin: 2%;
   display: flex;
+  width: 100%;
   flex-direction: column;
   font-size: var(--text-prettysmall);
-  padding: 1% 2%;
+  padding: 3% 6%;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: var(--white);
   border: 1px solid #827f7f;
   flex: 0 0 auto;
-
-  @media (max-width: 800px) {
-    width: 90%;
-    margin: 5%;
-    padding: 1% 5%;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
-    font-size: var(--text-prettysmall);
-    border-radius: 10px;
-    background-color: var(--white);
-  }
 `;
 
 const Heading = styled.h1`
@@ -82,19 +69,16 @@ const ColorfulButton = styled.button`
   :disabled {
     pointer-events: none;
   }
-
-  @media (max-width: 800px) {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin: 2%;
-  }
 `;
 
 const Image = styled.img`
-  width: 292px;
+  margin: auto auto 6%;
+  width: 100%;
   text-align: center;
-  margin-bottom: 6%;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const CardAction = props => {

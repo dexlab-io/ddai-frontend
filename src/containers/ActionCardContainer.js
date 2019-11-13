@@ -11,16 +11,12 @@ import CONF from "../config";
 const config = CONF[CONF.selectedNetwork];
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(17.125rem,1fr));
+  grid-auto-rows: 16.75rem;
   width: 100%;
+  grid-gap: 1.875rem;
   padding: 2% 4% 0 4%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  flex-wrap: wrap;
-  -webkit-overflow-scrolling: touch;
 `;
 
 class ActionCardContainer extends React.Component {
