@@ -12,12 +12,13 @@ import PropTypes  from "prop-types";
 import history from "../history";
 import DB from '../class/models/actions';
 import { cta } from "../mixpanel";
+import Warning from "../components/Warning";
 
 
 const config = CONF[CONF.selectedNetwork];
 
 const Container = styled.div`
-  margin: 0 27%;
+  margin: 0 22%;
   display: flex;
   margin-top: 5%;
   flex-direction: column;
@@ -163,6 +164,12 @@ class CardReceiveTokenContainer extends Component {
 
     return (
       <Container>
+      <Warning
+      content='🔥 This is a 4X leveraged Recipe'
+      link='https://www.investopedia.com/terms/l/leverage.asp'
+      bg='#FFDC61'
+      border='#E4BC2F'
+       />
         <CardAmount maxValue={maxValue} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         <CardAPR currentRate={DDAI.Apr}/>
