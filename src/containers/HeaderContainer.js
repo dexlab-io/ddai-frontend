@@ -57,9 +57,18 @@ class HeaderContainer extends Component {
     }
   }
 
-  async init() {
-    // Checking if metamask is installed on browser
-    if (typeof window.ethereum !== "undefined" || typeof window.web3 !== "undefined") {
+  async init(buttonPressed) {
+    // Checking if metamask is installed on browser and an address is active
+    if (typeof window.ethereum === "undefined" || typeof window.web3 === "undefined") {
+
+      window.open("https://metamask.io", "_blank");
+
+    } else if (buttonPressed && !Wallet.getAddress()) {
+
+        window.alert("No address is selected in Metamask, add an address to get started!");
+
+    } else {
+
       await Wallet.setWeb3();
 
       const connected = Wallet.getAddress() ? true : false;
@@ -72,8 +81,6 @@ class HeaderContainer extends Component {
 
       window.localStorage.login = true;
 
-    } else {
-      window.open("https://metamask.io", "_blank");
     }
   }
 
@@ -102,7 +109,7 @@ class HeaderContainer extends Component {
 
             <IF what={!Wallet.getAddress()}>
               <ConnectW3Button
-                onPress={() => this.init()}
+                onPress={() => this.init(true)}
                 label="Connect metamask"
               />
             </IF>
