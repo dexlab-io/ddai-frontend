@@ -1,6 +1,6 @@
 import React from "react";
-import Section from "./Section";
 import styled from "styled-components";
+import Config from '../config';
 
 const Container = styled.span`
   display: flex;
@@ -67,16 +67,18 @@ class Warning extends React.Component {
     });
   }
   render() {
-    const {bg, border, content, link} = this.props;
-    if(!this.state.open) {
+    if(!this.state.open || !this.props.recipe.warning) {
       return (
-        <></>
+        null
       )
     }
+
+    const {bg, border, message, link} = this.props.recipe.warning;
+
     return (
       <Container bg={bg} border={border} id="container">
         <Content>
-          <Message>{content}</Message>
+          <Message>{message}</Message>
           <Link href={link} target='_blank'>More</Link>
         </Content>
         <Close onClick={this.handleClick}>✖️</Close>
@@ -85,7 +87,6 @@ class Warning extends React.Component {
   }
   
 }
-
 
 
 export default Warning;

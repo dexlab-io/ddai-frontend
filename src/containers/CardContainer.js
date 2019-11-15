@@ -55,6 +55,10 @@ class CardReceiveTokenContainer extends Component {
     useDai: false
   }
 
+  componentDidMount(){
+    console.log('props card container', this.props)
+  }
+
   async onChangeAmount(e) {
     const amount = e.target.value;
     this.setState({
@@ -135,6 +139,7 @@ class CardReceiveTokenContainer extends Component {
 
   render() {
     const { amount } = this.state;
+    const recipe = config.recipes[this.context.selectedRecipe] || config.recipes[Object.keys(config.recipes)[0]];
     const { action } = this.props;
     
     if(!this.context.DDAI.TotalBalance) {
@@ -164,12 +169,7 @@ class CardReceiveTokenContainer extends Component {
 
     return (
       <Container>
-      <Warning
-      content='🔥 This is a 4X leveraged Recipe'
-      link='https://www.investopedia.com/terms/l/leverage.asp'
-      bg='#FFDC61'
-      border='#E4BC2F'
-       />
+      <Warning recipe={recipe} />
         <CardAmount maxValue={maxValue} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         <CardAPR currentRate={DDAI.Apr}/>

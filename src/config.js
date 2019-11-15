@@ -7,6 +7,14 @@ export default {
             DAI: {
                 title: "Earn DAI",
                 description: "Start earning {interestRate}% on DAI. Your interest is automatically accrued in your wallet",
+
+                warning: {
+                    message: "blabalabalsnfaskd",
+                    link: '',
+                    bg: '',
+                    border: '',
+                },
+                link: null,
                 img: "../../images/actionCardDAI.png",
                 imgRecap: "../../images/recap_DAI.png",
                 recipeData: {
@@ -58,6 +66,12 @@ export default {
             ETHS4X: {
                 title: "Short ETH x4",
                 description: "Start earning {interestRate}% on DAI while automatically going short x4 on ETH with your gains",
+                warning: {
+                    message: "blabalabalsnfaskd",
+                    link: '',
+                    bg: '',
+                    border: '',
+                },
                 img: "../../images/ethshort4x.png",
                 imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
@@ -167,6 +181,12 @@ export default {
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sXAU on Syntetix",
                 img: "../../images/actionCardsXAU.png",
                 imgRecap: "../../images/recap_sXAU.png",
+                warning: {
+                    message: "Gold is good for you",
+                    link: '',
+                    bg: 'yellow',
+                    border: 'red',
+                },
                 recipeData: {
                     receivers: [
                         "0xe1f5a9cbd60d6d7d1f443e70fa572b5ad255607b"
