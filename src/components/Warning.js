@@ -79,7 +79,7 @@ class Warning extends React.Component {
       <Container bg={bg} border={border} id="container">
         <Content>
           <Message>{message}</Message>
-          <Link href={link} target='_blank'>More</Link>
+          <Link href={link} target='_blank'>Learn</Link>
         </Content>
         <Close onClick={this.handleClick}>✖️</Close>
       </Container>

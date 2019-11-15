@@ -7,13 +7,13 @@ export default {
             DAI: {
                 title: "Earn DAI",
                 description: "Start earning {interestRate}% on DAI. Your interest is automatically accrued in your wallet",
-
                 warning: {
-                    message: "blabalabalsnfaskd",
-                    link: '',
-                    bg: '',
-                    border: '',
+                    message: "⚠️ DAI is a collateralized asset",
+                    link: 'https://www.youtube.com/watch?v=CbjBJ_KrknQ',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
                 },
+
                 link: null,
                 img: "../../images/actionCardDAI.png",
                 imgRecap: "../../images/recap_DAI.png",
@@ -49,6 +49,12 @@ export default {
             ETH4X: {
                 title: "Long ETH x4",
                 description: "Start earning {interestRate}% on DAI while automatically going long x4 on ETH with your gains",
+                warning: {
+                    message: "⚠️ This is a leveraged position",
+                    link: 'https://medium.com/bzxnetwork/introducing-fulcrum-tokenized-margin-made-dead-simple-e65ccc82393f',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
+                },
                 img: "../../images/ethlong4x.png",
                 imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
@@ -66,6 +72,12 @@ export default {
             ETHS4X: {
                 title: "Short ETH x4",
                 description: "Start earning {interestRate}% on DAI while automatically going short x4 on ETH with your gains",
+                warning: {
+                    message: "⚠️ This is a short position",
+                    link: 'https://medium.com/bzxnetwork/introducing-fulcrum-tokenized-margin-made-dead-simple-e65ccc82393f',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
+                },
                 warning: {
                     message: "blabalabalsnfaskd",
                     link: '',
@@ -202,6 +214,12 @@ export default {
             SBTC : {
                 title: "Earn sBTC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to sBTC",
+                warning: {
+                    message: "⚠️ sBTC is a synthetic asset",
+                    link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
+                },
                 img: "../../images/actionCardsbtc.png",
                 imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
@@ -219,6 +237,12 @@ export default {
             ETHSBTC : {
                 title: "Earn ETH and sBTC",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to ETH and sBTC",
+                warning: {
+                    message: "⚠️ This recipe uses a synthetic asset",
+                    link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
+                },
                 img: "../../images/actionCardETHsBTC.png",
                 imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
@@ -239,6 +263,12 @@ export default {
             ETHMAXI : {
                 title: "ETH Maximalist",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to ETH and iBTC",
+                warning: {
+                    message: "⚠️ iBTC is an inverse synthetic asset",
+                    link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
+                },
                 img: "../../images/actionCardETHiBTC.png",
                 imgRecap: "../../images/recap_ETH.png",
                 recipeData: {
@@ -259,6 +289,12 @@ export default {
             BTCMAXI : {
                 title: "BTC Maximalist",
                 description: "Start earning {interestRate}% on DAI while automatically converting your gains to iETH and sBTC",
+                warning: {
+                    message: "⚠️ This recipe uses an inverse synthetic asset",
+                    link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
+                },
                 img: "../../images/actionCardiETHsBTC.png",
                 imgRecap: "../../images/recap_sBTC.png",
                 recipeData: {
@@ -279,6 +315,12 @@ export default {
             WBTC4X: {
                 title: "Long WBTC x4",
                 description: "Not working on kovan. WBTC is not supported on kovan fulcrum. :(",
+                warning: {
+                    message: "⚠️ This is a leveraged position",
+                    link: 'https://medium.com/bzxnetwork/introducing-fulcrum-tokenized-margin-made-dead-simple-e65ccc82393f',
+                    bg: '#FFDC61',
+                    border: '#E4BC2F',
+                },
                 img: "../../images/actionCardLong4xBTC.png",
                 recipeData: {
                     receivers: [
