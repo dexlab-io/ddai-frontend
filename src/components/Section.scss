@@ -1,4 +1,5 @@
 .SectionComponent {
+  margin-top: 0!important;
   // Add light border if two white
   // sections next to each other.
   .is-white + &.is-white {
