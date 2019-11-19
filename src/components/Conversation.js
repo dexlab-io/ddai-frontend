@@ -184,13 +184,14 @@ const Button = styled.button`
   font-size: 16px;
   color: black;
   font-weight: 700;
-  margin: 0;
+  margin: 5px 0 0 -2px;
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;
   /* border-bottom: 4px dotted #000; */
   text-decoration: underline;
   text-decoration-style: dotted;
+  padding-left: 0px;
   :focus {
     outline: none;
   }
@@ -214,6 +215,8 @@ const CtaButton = styled.button`
   font-size: 31px;
   font-weight: 700;
 `;
+
+
 
 function Conversation(props) {
   const [selectOpen, setSelectOpen] = useState(false);
