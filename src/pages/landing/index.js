@@ -5,6 +5,7 @@ import TestimonialsSection from "../../components/TestimonialsSection";
 import ContactSection from "../../components/ContactSection";
 import Footer from "../../components/Footer";
 import Conversation from "../../components/Conversation";
+import KyberWinner from "../../components/KyberWinner";
 
 function IndexPage(props) {
   return (
@@ -42,6 +43,7 @@ function IndexPage(props) {
         description="Earn dDai - Interest with smart DeFi recipes"
         copyright="© 2019 Dexlab.io"
       />
+      <KyberWinner />
     </>
   );
 }
