@@ -37,7 +37,7 @@ const ConnectedAddress = styled.span`
 const Web3Button = props => {
   return (
     <Web3ButtonConnected>
-      <ConnectedAddress>{`${props.address.substring(0, 12)}...${props.address[props.address.length-1]}`} ❇️ Kovan</ConnectedAddress>
+      <ConnectedAddress>{`${props.address.substring(0, 16)}...${props.address[props.address.length-1]}`} ❇️ Kovan</ConnectedAddress>
     </Web3ButtonConnected>
   );
 };
