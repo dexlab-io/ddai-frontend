@@ -21,7 +21,12 @@ const Container = styled.div`
   overflow-y: hidden;
   flex-wrap: wrap;
   -webkit-overflow-scrolling: touch;
+  @media (max-width: 800px) {
+    padding: 2% 2% 0 2%;
+
+  }
 `;
+
 
 class ActionCardContainer extends React.Component {
   handleRecipeSelected = key => async () => {

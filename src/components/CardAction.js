@@ -7,6 +7,7 @@ const Container = styled.div`
   margin: 2%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
   border-radius: 10px;
@@ -15,9 +16,8 @@ const Container = styled.div`
   flex: 0 0 auto;
 
   @media (max-width: 800px) {
-    width: 90%;
-    margin: 5%;
-    padding: 1% 5%;
+    width: 100%;
+    margin: 5% 0;
     display: flex;
     flex: 0 0 auto;
     flex-direction: column;
@@ -95,7 +95,11 @@ const Image = styled.img`
   width: 292px;
   text-align: center;
   margin-bottom: 6%;
+  @media (max-width: 800px) {
+    width: 50%;
+  }
 `;
+
 
 const CardAction = props => {
   return (
