@@ -31,14 +31,13 @@ const ConnectedAddress = styled.span`
   max-width: 32rem;
 
   @media (max-width: 980px) {
-    width: 50%
   }
 `;
 
 const Web3Button = props => {
   return (
     <Web3ButtonConnected>
-      <ConnectedAddress>{`${props.address.substring(0, 4)}...${props.address[props.address.length-1]}`} ❇️ Kovan</ConnectedAddress>
+      <ConnectedAddress>{`${props.address.substring(0, 12)}...${props.address[props.address.length-1]}`} ❇️ Kovan</ConnectedAddress>
     </Web3ButtonConnected>
   );
 };

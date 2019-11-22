@@ -42,6 +42,14 @@ function Navbar(props) {
             <a
               onClick={() => link({position: 'navbar', to: 'devpost.com/software/ddai', type: 'text'})}
               className="navbar-item"
+              href="https://youtu.be/ORAkGeIRx5k"
+              target="_blank"
+            >
+              How it works
+            </a>
+            <a
+              onClick={() => link({position: 'navbar', to: 'devpost.com/software/ddai', type: 'text'})}
+              className="navbar-item"
               href="https://devpost.com/software/ddai"
               target="_blank"
             >
