@@ -68,14 +68,18 @@ class HeaderContainer extends Component {
       typeof window.web3 === "undefined"
     ) {
       window.open("https://metamask.io", "_blank");
-    } else if (buttonPressed && !Wallet.getAddress()) {
-      window.alert(
-        "No address is selected in Metamask, add an address to get started!"
-      );
     } else {
       await Wallet.setWeb3();
 
       const connected = Wallet.getAddress() ? true : false;
+      if(!connected) {
+        window.alert(
+          "No address is selected in Metamask, add an address to get started!"
+        );
+        return;
+      }
+      
+
       Wallet.Rx.notify("Connected", connected);
 
       this.setState({
