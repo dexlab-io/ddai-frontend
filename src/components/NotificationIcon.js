@@ -4,11 +4,11 @@ import { link } from "../mixpanel";
 
 
 const LogoContainer = styled.div`
-cursor: pointer
+cursor: pointer;
   @media (max-width: 800px) {
     position: absolute;
-    top:30px;
-    right:50px;
+    top:20px;
+    right:10px;
   }
 
 `;
