@@ -12,7 +12,7 @@ const TotBalanceContainer = styled.span`
   @media (max-width: 800px) {
     display: flex;
     justify-content: center;
-    width: 70%;
+    width: 100%;
     margin: 2% 0%;
   }
 `;

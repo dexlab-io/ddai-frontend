@@ -11,16 +11,16 @@ import { Context } from "../context";
 
 const Container = styled.div`
   width: 100%;
-  padding: 1rem 0rem;
+  padding: 2% 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: #fff;
 
   @media (max-width: 800px) {
-    width: 90%;
-    padding: 2% 5%;
+    width: 100%;
+    padding: 2%;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -30,18 +30,22 @@ const Container = styled.div`
 
 const Mobilerow = styled.div`
   display: flex;
-  width: 100%;
+  width: 95%;
+  margin: 0 5%
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
   @media (max-width: 800px) {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    margin: 0 0;
   }
 `;
+
 
 class HeaderContainer extends Component {
   state = {
@@ -52,23 +56,23 @@ class HeaderContainer extends Component {
 
   componentDidMount() {
     // Hacky coockie for auto login
-    if(window.localStorage.login) {
+    if (window.localStorage.login) {
       this.init();
     }
   }
 
   async init(buttonPressed) {
     // Checking if metamask is installed on browser and an address is active
-    if (typeof window.ethereum === "undefined" || typeof window.web3 === "undefined") {
-
+    if (
+      typeof window.ethereum === "undefined" ||
+      typeof window.web3 === "undefined"
+    ) {
       window.open("https://metamask.io", "_blank");
-
     } else if (buttonPressed && !Wallet.getAddress()) {
-
-        window.alert("No address is selected in Metamask, add an address to get started!");
-
+      window.alert(
+        "No address is selected in Metamask, add an address to get started!"
+      );
     } else {
-
       await Wallet.setWeb3();
 
       const connected = Wallet.getAddress() ? true : false;
@@ -80,46 +84,43 @@ class HeaderContainer extends Component {
       });
 
       window.localStorage.login = true;
-
     }
   }
 
   render() {
     const { walletAddress, web3available } = this.state;
-    const balance = this.context.DDAI.Balance|| 0;
-    const {pathname} = this.props.location;
-    return (
-       pathname !== '/' ?
-         <Container>
-            <Logo />
-            <Mobilerow>
-              <TotBalance
-                amount={
-                  web3available && balance
-                    ? "$" + U.formatFiat(balance)
-                    : web3available
-                    ? "$0"
-                    : "no wallet connected"
-                }
-              />
+    const balance = this.context.DDAI.Balance || 0;
+    const { pathname } = this.props.location;
+    return pathname !== "/" ? (
+      <Container>
+        <Logo />
+        <Mobilerow>
+          <TotBalance
+            amount={
+              web3available && balance
+                ? "$" + U.formatFiat(balance)
+                : web3available
+                ? "$0"
+                : "no wallet connected"
+            }
+          />
 
-            <IF what={Wallet.getAddress()}>
-              <Web3Button address={walletAddress} />
-            </IF>
+          <IF what={Wallet.getAddress()}>
+            <Web3Button address={walletAddress} />
+          </IF>
 
-            <IF what={!Wallet.getAddress()}>
-              <ConnectW3Button
-                onPress={() => this.init(true)}
-                label="Connect metamask"
-              />
-            </IF>
-            </Mobilerow>
-            {/* <SimpleSnackbar /> */}
-            <NotificationIcon onPress={this.context.toggleNotificationsDrawer} />
-            <NotificationsDrawer />
-          </Container>
-      : null
-    );
+          <IF what={!Wallet.getAddress()}>
+            <ConnectW3Button
+              onPress={() => this.init(true)}
+              label="Connect metamask"
+            />
+          </IF>
+        </Mobilerow>
+        {/* <SimpleSnackbar /> */}
+        <NotificationIcon onPress={this.context.toggleNotificationsDrawer} />
+        <NotificationsDrawer />
+      </Container>
+    ) : null;
   }
 }
 

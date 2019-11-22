@@ -5,9 +5,14 @@ import { cta } from "../mixpanel";
 
 
 const Web3Button = styled.button`
-  width: 100%;
-  display: inline-block;
-  padding: 4% 10%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #000;
+  padding: 18px;
+
+  /* display: inline-block;
+  padding: 10%; */
   border-radius: 4px;
   transition-property: background-color, color;
   transition-duration: 0.3s;
@@ -27,8 +32,9 @@ const Web3Button = styled.button`
 
   @media (max-width: 800px) {
     display: flex;
-    text-align: center;
-    margin: 2% 0;
+    justify-content: center;
+    width: 100%;
+    margin: 2% 0%;
   }
 `;
 
@@ -36,7 +42,6 @@ const ConnectedMetamask = styled.span`
   display: flex;
   align-items: center;
   font-weight: 700;
-  width: 100%;
 `;
 
 const ConnectW3Button = props => {
