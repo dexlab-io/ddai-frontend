@@ -11,6 +11,7 @@ const Container = styled.button`
   justify-content: center;
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
+  border: 1px solid #827f7f;
   border-radius: 10px;
   background-color: var(--white);
   flex: 0 0 auto;
