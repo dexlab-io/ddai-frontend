@@ -102,7 +102,7 @@ class HeaderContainer extends Component {
           <TotBalance
             amount={
               web3available && balance
-                ? "$" + U.formatFiat(balance)
+                ? "$" + U.formatFiat(Number.parseFloat(balance).toFixed(2))
                 : web3available
                 ? "$0"
                 : "no wallet connected"
