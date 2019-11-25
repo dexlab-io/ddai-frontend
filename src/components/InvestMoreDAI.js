@@ -4,8 +4,8 @@ import { cta } from "../mixpanel";
 
 
 const Container = styled.button`
-  width: 46%;
-  margin: 2% 27%;
+  width: 86%;
+  margin: 2% 7%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -18,9 +18,9 @@ const Container = styled.button`
 
 
   @media (max-width: 800px) {
-    width: 90%;
-    margin: 0 auto;
-    padding: 0 5%;
+    width: 96%;
+    margin: 0 2%;
+    padding: 0 0;
     display: flex;
     padding: 10px 10px;
     flex: 0 0 auto;
