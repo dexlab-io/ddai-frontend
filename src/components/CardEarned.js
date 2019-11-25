@@ -36,7 +36,7 @@ const CardEarned = props => {
   return (
     <RowContainer>
       <Left>Earned so far</Left>
-      <Right>{props.investmentTokenAmount} dDAI</Right>
+      <Right>{parseFloat(props.investmentTokenAmount).toFixed(2)} dDAI</Right>
     </RowContainer>
   );
 };
