@@ -12,12 +12,13 @@ import PropTypes  from "prop-types";
 import history from "../history";
 import DB from '../class/models/actions';
 import { cta } from "../mixpanel";
+import Warning from "../components/Warning";
 
 
 const config = CONF[CONF.selectedNetwork];
 
 const Container = styled.div`
-  margin: 0 27%;
+  margin: 0 22%;
   display: flex;
   margin-top: 5%;
   flex-direction: column;
@@ -52,6 +53,10 @@ class CardReceiveTokenContainer extends Component {
     recipe: config.recipes[Object.keys(config.recipes)[0]],
     activeRecipes: [],
     useDai: false
+  }
+
+  componentDidMount(){
+    console.log('props card container', this.props)
   }
 
   async onChangeAmount(e) {
@@ -134,6 +139,7 @@ class CardReceiveTokenContainer extends Component {
 
   render() {
     const { amount } = this.state;
+    const recipe = config.recipes[this.context.selectedRecipe] || config.recipes[Object.keys(config.recipes)[0]];
     const { action } = this.props;
     
     if(!this.context.DDAI.TotalBalance) {
@@ -163,6 +169,7 @@ class CardReceiveTokenContainer extends Component {
 
     return (
       <Container>
+      <Warning recipe={recipe} />
         <CardAmount maxValue={maxValue} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         <CardAPR currentRate={DDAI.Apr}/>
