@@ -3,8 +3,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Container = styled.div`
-  width: 45%;
-  margin: 2%;
+  width: 47%;
+  margin: 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
