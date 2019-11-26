@@ -10,7 +10,8 @@ import NotificationsDrawer from "../components/NotificationsDrawer";
 import { Context } from "../context";
 
 const Container = styled.div`
-  width: 100%;
+  width: 90%;
+  margin: 0 5%;
   padding: 2% 0;
   display: flex;
   flex-direction: row;

@@ -16,7 +16,7 @@ const Web3ButtonConnected = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 2% 0;
+    margin: 0;
   }
 `;
 
