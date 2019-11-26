@@ -19,7 +19,7 @@ const Container = styled.div`
 
   @media (max-width: 800px) {
     width: 100%;
-    margin: 5% 0;
+    margin: 2% 0;
     display: flex;
     flex: 0 0 auto;
     flex-direction: column;
@@ -27,6 +27,8 @@ const Container = styled.div`
     border-radius: 10px;
     background-color: var(--white);
     height: auto;
+    padding: 3% 3% 1% 3%;
+
   }
 `;
 
