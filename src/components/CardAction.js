@@ -102,7 +102,6 @@ const Image = styled.img`
   }
 `;
 
-
 const CardAction = props => {
   return (
     <Container style={props.disabled ? { filter: "grayscale(100%)" } : {}}>
@@ -112,7 +111,9 @@ const CardAction = props => {
       <ColorfulButton
         disabled={props.disabled}
         style={
-          props.selected || props.disabled ? { backgroundColor: "#cccccc" } : {}
+          props.selected ? { backgroundColor: "#F00093" }
+          : props.disabled ? { backgroundColor: "#cccccc" }
+          : { backgroundColor: "#000000" }
         }
         onClick={() => {
           if (props.disabled) {
