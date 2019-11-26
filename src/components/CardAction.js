@@ -36,6 +36,7 @@ const Heading = styled.h1`
   font-size: var(--text-big);
   text-align: center;
   margin-bottom: 10px;
+  font-weight: 700;
   @media (max-width: 800px) {
     font-size: var(--text-big-mobile);
   }
