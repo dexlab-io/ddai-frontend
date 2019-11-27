@@ -3,27 +3,32 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Container = styled.div`
-  width: 292px;
-  margin: 2%;
+  width: 47%;
+  margin: 1%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
   border-radius: 10px;
   background-color: #fff;
   border: 1px solid #827f7f;
   flex: 0 0 auto;
+  min-height: 270px;
 
   @media (max-width: 800px) {
-    width: 90%;
-    margin: 5%;
-    padding: 1% 5%;
+    width: 100%;
+    margin: 2% 0;
     display: flex;
     flex: 0 0 auto;
     flex-direction: column;
     font-size: var(--text-prettysmall);
     border-radius: 10px;
     background-color: var(--white);
+    height: auto;
+    padding: 3% 3% 1% 3%;
+
   }
 `;
 
@@ -31,6 +36,7 @@ const Heading = styled.h1`
   font-size: var(--text-big);
   text-align: center;
   margin-bottom: 10px;
+  font-weight: 700;
   @media (max-width: 800px) {
     font-size: var(--text-big-mobile);
   }
@@ -95,6 +101,9 @@ const Image = styled.img`
   width: 292px;
   text-align: center;
   margin-bottom: 6%;
+  @media (max-width: 800px) {
+    width: 50%;
+  }
 `;
 
 const CardAction = props => {
@@ -106,7 +115,9 @@ const CardAction = props => {
       <ColorfulButton
         disabled={props.disabled}
         style={
-          props.selected || props.disabled ? { backgroundColor: "#cccccc" } : {}
+          props.selected ? { backgroundColor: "#F00093" }
+          : props.disabled ? { backgroundColor: "#cccccc" }
+          : { backgroundColor: "#000000" }
         }
         onClick={() => {
           if (props.disabled) {

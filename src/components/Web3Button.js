@@ -16,7 +16,7 @@ const Web3ButtonConnected = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 2% 0;
+    margin: 0;
   }
 `;
 
@@ -37,7 +37,7 @@ const ConnectedAddress = styled.span`
 const Web3Button = props => {
   return (
     <Web3ButtonConnected>
-      <ConnectedAddress>{`${props.address.substring(0, 12)}...${props.address[props.address.length-1]}`} ❇️ Kovan</ConnectedAddress>
+      <ConnectedAddress>{`${props.address.substring(0, 16)}...${props.address[props.address.length-1]}`} ❇️ Kovan</ConnectedAddress>
     </Web3ButtonConnected>
   );
 };

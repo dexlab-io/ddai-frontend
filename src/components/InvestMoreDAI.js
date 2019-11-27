@@ -4,13 +4,14 @@ import { cta } from "../mixpanel";
 
 
 const Container = styled.button`
-  width: 46%;
-  margin: 2% 27%;
+  width: 88%;
+  margin: 2% 6%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
+  border: 1px solid #827f7f;
   border-radius: 10px;
   background-color: var(--white);
   flex: 0 0 auto;
@@ -18,9 +19,9 @@ const Container = styled.button`
 
 
   @media (max-width: 800px) {
-    width: 90%;
-    margin: 0 auto;
-    padding: 0 5%;
+    width: 96%;
+    margin: 0 2%;
+    padding: 0 0;
     display: flex;
     padding: 10px 10px;
     flex: 0 0 auto;

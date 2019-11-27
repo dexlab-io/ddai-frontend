@@ -17,19 +17,18 @@ const Center = styled.div`
   margin: 0 auto;
 `;
 const Container = styled.div`
-  margin: 2% 27%;
+  margin: 1% 6%;
   display: flex;
   flex-direction: column;
   font-size: var(--text-prettysmall);
   padding: 1% 2%;
   border-radius: 10px;
-  border: 1px solid rgb(186, 186, 186);
+  border: 1px solid #827f7f;
   background-color: var(--white);
   flex: 0 0 auto;
 
   @media (max-width: 800px) {
-    width: 100%;
-    margin: 0 0%;
+    margin: 2%;
     padding: 1% 5%;
     display: flex;
     flex: 0 0 auto;
