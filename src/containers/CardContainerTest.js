@@ -137,7 +137,6 @@ class CardReceiveTokenContainerTest extends Component {
     const btnLabel = needAllowance ? 'ALLOW & INVEST' : 'INVEST';
     return (
       <Container>
-        Suca
         <IF what={activeRecipes.length > 0}>
             {activeRecipes.map(this.renderRecipe)}
         </IF>

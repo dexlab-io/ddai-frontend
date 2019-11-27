@@ -139,7 +139,7 @@ class CardReceiveTokenContainer extends Component {
 
   render() {
     const { amount } = this.state;
-    const recipe = config.recipes[this.context.selectedRecipe] || config.recipes[Object.keys(config.recipes)[0]];
+    const recipe = config.recipes[this.context.selectedRecipe];
     const { action } = this.props;
     
     if(!this.context.DDAI.TotalBalance) {
@@ -173,7 +173,7 @@ class CardReceiveTokenContainer extends Component {
         <CardAmount maxValue={maxValue} amount={amount} onChange={ (e) => this.onChangeAmount(e)} />
         <CardInvestmentToken investmentTokenAmount={DDAI.Balance} />
         <CardAPR currentRate={DDAI.Apr}/>
-        <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe || this.context.DDAI.Recipe} />
+        <CardSelectedRecipe selectedRecipe={this.context.selectedRecipe} />
         <CardOneButton onPress={ () => {
           cta({
             position: "invest",
