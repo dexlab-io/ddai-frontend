@@ -15,7 +15,7 @@ const Winner = styled.a`
 
 const KyberWinner = props => {
   return (
-    <Winner href="" target="_blank" rel="noreferrer">
+    <Winner href="https://blog.kyber.network/kyberdefi-hackathon-meet-the-winners-bea5bc9ec983" target="_blank" rel="noreferrer">
     <img src="../../images/winner.png" width="200px"></img>
     </Winner>
   );

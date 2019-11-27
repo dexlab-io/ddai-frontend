@@ -10,8 +10,8 @@ export default {
                 warning: {
                     message: "⚠️ DAI is a collateralized asset",
                     link: 'https://www.youtube.com/watch?v=CbjBJ_KrknQ',
-                    bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
 
                 link: null,
@@ -52,8 +52,8 @@ export default {
                 warning: {
                     message: "⚠️ This is a leveraged position",
                     link: 'https://medium.com/bzxnetwork/introducing-fulcrum-tokenized-margin-made-dead-simple-e65ccc82393f',
-                    bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
                 img: "../../images/ethlong4x.png",
                 imgRecap: "../../images/recap_ETH.png",
@@ -75,8 +75,8 @@ export default {
                 warning: {
                     message: "⚠️ This is a short position",
                     link: 'https://medium.com/bzxnetwork/introducing-fulcrum-tokenized-margin-made-dead-simple-e65ccc82393f',
-                    bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
                 warning: {
                     message: "blabalabalsnfaskd",
@@ -194,10 +194,10 @@ export default {
                 img: "../../images/actionCardsXAU.png",
                 imgRecap: "../../images/recap_sXAU.png",
                 warning: {
-                    message: "Gold is good for you",
-                    link: '',
-                    bg: 'yellow',
-                    border: 'red',
+                    message: "This is a synthetic asset",
+                    link: 'https://www.synthetix.io/',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
                 recipeData: {
                     receivers: [
@@ -217,8 +217,8 @@ export default {
                 warning: {
                     message: "⚠️ sBTC is a synthetic asset",
                     link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
-                    bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
                 img: "../../images/actionCardsbtc.png",
                 imgRecap: "../../images/recap_sBTC.png",
@@ -240,8 +240,8 @@ export default {
                 warning: {
                     message: "⚠️ This recipe uses a synthetic asset",
                     link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
-                    bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
                 img: "../../images/actionCardETHsBTC.png",
                 imgRecap: "../../images/recap_sBTC.png",
@@ -266,8 +266,8 @@ export default {
                 warning: {
                     message: "⚠️ iBTC is an inverse synthetic asset",
                     link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
-                    bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
                 img: "../../images/actionCardETHiBTC.png",
                 imgRecap: "../../images/recap_ETH.png",
@@ -292,8 +292,8 @@ export default {
                 warning: {
                     message: "⚠️ This recipe uses an inverse synthetic asset",
                     link: 'https://blog.synthetix.io/q1-release-sbtc-and-more/',
-                    bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    bg: '#fff7f1',
+                    border: '#ffc07e',
                 },
                 img: "../../images/actionCardiETHsBTC.png",
                 imgRecap: "../../images/recap_sBTC.png",
@@ -319,7 +319,7 @@ export default {
                     message: "⚠️ This is a leveraged position",
                     link: 'https://medium.com/bzxnetwork/introducing-fulcrum-tokenized-margin-made-dead-simple-e65ccc82393f',
                     bg: '#FFDC61',
-                    border: '#E4BC2F',
+                    border: '#ffc07e',
                 },
                 img: "../../images/actionCardLong4xBTC.png",
                 recipeData: {
