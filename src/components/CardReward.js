@@ -93,7 +93,7 @@ const CardReward = props => {
           });
           } }
           style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
-        <Image src={context.selectedRecipe ? config.recipes[context.DDAI.Recipe].imgRecap : ""} />
+        <Image src={context.selectedRecipe ? config.recipes[context.selectedRecipe].imgRecap : ""} />
       </Right>
     </RowContainer>
   );
