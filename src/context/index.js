@@ -7,7 +7,9 @@ export const ContextDefaults = {
     transactions: [],
     closeNotificationsDrawer: () => {},
     toggleNotificationsDrawer: () => {},
-    setRecipe: (value) => {},
+    setRecipe: (value) => {
+        this.selectedRecipe = value;
+    },
 }
 
 export const Context = React.createContext(ContextDefaults)
