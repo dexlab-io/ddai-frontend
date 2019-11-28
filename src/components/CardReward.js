@@ -78,10 +78,11 @@ const ButtonSmall = styled.button`
 
 const CardReward = props => {
   const context = useContext(Context);
+  console.log(context);
 
   return (
     <RowContainer>
-      <Left>Earning Reward in {context.DDAI.Recipe}</Left>
+      <Left>Earning Reward in {context.selectedRecipe}</Left>
       <Right>
         <ButtonSmall><Link onClick={() => {
            cta({
@@ -92,7 +93,7 @@ const CardReward = props => {
           });
           } }
           style={{color: "inherit"}} to="/recipes">Change</Link></ButtonSmall>
-        <Image src={context.DDAI.Recipe ? config.recipes[context.DDAI.Recipe].imgRecap : ""} />
+        <Image src={context.selectedRecipe ? config.recipes[context.selectedRecipe].imgRecap : ""} />
       </Right>
     </RowContainer>
   );

@@ -48,7 +48,7 @@ class App extends Component {
         DDAI: data,
         transactions: Wallet.Rx.poolMap,
         logs: DB.data,
-        selectedRecipe: data.Recipe
+        // selectedRecipe: data.Recipe 
       }
     }))
   }

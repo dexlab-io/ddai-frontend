@@ -38,9 +38,6 @@ class ActionCardContainer extends React.Component {
 
     this.context.setRecipe(key);
 
-    console.log(this.context.DDAI)
-    
-
     if (this.context.DDAI.TotalBalance == 0 && this.context.DDAI.Stack === '0') {
 
       cta({
@@ -76,6 +73,21 @@ class ActionCardContainer extends React.Component {
     }
   };
 
+  componentDidMount() {
+    this.loadSelectedRecipe();
+  }
+
+  loadSelectedRecipe = async () => {
+    if(!Wallet.ddai) {
+      // If Wallet.ddai is not available call this function again
+      // TODO: Consider some "LoadingGate component" which waits till all stuff is available to keep this logic out of containers
+      setTimeout(this.loadSelectedRecipe, 100);
+      return;
+    }
+    const data = await Wallet.ddai.getState();
+
+    this.context.setRecipe(data.Recipe);
+  }
 
   goOverview() {
     cta({
@@ -113,7 +125,7 @@ class ActionCardContainer extends React.Component {
                   this.context.DDAI.Apr ? this.context.DDAI.Apr : 10
                 )}
                 onPress={this.handleRecipeSelected(key)}
-                selected={key == this.context.DDAI.Recipe ? true : false}
+                selected={key == this.context.selectedRecipe ? true : false}
               />
             );
           })}
